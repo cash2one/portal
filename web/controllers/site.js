@@ -13,14 +13,13 @@ var fs = require('fs'),
 	qs = require('querystring'),
 	velocity = require('velocityjs');
 
-var title = '河南正森文化传播有限公司',
-	virtualPath = '/';
+var virtualPath = '/';
 
 exports.indexUI = function(req, res, next){
 	res.render('Index', {
-		title: title,
+		title: conf.corp.name,
 		description: '',
-		keywords: ',Bootstrap3,nodejs,express,javascript,java,xhtml,html5',
+		keywords: ',Bootstrap3,nodejs,express,javascript,java,html5',
 		virtualPath: virtualPath,
 		cdn: conf.cdn
 	});
