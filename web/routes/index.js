@@ -7,9 +7,7 @@
 
 var site = require('../controllers/site');
 
-var virtualPath = '',
-	title = '河南正森文化传播有限公司',
-	str1 = '参数异常';
+var str1 = '参数异常';
 
 module.exports = function(app){
 	app.get('/index.html$', site.indexUI);
