@@ -12,11 +12,11 @@ module.exports = {
 		name: '河南正森文化传播有限公司',
 		website: 'http://www.iim.com.cn/'
 	}, db: {
-		name: 'zswhcb-portal',
-		id: 'zswhcb-portal',
+		database: 'wifi',
 		host: '127.0.0.1',
-		port: 27017,
-		user: 'sa',
-		pass: 'xiang123'
+		port: 22306,
+		user: 'root',
+		pass: 'password',
+		connectionLimit: 50
 	}
 };

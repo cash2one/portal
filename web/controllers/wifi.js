@@ -5,21 +5,30 @@
  */
 'use strict';
 
-var conf = require('../settings');
+var conf = require('../settings'),
+	mysqlUtil = require("../lib/mysqlUtil");
 
 var virtualPath = '/';
 
 exports.indexUI = function(req, res, next){
 	var id = req.params.id;
 
-	res.render('wifi/Index', {
-		title: conf.corp.name,
-		description: '',
-		keywords: ',Bootstrap,nodejs,express,javascript,java,html5',
-		virtualPath: virtualPath,
-		cdn: conf.cdn,
-		data: {
-			id: id
+	mysqlUtil.query('SELECT * FROM w_wifi WHERE ID=?', ['010'], function (err, rows, fields){
+		if(err) throw err;
+
+		for(var i in rows){
+			console.log(rows[i]);
 		}
+
+		res.render('wifi/Index', {
+			title: conf.corp.name,
+			description: '',
+			keywords: ',Bootstrap,nodejs,express,javascript,java,html5',
+			virtualPath: virtualPath,
+			cdn: conf.cdn,
+			data: {
+				id: id
+			}
+		});
 	});
 };
