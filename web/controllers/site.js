@@ -19,7 +19,7 @@ exports.indexUI = function(req, res, next){
 	res.render('Index', {
 		title: conf.corp.name,
 		description: '',
-		keywords: ',Bootstrap,Bootstrap3,nodejs,express,javascript,java,html5',
+		keywords: ',Bootstrap,nodejs,express,javascript,java,html5',
 		virtualPath: virtualPath,
 		cdn: conf.cdn
 	});

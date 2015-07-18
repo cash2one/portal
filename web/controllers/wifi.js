@@ -10,11 +10,16 @@ var conf = require('../settings');
 var virtualPath = '/';
 
 exports.indexUI = function(req, res, next){
+	var id = req.params.id;
+
 	res.render('wifi/Index', {
 		title: conf.corp.name,
 		description: '',
-		keywords: ',Bootstrap,Bootstrap3,nodejs,express,javascript,java,html5',
+		keywords: ',Bootstrap,nodejs,express,javascript,java,html5',
 		virtualPath: virtualPath,
-		cdn: conf.cdn
+		cdn: conf.cdn,
+		data: {
+			id: id
+		}
 	});
 };
