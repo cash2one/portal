@@ -5,13 +5,16 @@
  */
 'use strict';
 
-var site = require('../controllers/site');
+var site = require('../controllers/site'),
+	wifi = require('../controllers/wifi');
 
 var str1 = '参数异常';
 
 module.exports = function(app){
 	app.get('/index.html$', site.indexUI);
 	app.get('/', site.indexUI);
+
+	app.get('/wifi/', wifi.indexUI);
 };
 
 /**

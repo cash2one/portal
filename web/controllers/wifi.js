@@ -7,16 +7,10 @@
 
 var conf = require('../settings');
 
-var fs = require('fs'),
-	path = require('path'),
-	cwd = process.cwd(),
-	qs = require('querystring'),
-	velocity = require('velocityjs');
-
 var virtualPath = '/';
 
 exports.indexUI = function(req, res, next){
-	res.render('Index', {
+	res.render('wifi/Index', {
 		title: conf.corp.name,
 		description: '',
 		keywords: ',Bootstrap,Bootstrap3,nodejs,express,javascript,java,html5',
