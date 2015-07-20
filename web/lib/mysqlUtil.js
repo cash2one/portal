@@ -25,7 +25,7 @@ exports.query = function(sql, params, cb){
 	if(!pool) initPool();
 
 	pool.getConnection(function (err, conn){
-		if(err) throw err;
+		if(err) return cb(err);
 		conn.query(sql, params, function (err, rows, fields){
 			conn.release();
 			cb(err, rows, fields);

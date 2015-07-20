@@ -6,16 +6,16 @@
 'use strict';
 
 var express = require('express'),
+	velocity = require('velocityjs');
+
+var cwd = process.cwd(),
+	fs = require('fs'),
 	http = require('http'),
 	path = require('path');
 
-var cwd = process.cwd(),
-	fs = require('fs');
-
-var macros = require('./lib/macro');
-
-var routes = require('./routes'),
-	velocity = require('velocityjs');
+var macros = require('./lib/macro'),
+	routes = require('./routes'),
+	errorHandler = require("./lib/errorHandler");
 
 /* session config */
 var settings = require('./settings'),
@@ -31,12 +31,12 @@ app.set('port', process.env.PORT || 3000)
 	/* use */
 	.use(flash())
 	.use(express.favicon())
+	.use('/public', express.static(path.join(__dirname, 'public')))
 	.use(express.logger('dev'))
 	.use(express.json())
 	.use(express.urlencoded())
 	.use(express.methodOverride())
 	.use(express.cookieParser())
-	.use('/public', express.static(path.join(__dirname, 'public')))
 	.use(app.router)
 	/* velocity */
 	.engine('.html', function (path, options, fn){
@@ -47,10 +47,20 @@ app.set('port', process.env.PORT || 3000)
 		});
 	});
 
-// development only
-if('development' === app.get('env')){
+errorHandler.appErrorProcess(app);
+
+// production
+app.configure('production', function(){
 	app.use(express.errorHandler());
-}
+});
+
+// development
+app.configure('development', function(){
+	app.use(express.errorHandler({
+		dumpExceptions: true,
+		showStack: true
+	}));
+});
 
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port %s.', app.get('port'));

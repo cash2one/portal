@@ -14,7 +14,7 @@ exports.indexUI = function(req, res, next){
 	var id = req.params.id;
 
 	mysqlUtil.query('SELECT * FROM w_wifi WHERE ID=?', ['010'], function (err, rows, fields){
-		if(err) throw err;
+		if(err) return next(err);
 
 		for(var i in rows){
 			console.log(rows[i]);
