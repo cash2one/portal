@@ -14,7 +14,6 @@ var cwd = process.cwd(),
 	path = require('path');
 
 var macros = require('./lib/macro'),
-	routes = require('./routes'),
 	errorHandler = require("./lib/errorHandler");
 
 /* session config */
@@ -62,7 +61,9 @@ app.configure('development', function(){
 	}));
 });
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app);
+// server.setTimeout(5000);
+server.listen(app.get('port'), function(){
 	console.log('Express server listening on port %s.', app.get('port'));
-	routes(app);
+	require('./routes')(app);
 });
