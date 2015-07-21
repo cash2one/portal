@@ -11,14 +11,14 @@ var conf = require('../settings'),
 var virtualPath = '/';
 
 exports.indexUI = function(req, res, next){
-	var id = req.params.id;
+	var wifi_mac = req.params.wifi_mac;
 
-	mysqlUtil.query('SELECT * FROM w_wifi WHERE ID=?', ['010'], function (err, rows, fields){
+	mysqlUtil.query('SELECT * FROM w_wifi WHERE WIFI_MAC=?', [wifi_mac], function (err, rows, fields){
 		if(err) return next(err);
 
-		for(var i in rows){
-			console.log(rows[i]);
-		}
+		if(!mysqlUtil.checkOnly(rows)) return res.redirect('/');
+
+		console.log(rows[0]);
 
 		res.render('wifi/Index', {
 			title: conf.corp.name,
@@ -27,7 +27,7 @@ exports.indexUI = function(req, res, next){
 			virtualPath: virtualPath,
 			cdn: conf.cdn,
 			data: {
-				id: id
+				id: wifi_mac
 			}
 		});
 	});

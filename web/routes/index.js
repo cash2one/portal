@@ -14,7 +14,7 @@ module.exports = function(app){
 	app.get('/index.html$', site.indexUI);
 	app.get('/', site.indexUI);
 
-	app.get('/w/:id/', wifi.indexUI);
+	app.get('/w/:wifi_mac/', wifi.indexUI);
 };
 
 /**

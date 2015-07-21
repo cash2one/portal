@@ -32,3 +32,13 @@ exports.query = function(sql, params, cb){
 		});
 	});
 };
+
+/**
+ * 检测唯一性
+ *
+ * @param {Array} rows
+ * @return {Boolean}
+ */
+exports.checkOnly = function(rows){
+	return !!rows && 1 === rows.length;
+}
