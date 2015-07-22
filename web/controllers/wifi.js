@@ -6,19 +6,19 @@
 'use strict';
 
 var conf = require('../settings'),
-	mysqlUtil = require("../lib/mysqlUtil");
+	Wifi = require("../biz/Wifi");
 
 var virtualPath = '/';
 
 exports.indexUI = function(req, res, next){
 	var wifi_mac = req.params.wifi_mac;
 
-	mysqlUtil.query('SELECT * FROM w_wifi WHERE WIFI_MAC=?', [wifi_mac], function (err, rows, fields){
+	Wifi.getByMac(wifi_mac, function (err, row){
 		if(err) return next(err);
 
-		if(!mysqlUtil.checkOnly(rows)) return res.redirect('/');
+		if(null === row) return res.redirect('/');
 
-		console.log(rows[0]);
+		console.log(row)
 
 		res.render('wifi/Index', {
 			title: conf.corp.name,
