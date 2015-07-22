@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : mysql:22306
+Source Server         : hq-mysql-1:22306
 Source Server Version : 50623
 Source Host           : 127.0.0.1:22306
 Source Database       : wifi
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2015-07-22 13:16:00
+Date: 2015-07-22 22:16:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,23 +61,24 @@ DROP TABLE IF EXISTS `w_ad`;
 CREATE TABLE `w_ad` (
   `id` varchar(32) NOT NULL,
   `AD_NAME` varchar(32) DEFAULT NULL COMMENT '广告名称',
-  `AD_TYPE_ID` varchar(32) DEFAULT NULL COMMENT '广告类型',
   `SHOP_ID` varchar(32) DEFAULT NULL COMMENT '店铺ID',
   `GOODS_ID` varchar(32) DEFAULT NULL COMMENT '商品ID',
   `START_TIME` datetime DEFAULT NULL COMMENT '开始时间',
   `END_TIME` datetime DEFAULT NULL COMMENT '结束时间',
   `AD_POSITION_ID` varchar(32) DEFAULT NULL COMMENT '投放区域',
+  `SORT` int(11) DEFAULT NULL,
+  `ZONE_ID` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='广告';
 
 -- ----------------------------
 -- Records of w_ad
 -- ----------------------------
-INSERT INTO `w_ad` VALUES ('1', null, '1', '1', null, null, null, '2');
-INSERT INTO `w_ad` VALUES ('2', null, '1', '2', null, null, null, '2');
-INSERT INTO `w_ad` VALUES ('3', null, '1', '3', null, null, null, '3');
-INSERT INTO `w_ad` VALUES ('4', null, '1', '4', null, null, null, '3');
-INSERT INTO `w_ad` VALUES ('5', null, '1', '5', null, null, null, '3');
+INSERT INTO `w_ad` VALUES ('1', null, '1', null, null, null, '1', '1', '4');
+INSERT INTO `w_ad` VALUES ('2', null, '2', null, null, null, '1', '2', '4');
+INSERT INTO `w_ad` VALUES ('3', null, '3', null, null, null, '2', '1', '4');
+INSERT INTO `w_ad` VALUES ('4', null, '4', null, null, null, '2', '2', '4');
+INSERT INTO `w_ad` VALUES ('5', null, '5', null, null, null, '3', '1', '4');
 
 -- ----------------------------
 -- Table structure for `w_ad_position`
@@ -85,24 +86,19 @@ INSERT INTO `w_ad` VALUES ('5', null, '1', '5', null, null, null, '3');
 DROP TABLE IF EXISTS `w_ad_position`;
 CREATE TABLE `w_ad_position` (
   `id` varchar(32) NOT NULL,
-  `PID` varchar(32) DEFAULT NULL,
-  `PATH` varchar(256) DEFAULT NULL,
+  `PAGE_ID` varchar(32) DEFAULT NULL,
   `POSITION_NAME` varchar(32) DEFAULT NULL COMMENT '位置名称',
-  `ZONE_ID` varchar(32) DEFAULT NULL,
+  `AD_TYPE_ID` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='广告位';
 
 -- ----------------------------
 -- Records of w_ad_position
 -- ----------------------------
-INSERT INTO `w_ad_position` VALUES ('1', '0', '0', 'WIFI区域（中原区）首页', '4');
-INSERT INTO `w_ad_position` VALUES ('2', '1', '0,1', 'WIFI区域（中原区）首页区域一', '4');
-INSERT INTO `w_ad_position` VALUES ('3', '1', '0,1', 'WIFI区域（中原区）首页区域二', '4');
-INSERT INTO `w_ad_position` VALUES ('4', '1', '0,1', 'WIFI区域（中原区）首页区域三', '4');
-INSERT INTO `w_ad_position` VALUES ('5', '0', '0', 'WIFI区域（管城区）首页', '5');
-INSERT INTO `w_ad_position` VALUES ('6', '5', '0,5', 'WIFI区域（管城区）首页区域一', '5');
-INSERT INTO `w_ad_position` VALUES ('7', '0', '0', 'WIFI区域（中原区）二级页', '4');
-INSERT INTO `w_ad_position` VALUES ('8', '7', '0,7', 'WIFI区域（中原区）二级页区域一', '4');
+INSERT INTO `w_ad_position` VALUES ('1', '1', 'WIFI区域（如：中原区）首页区域一', '3');
+INSERT INTO `w_ad_position` VALUES ('2', '1', 'WIFI区域（如：中原区）首页区域二', '1');
+INSERT INTO `w_ad_position` VALUES ('3', '1', 'WIFI区域（如：中原区）首页区域三', '2');
+INSERT INTO `w_ad_position` VALUES ('4', '2', 'WIFI区域（如：中原区）二级页区域一', '3');
 
 -- ----------------------------
 -- Table structure for `w_ad_type`
@@ -119,6 +115,7 @@ CREATE TABLE `w_ad_type` (
 -- ----------------------------
 INSERT INTO `w_ad_type` VALUES ('1', '商铺宣传');
 INSERT INTO `w_ad_type` VALUES ('2', '商品宣传');
+INSERT INTO `w_ad_type` VALUES ('3', '（优惠）活动');
 
 -- ----------------------------
 -- Table structure for `w_customer`
@@ -175,6 +172,23 @@ INSERT INTO `w_goods_type` VALUES ('5', '0', '0', '住房', '5');
 INSERT INTO `w_goods_type` VALUES ('6', '0', '0', '美保', '6');
 INSERT INTO `w_goods_type` VALUES ('7', '0', '0', '配送', '7');
 INSERT INTO `w_goods_type` VALUES ('8', '0', '0', '其他', '8');
+
+-- ----------------------------
+-- Table structure for `w_page`
+-- ----------------------------
+DROP TABLE IF EXISTS `w_page`;
+CREATE TABLE `w_page` (
+  `id` varchar(32) NOT NULL,
+  `PAGE_NAME` varchar(32) DEFAULT NULL,
+  `PAGE_URL` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='html页面';
+
+-- ----------------------------
+-- Records of w_page
+-- ----------------------------
+INSERT INTO `w_page` VALUES ('1', 'WIFI区域（如：中原区）首页', '/w/:wifi_mac/');
+INSERT INTO `w_page` VALUES ('2', 'WIFI区域（如：中原区）二级页', null);
 
 -- ----------------------------
 -- Table structure for `w_shop`
