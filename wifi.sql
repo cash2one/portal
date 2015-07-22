@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : hq-mysql-1:22306
+Source Server         : mysql:22306
 Source Server Version : 50623
 Source Host           : 127.0.0.1:22306
 Source Database       : wifi
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2015-07-22 11:59:02
+Date: 2015-07-22 13:16:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -73,11 +73,11 @@ CREATE TABLE `w_ad` (
 -- ----------------------------
 -- Records of w_ad
 -- ----------------------------
-INSERT INTO `w_ad` VALUES ('1', null, '1', '1', null, null, null, '1');
-INSERT INTO `w_ad` VALUES ('2', null, '1', '2', null, null, null, '1');
-INSERT INTO `w_ad` VALUES ('3', null, '1', '3', null, null, null, '1');
-INSERT INTO `w_ad` VALUES ('4', null, '1', '4', null, null, null, '1');
-INSERT INTO `w_ad` VALUES ('5', null, '1', '5', null, null, null, '1');
+INSERT INTO `w_ad` VALUES ('1', null, '1', '1', null, null, null, '2');
+INSERT INTO `w_ad` VALUES ('2', null, '1', '2', null, null, null, '2');
+INSERT INTO `w_ad` VALUES ('3', null, '1', '3', null, null, null, '3');
+INSERT INTO `w_ad` VALUES ('4', null, '1', '4', null, null, null, '3');
+INSERT INTO `w_ad` VALUES ('5', null, '1', '5', null, null, null, '3');
 
 -- ----------------------------
 -- Table structure for `w_ad_position`
