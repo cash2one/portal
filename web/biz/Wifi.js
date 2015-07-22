@@ -7,6 +7,12 @@
 
 var mysqlUtil = require("../lib/mysqlUtil");
 
+/**
+ * 通过 wifi mac 获取唯一记录
+ *
+ * @param
+ * @return
+ */
 exports.getByMac = function(mac, cb){
 	mysqlUtil.query('SELECT * FROM w_wifi WHERE WIFI_MAC=?', [mac], function (err, rows, fields){
 		if(err) return next(err);

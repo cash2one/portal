@@ -9,7 +9,7 @@ module.exports = {
 	cookieSecret: 'zswhcb-portal',
 	cdn: 'http://www.foreworld.net/js/',
 	corp: {
-		name: '河南正森文化传播有限公司',
+		name: '河南正森文化传媒有限公司',
 		website: 'http://www.iim.com.cn/'
 	}, db: {
 		database: 'wifi',

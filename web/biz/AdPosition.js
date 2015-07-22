@@ -7,8 +7,14 @@
 
 var mysqlUtil = require("../lib/mysqlUtil");
 
-exports.getByZoneAndPage = function(zone_id, page_id, cb){
-	mysqlUtil.query('SELECT * FROM w_ad_position WHERE ZONE_ID=? AND PID=?', [zone_id, page_id], function (err, rows, fields){
+/**
+ * 获取该页全部的广告位
+ *
+ * @param
+ * @return
+ */
+exports.getByPageURL = function(page_url, cb){
+	mysqlUtil.query('SELECT b.* FROM w_page a, w_ad_position b WHERE a.id=b.PAGE_ID AND a.PAGE_URL=?', [page_url], function (err, rows, fields){
 		if(err) return next(err);
 		cb(err, rows);
 	});

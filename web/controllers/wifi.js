@@ -14,7 +14,7 @@ var GoodsType = require('../biz/GoodsType'),
 	Wifi = require('../biz/Wifi');
 
 var virtualPath = '/',
-	PAGE_ID = '1';
+	INDEXUI_PAGE_URL = '/w/:wifi_mac/';
 
 exports.indexUI = function(req, res, next){
 	var wifi_mac = req.params.wifi_mac;
@@ -54,7 +54,7 @@ exports.indexUI = function(req, res, next){
 		});
 
 		/* 获取该页全部的广告位 */
-		AdPosition.getByZoneAndPage(wifi.ZONE_ID, PAGE_ID, function (err, rows){
+		AdPosition.getByPageURL(INDEXUI_PAGE_URL, function (err, rows){
 			if(err) return ep.emit('error', err);
 			ep.emit('adPosition', rows);
 		});
