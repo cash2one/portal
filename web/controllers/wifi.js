@@ -10,9 +10,11 @@ var EventProxy = require('eventproxy');
 var conf = require('../settings');
 
 var GoodsType = require('../biz/GoodsType'),
+	AdPosition = require('../biz/AdPosition'),
 	Wifi = require('../biz/Wifi');
 
-var virtualPath = '/';
+var virtualPath = '/',
+	PAGE_ID = '1';
 
 exports.indexUI = function(req, res, next){
 	var wifi_mac = req.params.wifi_mac;
@@ -23,7 +25,10 @@ exports.indexUI = function(req, res, next){
 		if(null === row) return res.redirect('/');
 		var wifi = row;
 
-		var ep = EventProxy.create('topAllGoodsType', function (topAllGoodsType){
+		var ep = EventProxy.create('topAllGoodsType', 'adPosition',
+			function (topAllGoodsType, adPosition){
+
+			console.log(adPosition);
 
 			res.render('wifi/Index', {
 				title: conf.corp.name,
@@ -46,6 +51,12 @@ exports.indexUI = function(req, res, next){
 		GoodsType.getTopAll(function (err, rows){
 			if(err) return ep.emit('error', err);
 			ep.emit('topAllGoodsType', rows);
+		});
+
+		/* 获取该页全部的广告位 */
+		AdPosition.getByZoneAndPage(wifi.ZONE_ID, PAGE_ID, function (err, rows){
+			if(err) return ep.emit('error', err);
+			ep.emit('adPosition', rows);
 		});
 	});
 };
