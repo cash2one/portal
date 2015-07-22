@@ -4,6 +4,10 @@
 		#parse('pagelet/IndexHeader.html')
 	</head>
 	<body>
-		wifi: $!data.id
+		wifi: $!data.id <br/>
+
+		#foreach($type in $!data.topAllGoodsType)
+			$!type.TYPE_NAME <br/>
+		#end
 	</body>
 </html>
