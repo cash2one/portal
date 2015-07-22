@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2015-07-21 23:19:55
+Date: 2015-07-22 11:59:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,14 +59,66 @@ CREATE TABLE `s_user` (
 -- ----------------------------
 DROP TABLE IF EXISTS `w_ad`;
 CREATE TABLE `w_ad` (
-  `id` varchar(32) NOT NULL DEFAULT '',
-  `ad_name` varchar(32) DEFAULT NULL,
+  `id` varchar(32) NOT NULL,
+  `AD_NAME` varchar(32) DEFAULT NULL COMMENT '广告名称',
+  `AD_TYPE_ID` varchar(32) DEFAULT NULL COMMENT '广告类型',
+  `SHOP_ID` varchar(32) DEFAULT NULL COMMENT '店铺ID',
+  `GOODS_ID` varchar(32) DEFAULT NULL COMMENT '商品ID',
+  `START_TIME` datetime DEFAULT NULL COMMENT '开始时间',
+  `END_TIME` datetime DEFAULT NULL COMMENT '结束时间',
+  `AD_POSITION_ID` varchar(32) DEFAULT NULL COMMENT '投放区域',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='广告';
 
 -- ----------------------------
 -- Records of w_ad
 -- ----------------------------
+INSERT INTO `w_ad` VALUES ('1', null, '1', '1', null, null, null, '1');
+INSERT INTO `w_ad` VALUES ('2', null, '1', '2', null, null, null, '1');
+INSERT INTO `w_ad` VALUES ('3', null, '1', '3', null, null, null, '1');
+INSERT INTO `w_ad` VALUES ('4', null, '1', '4', null, null, null, '1');
+INSERT INTO `w_ad` VALUES ('5', null, '1', '5', null, null, null, '1');
+
+-- ----------------------------
+-- Table structure for `w_ad_position`
+-- ----------------------------
+DROP TABLE IF EXISTS `w_ad_position`;
+CREATE TABLE `w_ad_position` (
+  `id` varchar(32) NOT NULL,
+  `PID` varchar(32) DEFAULT NULL,
+  `PATH` varchar(256) DEFAULT NULL,
+  `POSITION_NAME` varchar(32) DEFAULT NULL COMMENT '位置名称',
+  `ZONE_ID` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='广告位';
+
+-- ----------------------------
+-- Records of w_ad_position
+-- ----------------------------
+INSERT INTO `w_ad_position` VALUES ('1', '0', '0', 'WIFI区域（中原区）首页', '4');
+INSERT INTO `w_ad_position` VALUES ('2', '1', '0,1', 'WIFI区域（中原区）首页区域一', '4');
+INSERT INTO `w_ad_position` VALUES ('3', '1', '0,1', 'WIFI区域（中原区）首页区域二', '4');
+INSERT INTO `w_ad_position` VALUES ('4', '1', '0,1', 'WIFI区域（中原区）首页区域三', '4');
+INSERT INTO `w_ad_position` VALUES ('5', '0', '0', 'WIFI区域（管城区）首页', '5');
+INSERT INTO `w_ad_position` VALUES ('6', '5', '0,5', 'WIFI区域（管城区）首页区域一', '5');
+INSERT INTO `w_ad_position` VALUES ('7', '0', '0', 'WIFI区域（中原区）二级页', '4');
+INSERT INTO `w_ad_position` VALUES ('8', '7', '0,7', 'WIFI区域（中原区）二级页区域一', '4');
+
+-- ----------------------------
+-- Table structure for `w_ad_type`
+-- ----------------------------
+DROP TABLE IF EXISTS `w_ad_type`;
+CREATE TABLE `w_ad_type` (
+  `id` varchar(32) NOT NULL,
+  `TYPE_NAME` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='广告类型';
+
+-- ----------------------------
+-- Records of w_ad_type
+-- ----------------------------
+INSERT INTO `w_ad_type` VALUES ('1', '商铺宣传');
+INSERT INTO `w_ad_type` VALUES ('2', '商品宣传');
 
 -- ----------------------------
 -- Table structure for `w_customer`
@@ -105,15 +157,24 @@ CREATE TABLE `w_goods` (
 DROP TABLE IF EXISTS `w_goods_type`;
 CREATE TABLE `w_goods_type` (
   `id` varchar(32) NOT NULL,
-  `PAD` varchar(32) DEFAULT NULL,
+  `PID` varchar(32) DEFAULT NULL,
   `PATH` varchar(512) DEFAULT NULL,
   `TYPE_NAME` varchar(32) DEFAULT NULL,
+  `SORT` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='美食';
 
 -- ----------------------------
 -- Records of w_goods_type
 -- ----------------------------
+INSERT INTO `w_goods_type` VALUES ('1', '0', '0', '美食', '1');
+INSERT INTO `w_goods_type` VALUES ('2', '0', '0', '娱乐', '2');
+INSERT INTO `w_goods_type` VALUES ('3', '0', '0', '出行', '3');
+INSERT INTO `w_goods_type` VALUES ('4', '0', '0', '管家', '4');
+INSERT INTO `w_goods_type` VALUES ('5', '0', '0', '住房', '5');
+INSERT INTO `w_goods_type` VALUES ('6', '0', '0', '美保', '6');
+INSERT INTO `w_goods_type` VALUES ('7', '0', '0', '配送', '7');
+INSERT INTO `w_goods_type` VALUES ('8', '0', '0', '其他', '8');
 
 -- ----------------------------
 -- Table structure for `w_shop`
@@ -134,6 +195,11 @@ CREATE TABLE `w_shop` (
 -- ----------------------------
 -- Records of w_shop
 -- ----------------------------
+INSERT INTO `w_shop` VALUES ('1', '商铺1', null, '1', '4', null, null, null);
+INSERT INTO `w_shop` VALUES ('2', '商铺2', null, '2', '5', null, null, null);
+INSERT INTO `w_shop` VALUES ('3', '商铺3', null, '3', '7', null, null, null);
+INSERT INTO `w_shop` VALUES ('4', '商铺4', null, '4', '8', null, null, null);
+INSERT INTO `w_shop` VALUES ('5', '商铺5', null, '5', '9', null, null, null);
 
 -- ----------------------------
 -- Table structure for `w_shop_user`
@@ -184,7 +250,7 @@ CREATE TABLE `w_wifi` (
 -- ----------------------------
 -- Records of w_wifi
 -- ----------------------------
-INSERT INTO `w_wifi` VALUES ('1', '00014280317A', '正森', null, null, null, null);
+INSERT INTO `w_wifi` VALUES ('1', '00014280317A', '正森', null, '4', null, null);
 
 -- ----------------------------
 -- Table structure for `w_zone`
@@ -195,11 +261,20 @@ CREATE TABLE `w_zone` (
   `PID` varchar(32) DEFAULT NULL,
   `PATH` varchar(256) DEFAULT NULL,
   `ZONE_NAME` varchar(32) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_Reference_5` (`PID`),
-  CONSTRAINT `FK_Reference_5` FOREIGN KEY (`PID`) REFERENCES `w_zone` (`id`)
+  `SORT` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of w_zone
 -- ----------------------------
+INSERT INTO `w_zone` VALUES ('1', '0', '0', '中国', '1');
+INSERT INTO `w_zone` VALUES ('10', '2', '0,1,2,3', '二七区', '2');
+INSERT INTO `w_zone` VALUES ('2', '1', '0,1', '河南', '1');
+INSERT INTO `w_zone` VALUES ('3', '2', '0,1,2', '郑州', '1');
+INSERT INTO `w_zone` VALUES ('4', '3', '0,1,2,3', '中原区', '1');
+INSERT INTO `w_zone` VALUES ('5', '3', '0,1,2,3', '管城区', '3');
+INSERT INTO `w_zone` VALUES ('6', '2', '0,1,2', '洛阳', '2');
+INSERT INTO `w_zone` VALUES ('7', '6', '0,1,2,6', '涧西区', '1');
+INSERT INTO `w_zone` VALUES ('8', '6', '0,1,2,6', '西工区', '2');
+INSERT INTO `w_zone` VALUES ('9', '6', '0,1,2,6', '洛龙区', '3');
