@@ -10,7 +10,7 @@ var mysqlUtil = require("../lib/mysqlUtil");
 /**
  * 通过 wifi mac 获取唯一记录
  *
- * @param
+ * @param {String} mac
  * @return
  */
 exports.getByMac = function(mac, cb){

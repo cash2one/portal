@@ -8,13 +8,13 @@
 var mysqlUtil = require("../lib/mysqlUtil");
 
 /**
- * 获取顶级商品类别（大类）
+ * 获取商品类别
  *
- * @param
+ * @param {String} pid 父ID
  * @return
  */
-exports.getTopAll = function(cb){
-	mysqlUtil.query('SELECT * FROM w_goods_type where PID="0" ORDER BY SORT', null, function (err, rows, fields){
+exports.getByPId = function(pid, cb){
+	mysqlUtil.query('SELECT * FROM w_goods_type WHERE PID=? ORDER BY SORT', [pid], function (err, rows, fields){
 		if(err) return next(err);
 		cb(err, rows);
 	});

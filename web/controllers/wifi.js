@@ -10,11 +10,10 @@ var EventProxy = require('eventproxy');
 var conf = require('../settings');
 
 var GoodsType = require('../biz/GoodsType'),
-	AdPosition = require('../biz/AdPosition'),
+	AdShow = require('../biz/AdShow'),
 	Wifi = require('../biz/Wifi');
 
-var virtualPath = '/',
-	INDEXUI_PAGE_URL = '/w/:wifi_mac/';
+var virtualPath = '/';
 
 exports.indexUI = function(req, res, next){
 	var wifi_mac = req.params.wifi_mac;
@@ -25,11 +24,7 @@ exports.indexUI = function(req, res, next){
 		if(null === row) return res.redirect('/');
 		var wifi = row;
 
-		var ep = EventProxy.create('topAllGoodsType', 'adPosition',
-			function (topAllGoodsType, adPosition){
-
-			console.log(adPosition);
-
+		var ep = EventProxy.create('topGoodsType', 'shopCateAd', function (topGoodsType, shopCateAd){
 			res.render('wifi/Index', {
 				title: conf.corp.name,
 				description: '',
@@ -38,7 +33,7 @@ exports.indexUI = function(req, res, next){
 				cdn: conf.cdn,
 				data: {
 					id: wifi_mac,
-					topAllGoodsType: topAllGoodsType
+					topGoodsType: topGoodsType
 				}
 			});
 		});
@@ -48,15 +43,15 @@ exports.indexUI = function(req, res, next){
 		});
 
 		/* 获取商品全部顶级分类 */
-		GoodsType.getTopAll(function (err, rows){
+		GoodsType.getByPId('0', function (err, rows){
 			if(err) return ep.emit('error', err);
-			ep.emit('topAllGoodsType', rows);
+			ep.emit('topGoodsType', rows);
 		});
 
-		/* 获取该页全部的广告位 */
-		AdPosition.getByPageURL(INDEXUI_PAGE_URL, function (err, rows){
+		/* （广告）获取推荐的商家分类前N条 */
+		AdShow.getShopCate_2(wifi.ZONE_ID, 12, function (err, rows){
 			if(err) return ep.emit('error', err);
-			ep.emit('adPosition', rows);
+			ep.emit('shopCateAd', rows);
 		});
 	});
 };
