@@ -24,7 +24,7 @@ exports.indexUI = function(req, res, next){
 		if(null === row) return res.redirect('/');
 		var wifi = row;
 
-		var ep = EventProxy.create('topGoodsType', 'shopCateAd', function (topGoodsType, shopCateAd){
+		var ep = EventProxy.create('topGoodsType', 'shopCateAd', 'topOfPageAd', function (topGoodsType, shopCateAd, topOfPageAd){
 			res.render('wifi/Index', {
 				title: conf.corp.name,
 				description: '',
@@ -33,7 +33,11 @@ exports.indexUI = function(req, res, next){
 				cdn: conf.cdn,
 				data: {
 					id: wifi_mac,
-					topGoodsType: topGoodsType
+					topGoodsType: topGoodsType,
+					adShow: {
+						shopCateAd: shopCateAd,
+						topOfPageAd: topOfPageAd
+					}
 				}
 			});
 		});
@@ -52,6 +56,12 @@ exports.indexUI = function(req, res, next){
 		AdShow.getShopCate_2(wifi.ZONE_ID, 12, function (err, rows){
 			if(err) return ep.emit('error', err);
 			ep.emit('shopCateAd', rows);
+		});
+
+		/* （广告）获取页面顶部广告前N条 */
+		AdShow.getTopOfPage_1(wifi.ZONE_ID, 5, function (err, rows){
+			if(err) return ep.emit('error', err);
+			ep.emit('topOfPageAd', rows);
 		});
 	});
 };

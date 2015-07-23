@@ -6,8 +6,21 @@
 	<body>
 		wifi: $!data.id <br/>
 
-		#foreach($type in $!data.topGoodsType)
-			$!type.TYPE_NAME <br/>
+		<span style='color:red;'>顶部活动广告</span> <br/>
+		#foreach($ad in $!data.adShow.topOfPageAd)
+			$!ad.AD_NAME <br/>
+		#end
+
+		<br/>
+
+		<span style='color:red;'>商家分类广告</span> <br/>
+		#foreach($cate in $!data.adShow.shopCateAd)
+			<b>$!cate.TYPE_NAME</b> <br/>
+
+			#foreach($ad in $!cate.children)
+				$ad.SHOP_NAME <br/>
+			#end
+			<br/>
 		#end
 	</body>
 </html>
