@@ -15,7 +15,7 @@ var mysqlUtil = require("../lib/mysqlUtil");
  */
 exports.getByPId = function(pid, cb){
 	mysqlUtil.query('SELECT * FROM w_goods_type WHERE PID=? ORDER BY SORT', [pid], function (err, rows, fields){
-		if(err) return next(err);
-		cb(err, rows);
+		if(err) return cb(err);
+		cb(null, rows);
 	});
 };

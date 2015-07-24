@@ -15,11 +15,11 @@ var mysqlUtil = require("../lib/mysqlUtil");
  */
 exports.getByMac = function(mac, cb){
 	mysqlUtil.query('SELECT * FROM w_wifi WHERE WIFI_MAC=?', [mac], function (err, rows, fields){
-		if(err) return next(err);
+		if(err) return cb(err);
 
 		if(!mysqlUtil.checkOnly(rows))
-			return cb(err, null);
+			return cb(null, null);
 
-		cb(err, rows[0]);
+		cb(null, rows[0]);
 	});
 };
