@@ -24,7 +24,7 @@ exports.indexUI = function(req, res, next){
 		if(null === row) return res.redirect('/');
 		var wifi = row;
 
-		var ep = EventProxy.create('topGoodsType', 'shopCateAd', 'topOfPageAd', function (topGoodsType, shopCateAd, topOfPageAd){
+		var ep = EventProxy.create('topGoodsType', 'shopCateAd', 'topOfPageAd', 'goodsCateAd', function (topGoodsType, shopCateAd, topOfPageAd, goodsCateAd){
 			res.render('wifi/Index', {
 				title: conf.corp.name,
 				description: '',
@@ -36,6 +36,7 @@ exports.indexUI = function(req, res, next){
 					topGoodsType: topGoodsType,
 					adShow: {
 						shopCateAd: shopCateAd,
+						goodsCateAd: goodsCateAd,
 						topOfPageAd: topOfPageAd
 					}
 				}
@@ -62,6 +63,12 @@ exports.indexUI = function(req, res, next){
 		AdShow.getTopOfPage_1(wifi.ZONE_ID, 5, function (err, rows){
 			if(err) return ep.emit('error', err);
 			ep.emit('topOfPageAd', rows);
+		});
+
+		/* （广告）获取推荐的商品分类前N条 */
+		AdShow.getGoodsCate_1(wifi.ZONE_ID, 12, function (err, rows){
+			if(err) return ep.emit('error', err);
+			ep.emit('goodsCateAd', rows);
 		});
 	});
 };

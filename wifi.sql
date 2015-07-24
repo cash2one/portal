@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : mysql:22306
+Source Server         : hq-mysql-1:22306
 Source Server Version : 50623
 Source Host           : 127.0.0.1:22306
 Source Database       : wifi
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2015-07-24 08:24:09
+Date: 2015-07-24 10:12:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -74,10 +74,16 @@ CREATE TABLE `w_ad` (
 -- Records of w_ad
 -- ----------------------------
 INSERT INTO `w_ad` VALUES ('1', null, '1', null, null, '4', '3', '4');
+INSERT INTO `w_ad` VALUES ('10', null, '5', null, null, '5', '6', '4');
+INSERT INTO `w_ad` VALUES ('11', null, '6', null, null, '5', '34', '4');
 INSERT INTO `w_ad` VALUES ('2', '苹果大促销', '2', null, null, '2', '1', '4');
 INSERT INTO `w_ad` VALUES ('3', null, '3', null, null, '4', '2', '4');
 INSERT INTO `w_ad` VALUES ('4', null, '4', null, null, '4', '5', '4');
 INSERT INTO `w_ad` VALUES ('5', '芒果甩卖了', '5', null, null, '2', '7', '4');
+INSERT INTO `w_ad` VALUES ('6', null, '1', null, null, '5', '56', '4');
+INSERT INTO `w_ad` VALUES ('7', null, '2', null, null, '5', '89', '4');
+INSERT INTO `w_ad` VALUES ('8', null, '3', null, null, '5', '34', '4');
+INSERT INTO `w_ad` VALUES ('9', null, '4', null, null, '5', '23', '4');
 
 -- ----------------------------
 -- Table structure for `w_ad_domain`
@@ -184,12 +190,12 @@ CREATE TABLE `w_goods` (
 -- ----------------------------
 -- Records of w_goods
 -- ----------------------------
-INSERT INTO `w_goods` VALUES ('1', '1', null, '香蕉', null);
-INSERT INTO `w_goods` VALUES ('2', '1', null, '苹果', null);
-INSERT INTO `w_goods` VALUES ('3', '2', null, '哈密瓜', null);
-INSERT INTO `w_goods` VALUES ('4', '2', null, '草莓', null);
-INSERT INTO `w_goods` VALUES ('5', '2', null, '芒果', null);
-INSERT INTO `w_goods` VALUES ('6', '4', null, '水蜜桃', null);
+INSERT INTO `w_goods` VALUES ('1', '1', '9', '香蕉', null);
+INSERT INTO `w_goods` VALUES ('2', '1', '9', '苹果', null);
+INSERT INTO `w_goods` VALUES ('3', '2', '10', '哈密瓜', null);
+INSERT INTO `w_goods` VALUES ('4', '2', '10', '草莓', null);
+INSERT INTO `w_goods` VALUES ('5', '2', '10', '芒果', null);
+INSERT INTO `w_goods` VALUES ('6', '4', '10', '水蜜桃', null);
 
 -- ----------------------------
 -- Table structure for `w_goods_type`
@@ -208,6 +214,7 @@ CREATE TABLE `w_goods_type` (
 -- Records of w_goods_type
 -- ----------------------------
 INSERT INTO `w_goods_type` VALUES ('1', '0', '0', '美食', '1');
+INSERT INTO `w_goods_type` VALUES ('10', '1', '0,1', '蔬菜', '2');
 INSERT INTO `w_goods_type` VALUES ('2', '0', '0', '娱乐', '2');
 INSERT INTO `w_goods_type` VALUES ('3', '0', '0', '出行', '3');
 INSERT INTO `w_goods_type` VALUES ('4', '0', '0', '管家', '4');
@@ -215,6 +222,7 @@ INSERT INTO `w_goods_type` VALUES ('5', '0', '0', '住房', '5');
 INSERT INTO `w_goods_type` VALUES ('6', '0', '0', '美保', '6');
 INSERT INTO `w_goods_type` VALUES ('7', '0', '0', '配送', '7');
 INSERT INTO `w_goods_type` VALUES ('8', '0', '0', '其他', '8');
+INSERT INTO `w_goods_type` VALUES ('9', '2', '0,2', '水果', '1');
 
 -- ----------------------------
 -- Table structure for `w_page`

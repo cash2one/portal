@@ -22,5 +22,17 @@
 			#end
 			<br/>
 		#end
+
+		<br/>
+
+		<span style='color:red;'>商品分类广告</span> <br/>
+		#foreach($cate in $!data.adShow.goodsCateAd)
+			<b>$!cate.TYPE_NAME</b> <br/>
+
+			#foreach($ad in $!cate.children)
+				$ad.GOODS_NAME <br/>
+			#end
+			<br/>
+		#end
 	</body>
 </html>
