@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2015-07-24 15:23:34
+Date: 2015-07-24 16:05:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -74,17 +74,17 @@ CREATE TABLE `w_ad` (
 -- ----------------------------
 -- Records of w_ad
 -- ----------------------------
-INSERT INTO `w_ad` VALUES ('1', null, '1', null, null, '4', '3', '4', null);
-INSERT INTO `w_ad` VALUES ('10', null, '5', null, null, '5', '6', '4', null);
-INSERT INTO `w_ad` VALUES ('11', null, '6', null, null, '5', '34', '4', null);
+INSERT INTO `w_ad` VALUES ('1', null, '1', null, null, '4', '3', '4', '2015-07-21/a044ad345982b2b7c601587c34adcbef77099bef.jpg');
+INSERT INTO `w_ad` VALUES ('10', null, '5', null, null, '5', '6', '4', '2015-07-21/810a19d8bc3eb135a63a91aca01ea8d3fd1f4423.jpg');
+INSERT INTO `w_ad` VALUES ('11', null, '6', null, null, '5', '34', '4', '2015-07-21/a044ad345982b2b7c601587c34adcbef77099bef.jpg');
 INSERT INTO `w_ad` VALUES ('2', '苹果大促销', '2', null, null, '2', '1', '4', '2015-07-21/58ee3d6d55fbb2fbcbddc508494a20a44623dc32.jpg');
-INSERT INTO `w_ad` VALUES ('3', null, '3', null, null, '4', '2', '4', null);
-INSERT INTO `w_ad` VALUES ('4', null, '4', null, null, '4', '5', '4', null);
+INSERT INTO `w_ad` VALUES ('3', null, '3', null, null, '4', '2', '4', '2015-07-21/810a19d8bc3eb135a63a91aca01ea8d3fd1f4423.jpg');
+INSERT INTO `w_ad` VALUES ('4', null, '4', null, null, '4', '5', '4', '2015-07-21/58ee3d6d55fbb2fbcbddc508494a20a44623dc32.jpg');
 INSERT INTO `w_ad` VALUES ('5', '芒果甩卖了', '5', null, null, '2', '7', '4', '2015-07-21/810a19d8bc3eb135a63a91aca01ea8d3fd1f4423.jpg');
-INSERT INTO `w_ad` VALUES ('6', null, '1', null, null, '5', '56', '4', null);
-INSERT INTO `w_ad` VALUES ('7', null, '2', null, null, '5', '89', '4', null);
-INSERT INTO `w_ad` VALUES ('8', null, '3', null, null, '5', '34', '4', null);
-INSERT INTO `w_ad` VALUES ('9', null, '4', null, null, '5', '23', '4', null);
+INSERT INTO `w_ad` VALUES ('6', null, '1', null, null, '5', '56', '4', '2015-07-21/a044ad345982b2b7c601587c34adcbef77099bef.jpg');
+INSERT INTO `w_ad` VALUES ('7', null, '2', null, null, '5', '89', '4', '2015-07-21/58ee3d6d55fbb2fbcbddc508494a20a44623dc32.jpg');
+INSERT INTO `w_ad` VALUES ('8', null, '3', null, null, '5', '34', '4', '2015-07-21/a044ad345982b2b7c601587c34adcbef77099bef.jpg');
+INSERT INTO `w_ad` VALUES ('9', null, '4', null, null, '5', '23', '4', '2015-07-21/810a19d8bc3eb135a63a91aca01ea8d3fd1f4423.jpg');
 
 -- ----------------------------
 -- Table structure for `w_ad_domain`
@@ -185,18 +185,19 @@ CREATE TABLE `w_goods` (
   `GOODS_TYPE_ID` varchar(32) DEFAULT NULL,
   `GOODS_NAME` varchar(32) DEFAULT NULL COMMENT '商品名称',
   `GOODS_PIC` varchar(64) DEFAULT NULL,
+  `GOODS_PRICE` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品';
 
 -- ----------------------------
 -- Records of w_goods
 -- ----------------------------
-INSERT INTO `w_goods` VALUES ('1', '1', '9', '香蕉', null);
-INSERT INTO `w_goods` VALUES ('2', '1', '9', '苹果', null);
-INSERT INTO `w_goods` VALUES ('3', '2', '10', '哈密瓜', null);
-INSERT INTO `w_goods` VALUES ('4', '2', '10', '草莓', null);
-INSERT INTO `w_goods` VALUES ('5', '2', '10', '芒果', null);
-INSERT INTO `w_goods` VALUES ('6', '4', '10', '水蜜桃', null);
+INSERT INTO `w_goods` VALUES ('1', '1', '9', '香蕉', null, '89');
+INSERT INTO `w_goods` VALUES ('2', '1', '9', '苹果', null, '23');
+INSERT INTO `w_goods` VALUES ('3', '2', '10', '哈密瓜', null, '54');
+INSERT INTO `w_goods` VALUES ('4', '2', '10', '草莓', null, '655');
+INSERT INTO `w_goods` VALUES ('5', '2', '10', '芒果', null, '423');
+INSERT INTO `w_goods` VALUES ('6', '4', '10', '水蜜桃', null, '8956');
 
 -- ----------------------------
 -- Table structure for `w_goods_type`

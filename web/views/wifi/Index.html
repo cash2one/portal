@@ -19,6 +19,7 @@
 			<b>$!cate.TYPE_NAME</b> <br/>
 
 			#foreach($ad in $!cate.children)
+				<img src='$!{conf.imageServ.url}$!{ad.AD_PIC}' style='height:100px;width:100px' alt='$!{ad.SHOP_NAME}' title='$!{ad.SHOP_NAME}'>
 				$ad.SHOP_NAME <br/>
 			#end
 			<br/>
@@ -31,7 +32,8 @@
 			<b>$!cate.TYPE_NAME</b> <br/>
 
 			#foreach($ad in $!cate.children)
-				$ad.GOODS_NAME <br/>
+				<img src='$!{conf.imageServ.url}$!{ad.AD_PIC}' style='height:100px;width:100px' alt='$!{ad.GOODS_NAME}' title='$!{ad.GOODS_NAME}'>
+				$!ad.GOODS_NAME ￥$!ad.GOODS_PRICE <br/>
 			#end
 			<br/>
 		#end
