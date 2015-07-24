@@ -6,11 +6,12 @@
 	<body>
 		wifi: $!data.id <br/>
 
+
 		<span style='color:red;'>顶部活动广告</span> <br/>
 		#foreach($ad in $!data.adShow.topOfPageAd)
-			$!ad.AD_NAME <br/>
+			<img src='$!{conf.imageServ.url}$!{ad.AD_PIC}' style='height:200px;width:300px' alt='$!{ad.AD_NAME}' title='$!{ad.AD_NAME}'> <br/>
 		#end
-
+		<br/>
 		<br/>
 
 		<span style='color:red;'>商家分类广告</span> <br/>

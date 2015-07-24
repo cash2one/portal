@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2015-07-24 10:12:29
+Date: 2015-07-24 15:23:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -67,23 +67,24 @@ CREATE TABLE `w_ad` (
   `AD_SOURCE_ID` varchar(32) DEFAULT NULL COMMENT '投放区域',
   `SORT` int(11) DEFAULT NULL,
   `ZONE_ID` varchar(32) DEFAULT NULL,
+  `AD_PIC` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='广告';
 
 -- ----------------------------
 -- Records of w_ad
 -- ----------------------------
-INSERT INTO `w_ad` VALUES ('1', null, '1', null, null, '4', '3', '4');
-INSERT INTO `w_ad` VALUES ('10', null, '5', null, null, '5', '6', '4');
-INSERT INTO `w_ad` VALUES ('11', null, '6', null, null, '5', '34', '4');
-INSERT INTO `w_ad` VALUES ('2', '苹果大促销', '2', null, null, '2', '1', '4');
-INSERT INTO `w_ad` VALUES ('3', null, '3', null, null, '4', '2', '4');
-INSERT INTO `w_ad` VALUES ('4', null, '4', null, null, '4', '5', '4');
-INSERT INTO `w_ad` VALUES ('5', '芒果甩卖了', '5', null, null, '2', '7', '4');
-INSERT INTO `w_ad` VALUES ('6', null, '1', null, null, '5', '56', '4');
-INSERT INTO `w_ad` VALUES ('7', null, '2', null, null, '5', '89', '4');
-INSERT INTO `w_ad` VALUES ('8', null, '3', null, null, '5', '34', '4');
-INSERT INTO `w_ad` VALUES ('9', null, '4', null, null, '5', '23', '4');
+INSERT INTO `w_ad` VALUES ('1', null, '1', null, null, '4', '3', '4', null);
+INSERT INTO `w_ad` VALUES ('10', null, '5', null, null, '5', '6', '4', null);
+INSERT INTO `w_ad` VALUES ('11', null, '6', null, null, '5', '34', '4', null);
+INSERT INTO `w_ad` VALUES ('2', '苹果大促销', '2', null, null, '2', '1', '4', '2015-07-21/58ee3d6d55fbb2fbcbddc508494a20a44623dc32.jpg');
+INSERT INTO `w_ad` VALUES ('3', null, '3', null, null, '4', '2', '4', null);
+INSERT INTO `w_ad` VALUES ('4', null, '4', null, null, '4', '5', '4', null);
+INSERT INTO `w_ad` VALUES ('5', '芒果甩卖了', '5', null, null, '2', '7', '4', '2015-07-21/810a19d8bc3eb135a63a91aca01ea8d3fd1f4423.jpg');
+INSERT INTO `w_ad` VALUES ('6', null, '1', null, null, '5', '56', '4', null);
+INSERT INTO `w_ad` VALUES ('7', null, '2', null, null, '5', '89', '4', null);
+INSERT INTO `w_ad` VALUES ('8', null, '3', null, null, '5', '34', '4', null);
+INSERT INTO `w_ad` VALUES ('9', null, '4', null, null, '5', '23', '4', null);
 
 -- ----------------------------
 -- Table structure for `w_ad_domain`

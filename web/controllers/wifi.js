@@ -13,8 +13,6 @@ var GoodsType = require('../biz/GoodsType'),
 	AdShow = require('../biz/AdShow'),
 	Wifi = require('../biz/Wifi');
 
-var virtualPath = '/';
-
 exports.indexUI = function(req, res, next){
 	var wifi_mac = req.params.wifi_mac;
 
@@ -26,11 +24,10 @@ exports.indexUI = function(req, res, next){
 
 		var ep = EventProxy.create('topGoodsType', 'shopCateAd', 'topOfPageAd', 'goodsCateAd', function (topGoodsType, shopCateAd, topOfPageAd, goodsCateAd){
 			res.render('wifi/Index', {
+				conf: conf,
 				title: conf.corp.name,
 				description: '',
 				keywords: ',Bootstrap,nodejs,express,javascript,java,html5',
-				virtualPath: virtualPath,
-				cdn: conf.cdn,
 				data: {
 					id: wifi_mac,
 					topGoodsType: topGoodsType,

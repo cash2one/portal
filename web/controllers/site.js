@@ -13,14 +13,11 @@ var fs = require('fs'),
 	qs = require('querystring'),
 	velocity = require('velocityjs');
 
-var virtualPath = '/';
-
 exports.indexUI = function(req, res, next){
 	res.render('Index', {
+		conf: conf,
 		title: conf.corp.name,
 		description: '',
-		keywords: ',Bootstrap,nodejs,express,javascript,java,html5',
-		virtualPath: virtualPath,
-		cdn: conf.cdn
+		keywords: ',Bootstrap,nodejs,express,javascript,java,html5'
 	});
 };

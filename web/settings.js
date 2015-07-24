@@ -5,10 +5,12 @@
  */
 'use strict';
 
-module.exports = { 
-	cookieSecret: 'zswhcb-portal',
-	cdn: 'http://www.foreworld.net/js/',
-	corp: {
+module.exports = {
+	cookie: {
+		secret: 'zswhcb-portal'
+	}, cdn: {
+		url: 'http://www.foreworld.net/js/'
+	}, corp: {
 		name: '河南正森文化传媒有限公司',
 		website: 'http://www.iim.com.cn/'
 	}, db: {
@@ -18,5 +20,9 @@ module.exports = {
 		user: 'root',
 		pass: 'password',
 		connectionLimit: 50
+	}, static_res: {
+		virtualPath: '/public/'
+	}, imageServ: {
+		url: '/public/imageServ/ad/'
 	}
 };
