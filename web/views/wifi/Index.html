@@ -14,14 +14,23 @@
 			padding-left: 0;
 			padding-right: 0;
 		}
+		#myCarousel .carousel-indicators .active {
+			margin-right: 5px;
+		}
+		#abc {
+			text-align: center;
+		}
+		#abc img{
+			width: 100%;
+		}
 		</style>
 	</head>
 	<body>
+		<!-- Carousel
+		================================================== -->
 		<section class='container'>
 			<div class='row'>
 				<div class='col-sm-12 col-md-12 topAd'>
-					<!-- Carousel
-					================================================== -->
 					<section class='flexslider'>
 						<ul class='slides'>
 							#foreach($ad in $!data.adShow.topOfPageAd)<li>
@@ -37,10 +46,50 @@
 							animation: 'slide'
 						});
 					});
-					</script><!-- /.carousel -->
+					</script>
+				</div>
+			</div>
+		</section><!-- /.carousel -->
+
+		<section class='container'>
+			<div class='row'>
+				<div class='col-sm-12 col-md-12 topAd'>
+					<div id='myCarousel' class='carousel slide'>
+						<ol class='carousel-indicators'>
+							<li data-target='#myCarousel' data-slide-to='0' class='active'>
+							<li data-target='#myCarousel' data-slide-to='1'>
+							<li data-target='#myCarousel' data-slide-to='2'>
+						</ol>
+						<div class='carousel-inner'>
+							<div class='item active haha'>
+								<div id='abc'>
+									<a href='javascript:;'>
+										<img src='/public/imageServ/ad/2015-07-21/58ee3d6d55fbb2fbcbddc508494a20a44623dc32.jpg' alt='First slide'></a>
+								</div>
+								<div class='carousel-caption'></div>
+							</div>
+							<div class='item'>
+								<div id='abc'>
+									<a href='javascript:;'>
+										<img src='/public/imageServ/ad/2015-07-21/810a19d8bc3eb135a63a91aca01ea8d3fd1f4423.jpg' alt='Second slide'></a>
+								</div>
+								<div class='carousel-caption'>标题 2</div>
+							</div>
+							<div class='item'>
+								<div id='abc'>
+									<a href='javascript:;'>
+										<img src='/public/imageServ/ad/2015-07-21/a044ad345982b2b7c601587c34adcbef77099bef.jpg' alt='Third slide'></a>
+								</div>
+								<div class='carousel-caption'>标题 3</div>
+							</div>
+						</div>
+						<a class='carousel-control left' href='#myCarousel' data-slide='prev'>‹</a>
+						<a class='carousel-control right' href='#myCarousel' data-slide='next'>›</a>
+					</div>
 				</div>
 			</div>
 		</section>
+
 		#parse('pagelet/IndexJs.html')
 		<!-- Own -->
 		#parse('pagelet/LastJs.html')
