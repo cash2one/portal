@@ -1,25 +1,23 @@
 /*!
- * zswhcb-portal
- * Copyright(c) 2015 zswhcb-portal <3203317@qq.com>
+ * zswhcm-portal
+ * Copyright(c) 2015 zswhcm-portal <3203317@qq.com>
  * MIT Licensed
  */
 'use strict';
 
 var express = require('express'),
-	velocity = require('velocityjs');
-
-var cwd = process.cwd(),
+	MongoStore = require('connect-mongo')(express),
+	flash = require('connect-flash'),
+	velocity = require('velocityjs'),
 	fs = require('fs'),
 	http = require('http'),
-	path = require('path');
+	path = require('path'),
+	cwd = process.cwd();
 
 var macros = require('./lib/macro'),
-	errorHandler = require("./lib/errorHandler");
-
-/* session config */
-var settings = require('./settings'),
-	MongoStore = require('connect-mongo')(express),
-	flash = require('connect-flash');
+	errorHandler = require("./lib/errorHandler"),
+	conf = require('./settings'),  // session config
+	dbconf = conf.db;
 
 var app = express();
 
@@ -30,36 +28,47 @@ app.set('port', process.env.PORT || 3000)
 	/* use */
 	.use(flash())
 	.use(express.favicon())
-	.use(express.logger('dev'))
-	.use('/public', express.static(path.join(__dirname, 'public')))
 	.use(express.json())
 	.use(express.urlencoded())
 	.use(express.methodOverride())
-	.use(express.cookieParser())
-	.use(app.router)
+	.use(express.cookieParser());
+
+// production
+app.configure('production', function(){
+	app.use('/public', express.static(path.join(__dirname, 'public'), { maxAge: 101000 }))
+		.use(express.errorHandler())
+		.use(express.logger('dev'));
+});
+
+// development
+app.configure('development', function(){
+	app.use(express.logger('dev'))
+		.use('/public', express.static(path.join(__dirname, 'public')))
+		.use(express.errorHandler({
+			dumpExceptions: true,
+			showStack: true
+		}));
+});
+
+app.use(express.session({
+	secret: conf.cookie.secret,
+	key: dbconf.database,
+	cookie: {
+		maxAge: 1000 * 60 * 60 * 24 * 1  //30 days
+	}
+}));
+
+app.use(app.router)
 	/* velocity */
 	.engine('.html', function (path, options, fn){
 		fs.readFile(path, 'utf8', function (err, data){
 			if(err) return fn(err);
 			try{ fn(null, velocity.render(data, options, macros)); }
-			catch(e){ fn(e); }
+			catch(ex){ fn(ex); }
 		});
 	});
 
 errorHandler.appErrorProcess(app);
-
-// production
-app.configure('production', function(){
-	app.use(express.errorHandler());
-});
-
-// development
-app.configure('development', function(){
-	app.use(express.errorHandler({
-		dumpExceptions: true,
-		showStack: true
-	}));
-});
 
 var server = http.createServer(app);
 // server.setTimeout(5000);

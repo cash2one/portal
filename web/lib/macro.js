@@ -1,7 +1,14 @@
-var cwd = process.cwd(),
-	fs = require('fs'),
+/*!
+ * zswhcm-portal
+ * Copyright(c) 2015 zswhcm-portal <3203317@qq.com>
+ * MIT Licensed
+ */
+'use strict';
+
+var fs = require('fs'),
 	velocity = require('velocityjs'),
-	util = require('speedt-utils');
+	util = require('speedt-utils'),
+	cwd = process.cwd();
 
 module.exports = {
 	parse: function(file){
@@ -15,9 +22,9 @@ module.exports = {
 	}, toDay: function(t){
 		return util.padLeft(t.getDate(), '0', 2);
 	}, formatDate: function(t){
-		return t.format();
+		return util.format(t, 'YY-MM-dd hh:mm:ss.S');
 	}, num2Money: function(n){
-		return util.threeSeparator(n);
+		return util.currencyformat(n);
 	}, toSDate: function(t){
 		var y = t.getFullYear();
 		var m = util.padLeft(t.getMonth() + 1, '0', 2);

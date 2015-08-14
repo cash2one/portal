@@ -1,23 +1,23 @@
 /*!
- * zswhcb-portal
- * Copyright(c) 2015 zswhcb-portal <3203317@qq.com>
+ * zswhcm-portal
+ * Copyright(c) 2015 zswhcm-portal <3203317@qq.com>
  * MIT Licensed
  */
 'use strict';
 
-var db = require('../settings').db,
-	pool = null;
-
 var mysql = require('mysql');
 
+var dbconf = require('../settings').db,
+	pool = null;
+
 function initPool(){
-	pool  = mysql.createPool({
-		connectionLimit: db.connectionLimit,
-		host: db.host,
-		user: db.user,
-		password: db.pass,
-		database: db.database,
-		port: db.port
+	pool = mysql.createPool({
+		connectionLimit: dbconf.connectionLimit,
+		host: dbconf.host,
+		user: dbconf.user,
+		password: dbconf.pass,
+		database: dbconf.database,
+		port: dbconf.port
 	});
 }
 
@@ -26,9 +26,9 @@ exports.query = function(sql, params, cb){
 
 	pool.getConnection(function (err, conn){
 		if(err) return cb(err);
-		conn.query(sql, params, function (err, rows, fields){
+		conn.query(sql, params, function (err, docs, fields){
 			conn.release();
-			cb(err, rows, fields);
+			cb(err, docs, fields);
 		});
 	});
 };
@@ -36,9 +36,9 @@ exports.query = function(sql, params, cb){
 /**
  * 检测唯一性
  *
- * @param {Array} rows
+ * @param {Array} docs
  * @return {Boolean}
  */
-exports.checkOnly = function(rows){
-	return !!rows && 1 === rows.length;
+exports.checkOnly = function(docs){
+	return !!docs && 1 === docs.length;
 }

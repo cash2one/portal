@@ -1,18 +1,16 @@
 /*!
- * zswhcb-portal
- * Copyright(c) 2015 zswhcb-portal <3203317@qq.com>
+ * zswhcm-portal
+ * Copyright(c) 2015 zswhcm-portal <3203317@qq.com>
  * MIT Licensed
  */
 'use strict';
 
 module.exports = {
 	cookie: {
-		secret: 'zswhcb-portal'
-	}, cdn: {
-		url: 'http://www.foreworld.net/js/'
+		secret: 'zswhcm-portal'
 	}, corp: {
 		name: '河南正森文化传媒有限公司',
-		website: 'http://www.iim.com.cn/'
+		website: 'http://www.dolalive.com/'
 	}, db: {
 		database: 'wifi',
 		host: '127.0.0.1',
@@ -20,9 +18,12 @@ module.exports = {
 		user: 'root',
 		pass: 'password',
 		connectionLimit: 50
-	}, static_res: {
-		virtualPath: '/public/'
-	}, imageServ: {
-		url: '/public/imageServ/ad/'
+	}, html: {
+		cdn: 'http://www.foreworld.net/js/',
+		static_res: '/public/',
+		external_res: 'http://www.foreworld.net/public/',
+		pagesize: 10,
+		cache_time: 1000 * 60 * 60,
+		fileServ: '/public/fileServ/'
 	}
 };

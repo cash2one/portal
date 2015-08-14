@@ -20,16 +20,13 @@ module.exports = function(app){
 /**
  * post数据校验
  *
- * @params {Object} 
- * @params {Object} 
- * @return {Object} 
+ * @params {Object}
+ * @params {Object}
+ * @return {Object}
  */
 function valiPostData(req, res, next){
 	var data = req.body.data;
-	if(!data) return res.send({
-		success: false,
-		msg: str1
-	});
+	if(!data) return res.send({ success: false, msg: str1 });
 
 	try{
 		data = JSON.parse(data);
@@ -37,24 +34,18 @@ function valiPostData(req, res, next){
 			req._data = data;
 			return next();
 		}
-		res.send({
-			success: false,
-			msg: str1
-		});
+		res.send({ success: false, msg: str1 });
 	}catch(ex){
-		res.send({
-			success: false,
-			msg: ex.message
-		});
+		res.send({ success: false, msg: ex.message });
 	}
 }
 
 /**
  * get数据校验
  *
- * @params {Object} 
- * @params {Object} 
- * @return {Object} 
+ * @params {Object}
+ * @params {Object}
+ * @return {Object}
  */
 function valiGetData(req, res, next){
 	var data = req.query.data;
