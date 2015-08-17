@@ -5,7 +5,8 @@
  */
 'use strict';
 
-var mysqlUtil = require("../lib/mysqlUtil");
+var util = require('speedt-utils'),
+	mysql = util.mysql;
 
 /**
  * 通过 wifi mac 获取唯一记录
@@ -14,10 +15,10 @@ var mysqlUtil = require("../lib/mysqlUtil");
  * @return
  */
 exports.getByMac = function(mac, cb){
-	mysqlUtil.query('SELECT * FROM w_wifi WHERE WIFI_MAC=?', [mac], function (err, rows, fields){
+	mysql.query('SELECT * FROM w_wifi WHERE WIFI_MAC=?', [mac], function (err, rows, fields){
 		if(err) return cb(err);
 
-		if(!mysqlUtil.checkOnly(rows))
+		if(!mysql.checkOnly(rows))
 			return cb(null, null);
 
 		cb(null, rows[0]);

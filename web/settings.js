@@ -11,12 +11,12 @@ module.exports = {
 	}, corp: {
 		name: '河南正森文化传媒有限公司',
 		website: 'http://www.dolalive.com/'
-	}, db: {
+	}, mysql: {
 		database: 'wifi',
 		host: '127.0.0.1',
 		port: 22306,
 		user: 'root',
-		pass: 'password',
+		password: 'password',
 		connectionLimit: 50
 	}, html: {
 		cdn: 'http://www.foreworld.net/js/',

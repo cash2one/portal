@@ -17,7 +17,7 @@ var express = require('express'),
 var macros = require('./lib/macro'),
 	errorHandler = require("./lib/errorHandler"),
 	conf = require('./settings'),  // session config
-	dbconf = conf.db;
+	mysqlconf = conf.mysql;
 
 var app = express();
 
@@ -52,7 +52,7 @@ app.configure('development', function(){
 
 app.use(express.session({
 	secret: conf.cookie.secret,
-	key: dbconf.database,
+	key: mysqlconf.database,
 	cookie: {
 		maxAge: 1000 * 60 * 60 * 24 * 1  //30 days
 	}

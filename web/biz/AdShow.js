@@ -7,7 +7,8 @@
 
 var EventProxy = require('eventproxy');
 
-var mysqlUtil = require("../lib/mysqlUtil");
+var util = require('speedt-utils'),
+	mysql = util.mysql;
 
 var GoodsType = require('../biz/GoodsType');
 
@@ -67,7 +68,7 @@ exports.getShopCate_2 = function(zone_id, size, cb){
  */
 exports.getShopAdByZoneAndPosition = function(zone_id, ad_source_id, size, cb){
 	size = size || 12;
-	mysqlUtil.query('SELECT a.*, b.SHOP_NAME, b.SHOP_LOGO, b.GOODS_TYPE_ID FROM w_ad a, w_shop b WHERE a.ZONE_ID=? AND a.AD_SOURCE_ID=? AND a.ANY_ID=b.id ORDER BY a.SORT LIMIT 0, ?',
+	mysql.query('SELECT a.*, b.SHOP_NAME, b.SHOP_LOGO, b.GOODS_TYPE_ID FROM w_ad a, w_shop b WHERE a.ZONE_ID=? AND a.AD_SOURCE_ID=? AND a.ANY_ID=b.id ORDER BY a.SORT LIMIT 0, ?',
 		[zone_id, ad_source_id, size],
 		function (err, rows, fields){
 		if(err) return cb(err);
@@ -85,7 +86,7 @@ exports.getShopAdByZoneAndPosition = function(zone_id, ad_source_id, size, cb){
 exports.getTopOfPage_1 = function(zone_id, size, cb){
 	var ad_source_id = '2';
 	size = size || 5;
-	mysqlUtil.query('SELECT a.*, b.SHOP_ID, b.GOODS_TYPE_ID, b.GOODS_NAME, b.GOODS_PIC FROM w_ad a, w_goods b WHERE a.ZONE_ID=? AND a.AD_SOURCE_ID=? AND a.ANY_ID=b.id ORDER BY a.SORT LIMIT 0, ?',
+	mysql.query('SELECT a.*, b.SHOP_ID, b.GOODS_TYPE_ID, b.GOODS_NAME, b.GOODS_PIC FROM w_ad a, w_goods b WHERE a.ZONE_ID=? AND a.AD_SOURCE_ID=? AND a.ANY_ID=b.id ORDER BY a.SORT LIMIT 0, ?',
 		[zone_id, ad_source_id, size],
 		function (err, rows, fields){
 		if(err) return cb(err);
@@ -152,7 +153,7 @@ exports.getGoodsCate_1 = function(zone_id, size, cb){
  */
 exports.getGoodsAdByZoneAndPosition = function(zone_id, ad_source_id, size, cb){
 	size = size || 12;
-	mysqlUtil.query('SELECT a.*, b.SHOP_ID, b.GOODS_TYPE_ID, b.GOODS_NAME, b.GOODS_PIC, b.GOODS_PRICE, c.PID, c.PATH, c.TYPE_NAME FROM w_ad a, w_goods b, w_goods_type c WHERE a.ZONE_ID=? AND a.AD_SOURCE_ID=? AND a.ANY_ID=b.id AND b.GOODS_TYPE_ID=c.id ORDER BY a.SORT LIMIT 0, ?',
+	mysql.query('SELECT a.*, b.SHOP_ID, b.GOODS_TYPE_ID, b.GOODS_NAME, b.GOODS_PIC, b.GOODS_PRICE, c.PID, c.PATH, c.TYPE_NAME FROM w_ad a, w_goods b, w_goods_type c WHERE a.ZONE_ID=? AND a.AD_SOURCE_ID=? AND a.ANY_ID=b.id AND b.GOODS_TYPE_ID=c.id ORDER BY a.SORT LIMIT 0, ?',
 		[zone_id, ad_source_id, size],
 		function (err, rows, fields){
 		if(err) return cb(err);

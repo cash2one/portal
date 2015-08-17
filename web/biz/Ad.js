@@ -5,4 +5,5 @@
  */
 'use strict';
 
-var mysqlUtil = require("../lib/mysqlUtil");
+var util = require('speedt-utils'),
+	mysql = util.mysql;

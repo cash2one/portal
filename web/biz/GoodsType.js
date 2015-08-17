@@ -5,7 +5,8 @@
  */
 'use strict';
 
-var mysqlUtil = require("../lib/mysqlUtil");
+var util = require('speedt-utils'),
+	mysql = util.mysql;
 
 /**
  * 获取商品类别
@@ -14,7 +15,7 @@ var mysqlUtil = require("../lib/mysqlUtil");
  * @return
  */
 exports.getByPId = function(pid, cb){
-	mysqlUtil.query('SELECT * FROM w_goods_type WHERE PID=? ORDER BY SORT', [pid], function (err, rows, fields){
+	mysql.query('SELECT * FROM w_goods_type WHERE PID=? ORDER BY SORT', [pid], function (err, rows, fields){
 		if(err) return cb(err);
 		cb(null, rows);
 	});
