@@ -1,63 +1,57 @@
 /*!
- * zswhcb-portal
- * Copyright(c) 2015 zswhcb-portal <3203317@qq.com>
+ * hnzswh-dolalive
+ * Copyright(c) 2015 hnzswh-dolalive <3203317@qq.com>
  * MIT Licensed
  */
 'use strict';
 
+var util = require('speedt-utils'),
+	express = util.express;
+
 var site = require('../controllers/site'),
 	wifi = require('../controllers/wifi');
 
-var str1 = '参数异常';
+var front = {};
+var back = {};
+var manage = {};
 
+/**
+ *
+ * @param
+ * @return
+ */
 module.exports = function(app){
+	proc_front(app);
+	proc_back(app);
+	proc_manage(app);
+};
+
+/**
+ *
+ * @param
+ * @return
+ */
+function proc_front(app){
 	app.get('/index.html$', site.indexUI);
 	app.get('/', site.indexUI);
 
 	app.get('/w/:wifi_mac/', wifi.indexUI);
-};
-
-/**
- * post数据校验
- *
- * @params {Object}
- * @params {Object}
- * @return {Object}
- */
-function valiPostData(req, res, next){
-	var data = req.body.data;
-	if(!data) return res.send({ success: false, msg: str1 });
-
-	try{
-		data = JSON.parse(data);
-		if('object' === typeof data){
-			req._data = data;
-			return next();
-		}
-		res.send({ success: false, msg: str1 });
-	}catch(ex){
-		res.send({ success: false, msg: ex.message });
-	}
 }
 
 /**
- * get数据校验
  *
- * @params {Object}
- * @params {Object}
- * @return {Object}
+ * @param
+ * @return
  */
-function valiGetData(req, res, next){
-	var data = req.query.data;
-	if(!data) return next(new Error(str1));
-	try{
-		data = JSON.parse(data);
-		if('object' === typeof data){
-			req._data = data;
-			return next();
-		}
-		next(new Error(str1));
-	}catch(ex){
-		next(new Error(ex.message));
-	}
+function proc_back(app){
+	// TODO
+}
+
+/**
+ *
+ * @param
+ * @return
+ */
+function proc_manage(app){
+	// TODO
 }

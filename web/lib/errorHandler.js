@@ -1,9 +1,16 @@
 /*!
- * zswhcm-portal
- * Copyright(c) 2015 zswhcm-portal <3203317@qq.com>
+ * hnzswh-dolalive
+ * Copyright(c) 2015 hnzswh-dolalive <3203317@qq.com>
  * MIT Licensed
  */
 'use strict';
+
+var path = require('path'),
+	cwd = process.cwd(),
+	macros = require('./macro');
+
+var util = require('speedt-utils'),
+	mailService = util.service.mail;
 
 exports.appErrorProcess = function(app){
 
@@ -18,6 +25,21 @@ exports.appErrorProcess = function(app){
 
 		app.use(function (err, req, res, next){
 			if(!err) return next();
+			// send mail
+			mailService.sendMail({
+				subject: 'dolalive.com [Web Error]',
+				template: [
+					path.join(cwd, 'lib', 'ErrorMail.vm.html'), {
+						data: {
+							error: err,
+							time: util.format(new Date(), 'YY-MM-dd hh:mm:ss.S')
+						}
+					}, macros
+				]
+			}, function (err, info){
+				if(err) console.error(err);
+			});
+			// res send
 			if(req.xhr){
 				return res.send({ success: false, msg: err.message });
 			}
@@ -25,8 +47,20 @@ exports.appErrorProcess = function(app){
 		});
 
 		process.on('uncaughtException', function (err){
-			// TODO: send email
-			console.log(err);
+			// send mail
+			mailService.sendMail({
+				subject: 'dolalive.com [Web Uncaught Error]',
+				template: [
+					path.join(cwd, 'lib', 'ErrorMail.vm.html'), {
+						data: {
+							error: err,
+							time: util.format(new Date(), 'YY-MM-dd hh:mm:ss.S')
+						}
+					}, macros
+				]
+			}, function (err, info){
+				if(err) console.error(err);
+			});
 		});
 	});
 };

@@ -1,6 +1,6 @@
 /*!
- * zswhcm-portal
- * Copyright(c) 2015 zswhcm-portal <3203317@qq.com>
+ * hnzswh-dolalive
+ * Copyright(c) 2015 hnzswh-dolalive <3203317@qq.com>
  * MIT Licensed
  */
 'use strict';

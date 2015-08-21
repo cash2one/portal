@@ -1,13 +1,13 @@
 /*!
- * zswhcm-portal
- * Copyright(c) 2015 zswhcm-portal <3203317@qq.com>
+ * hnzswh-dolalive
+ * Copyright(c) 2015 hnzswh-dolalive <3203317@qq.com>
  * MIT Licensed
  */
 'use strict';
 
 module.exports = {
 	cookie: {
-		secret: 'zswhcm-portal'
+		secret: 'hnzswh-dolalive'
 	}, corp: {
 		name: '河南正森文化传媒有限公司',
 		website: 'http://www.dolalive.com/'
@@ -25,5 +25,14 @@ module.exports = {
 		pagesize: 10,
 		cache_time: 1000 * 60 * 60,
 		fileServ: '/public/fileServ/'
+	}, mail: {
+		secureConnection: true,
+		host: 'smtp.163.com',
+		port: 465,
+		to: ['huangxin@foreworld.net'],
+		auth: {
+			user: 'firefrog@163.com',
+			pass: ''
+		}
 	}
 };
