@@ -47,6 +47,7 @@ exports.appErrorProcess = function(app){
 		});
 
 		process.on('uncaughtException', function (err){
+			if(err) console.error(err);
 			// send mail
 			mailService.sendMail({
 				subject: 'dolalive.com [Web Uncaught Error]',

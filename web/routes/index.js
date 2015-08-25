@@ -8,10 +8,9 @@
 var util = require('speedt-utils'),
 	express = util.express;
 
-var site = require('../controllers/site'),
-	wifi = require('../controllers/wifi');
-
-var front = {};
+var front = {
+	site: require('../controllers/front/site')
+};
 var back = {};
 var manage = {};
 
@@ -32,10 +31,11 @@ module.exports = function(app){
  * @return
  */
 function proc_front(app){
-	app.get('/index.html$', site.indexUI);
-	app.get('/', site.indexUI);
+	// app.get('/index.html$', site.indexUI);
+	// app.get('/', site.indexUI);
+	// app.get('/w/:wifi_mac/', wifi.indexUI);
 
-	app.get('/w/:wifi_mac/', wifi.indexUI);
+	app.get('/:zone/', front.site.checkExistOpenSite, front.site.zoneUI);
 }
 
 /**
