@@ -5,6 +5,9 @@
  */
 'use strict';
 
+var util = require('speedt-utils'),
+	cache = util.cache;
+
 var conf = require('../../settings');
 
 var fs = require('fs'),
@@ -27,6 +30,8 @@ var exports = module.exports;
 exports.zoneUI = function(req, res, next){
 	var zone_name = req.params.zone;
 
+	var zone = req.flash('zone')[0];
+
 	res.render('front/Zone', {
 		conf: conf,
 		title: conf.corp.name,
@@ -35,11 +40,19 @@ exports.zoneUI = function(req, res, next){
 	});
 };
 
-(function (exports, global){
-	var timeout = conf.html.cache_time;
-	var cache_data = null;
-	var last_time = new Date();
-	last_time = new Date(last_time.valueOf() + timeout);
+(function (exports){
+	/**
+	 * 查找默认开发站点（默认郑州）
+	 *
+	 * @params
+	 * @return
+	 */
+	function func(cb){
+		biz.zone.findDefOpenSite(function (err, doc){
+			if(err) return cb(err);
+			cb(null, !doc ? '/zz/' : '/'+ doc.SHORT_NAME +'/');
+		});
+	}
 
 	/**
 	 * 获取开放站点缓存
@@ -48,25 +61,33 @@ exports.zoneUI = function(req, res, next){
 	 * @return
 	 */
 	exports.getDefOpenSite = function(cb){
-		if(!!cache_data){
-			if(new Date() < last_time)
-				return cb(null, cache_data);
-		}
-
-		last_time = new Date();
-		last_time = new Date(last_time.valueOf() + timeout);
-
-		// 查找默认开发站点
-		biz.zone.findDefOpenSite(function (err, doc){
+		cache.get('DefOpenSite', 1000 * 5, func, function (err, data){
 			if(err) return cb(err);
-			if(!doc) return cb(null, '/zz/');
-			cache_data = '/'+ doc.SHORT_NAME +'/';
-			cb(null, cache_data);
+			cb(null, data);
 		});
 	};
 })(exports);
 
+
 (function (exports){
+	/**
+	 * 查找开发站点列表
+	 *
+	 * @param
+	 * @return
+	 */
+	function func(cb){
+		biz.zone.findOpenSiteList(function (err, docs){
+			if(err) return cb(err);
+			var arr = {};
+			for(var i in docs){
+				var doc = docs[i];
+				arr[doc.SHORT_NAME] = doc;
+			}
+			cb(null, arr);
+		});
+	};
+
 	/**
 	 * 检测开放站点是否存在
 	 *
@@ -76,64 +97,20 @@ exports.zoneUI = function(req, res, next){
 	exports.checkExistOpenSite = function(req, res, next){
 		var zone_name = req.params.zone;
 
-		checkExistOpenSite_Step_1(zone_name, function (err, bool){
+		cache.get('OpenSiteList', 1000 * 3, func, function (err, data){
 			if(err) return next(err);
-			// 不存在此站点，则跳转到默认开放站点
-			if(!bool){
-				exports.getDefOpenSite(function (err, url){
+
+			var zone = data[zone_name];
+			// 检测开放站点是否存在
+			if(!zone){
+				return exports.getDefOpenSite(function (err, url){
 					if(err) return next(err);
 					res.redirect(url);
 				});
-				return;
 			}
+
+			req.flash('zone', zone);
 			next();
-		});
-	};
-
-	/**
-	 * 检测开放站点是否存在（步骤1）
-	 *
-	 * @param
-	 * @return
-	 */
-	function checkExistOpenSite_Step_1(zone_name, cb){
-		exports.getCacheOpenSites(function (err, docs){
-			if(err) return cb(err);
-			cb(null, -1 !== docs.indexOf(zone_name));
-		});
-	}
-})(exports);
-
-(function (exports, global){
-	var timeout = conf.html.cache_time;
-	var cache_data = null;
-	var last_time = new Date();
-	last_time = new Date(last_time.valueOf() + timeout);
-
-	/**
-	 * 获取开放站点缓存
-	 *
-	 * @params
-	 * @return
-	 */
-	exports.getCacheOpenSites = function(cb){
-		if(!!cache_data){
-			if(new Date() < last_time)
-				return cb(null, cache_data);
-		}
-
-		last_time = new Date();
-		last_time = new Date(last_time.valueOf() + timeout);
-
-		biz.zone.findOpenSiteList(function (err, docs){
-			if(err) return cb(err);
-			var arr = [];
-			for(var i in docs){
-				var doc = docs[i];
-				arr.push(doc.SHORT_NAME);
-			}
-			cache_data = arr;
-			cb(null, cache_data);
 		});
 	};
 })(exports);
