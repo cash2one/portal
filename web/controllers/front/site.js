@@ -61,7 +61,7 @@ exports.zoneUI = function(req, res, next){
 	 * @return
 	 */
 	exports.getDefOpenSite = function(cb){
-		cache.get('DefOpenSite', 1000 * 5, func, function (err, data){
+		cache.get('DefOpenSite', conf.html.cache_time, [func], function (err, data){
 			if(err) return cb(err);
 			cb(null, data);
 		});
@@ -97,7 +97,7 @@ exports.zoneUI = function(req, res, next){
 	exports.checkExistOpenSite = function(req, res, next){
 		var zone_name = req.params.zone;
 
-		cache.get('OpenSiteList', 1000 * 3, func, function (err, data){
+		cache.get('OpenSiteList', conf.html.cache_time, [func], function (err, data){
 			if(err) return next(err);
 
 			var zone = data[zone_name];

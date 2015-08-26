@@ -23,7 +23,7 @@ module.exports = {
 		static_res: '/public/',
 		external_res: 'http://www.foreworld.net/public/',
 		pagesize: 10,
-		cache_time: 1000 * 60 * 60,
+		cache_time: 1000 * 3,
 		fileServ: '/public/fileServ/'
 	}, mail: {
 		secureConnection: true,
