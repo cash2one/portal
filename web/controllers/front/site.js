@@ -14,13 +14,47 @@ var fs = require('fs'),
 	path = require('path'),
 	cwd = process.cwd(),
 	qs = require('querystring'),
+	EventProxy = require('eventproxy'),
 	velocity = require('velocityjs');
 
 var biz = {
-	zone: require('../../biz/zone')
+	page_position: require('../../biz/page_position'),
+	zone: require('../../biz/zone'),
+	ad: require('../../biz/ad')
 };
 
 var exports = module.exports;
+
+/**
+ * 获取该页所有广告
+ *
+ * @param
+ * @return
+ */
+exports.findAds_zoneUI = function(req, res, next){
+	// TODO
+	var zone_id = req.flash('zone_id')[0];
+	var page_id = req.flash('page_id')[0];
+
+	var ep = EventProxy.create('ads', 'positions', function (ads, positions){
+		console.log(arguments);
+		next();
+	});
+
+	ep.fail(function (err){
+		next(err);
+	});
+
+	biz.ad.findAdsByPage(page_id, zone_id, function (err, docs){
+		if(err) return ep.emit('error', err);
+		ep.emit('ads', docs);
+	});
+
+	biz.page_position.findPositionsByPage(page_id, function (err, docs){
+		if(err) return ep.emit('error', err);
+		ep.emit('positions', docs);
+	});
+};
 
 /**
  *
@@ -30,7 +64,8 @@ var exports = module.exports;
 exports.zoneUI = function(req, res, next){
 	var zone_name = req.params.zone;
 
-	var zone = req.flash('zone')[0];
+	var openSites = req.flash('openSites')[0],
+		zone = openSites[zone_name];
 
 	res.render('front/Zone', {
 		conf: conf,
@@ -39,7 +74,7 @@ exports.zoneUI = function(req, res, next){
 		keywords: ',dolalive,html5',
 		data: {
 			zone: zone,
-			openSites: req.flash('openSites')[0]
+			openSites: openSites
 		}
 	});
 };
@@ -113,7 +148,7 @@ exports.zoneUI = function(req, res, next){
 				});
 			}
 
-			req.flash('zone', zone);
+			req.flash('zone_id', zone.id);
 			req.flash('openSites', data);
 			next();
 		});

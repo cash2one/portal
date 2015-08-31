@@ -17,6 +17,10 @@ var exports = module.exports;
  * @param
  * @return
  */
-exports.findAdsByPage = function(page_id, cb){
-	// TODO
+exports.findAdsByPage = function(page_id, zone_id, cb){
+	var sql = 'SELECT * FROM w_ad WHERE STATUS=1 AND (NOW() BETWEEN START_TIME and END_TIME) AND ZONE_ID=? AND PAGE_POSITION_ID in (SELECT id FROM w_page_position WHERE PAGE_ID=?) ORDER BY SORT ASC';
+	mysql.query(sql, [zone_id, page_id], function (err, docs){
+		if(err) return cb(err);
+		cb(null, docs);
+	});
 };

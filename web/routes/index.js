@@ -35,7 +35,7 @@ function proc_front(app){
 	// app.get('/', site.indexUI);
 	// app.get('/w/:wifi_mac/', wifi.indexUI);
 
-	app.get('/:zone/', front.site.checkExistOpenSite, front.site.zoneUI);
+	app.get('/:zone/', front.site.checkExistOpenSite, function (req, res, next){ req.flash('page_id', '1'); next(); }, front.site.findAds_zoneUI, front.site.zoneUI);
 }
 
 /**
