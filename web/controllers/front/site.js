@@ -36,7 +36,11 @@ exports.zoneUI = function(req, res, next){
 		conf: conf,
 		title: conf.corp.name,
 		description: '',
-		keywords: ',dolalive,html5'
+		keywords: ',dolalive,html5',
+		data: {
+			zone: zone,
+			openSites: req.flash('openSites')[0]
+		}
 	});
 };
 
@@ -110,6 +114,7 @@ exports.zoneUI = function(req, res, next){
 			}
 
 			req.flash('zone', zone);
+			req.flash('openSites', data);
 			next();
 		});
 	};

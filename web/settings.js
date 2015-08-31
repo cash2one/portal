@@ -19,12 +19,13 @@ module.exports = {
 		password: 'password',
 		connectionLimit: 50
 	}, html: {
+		// cdn: 'http://127.0.0.1:24080/js/',
 		cdn: 'http://www.foreworld.net/js/',
 		static_res: '/public/',
 		external_res: 'http://www.foreworld.net/public/',
 		pagesize: 10,
 		cache_time: 1000 * 3,
-		fileServ: '/public/fileServ/'
+		fileServ: 'http://127.0.0.1:3013/public/files/'
 	}, mail: {
 		secureConnection: true,
 		host: 'smtp.163.com',

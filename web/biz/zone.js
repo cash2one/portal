@@ -1,6 +1,6 @@
 /*!
- * zswhcb-portal
- * Copyright(c) 2015 zswhcb-portal <3203317@qq.com>
+ * hnzswh-dolalive
+ * Copyright(c) 2015 hnzswh-dolalive <3203317@qq.com>
  * MIT Licensed
  */
 'use strict';
@@ -33,7 +33,7 @@ exports.findOpenSiteList = function(cb){
 exports.findDefOpenSite = function(cb){
 	mysql_util.find(null, 'w_zone', [['IS_DEF_SITE', '=', '1']], null, null, function (err, docs){
 		if(err) return cb(err);
-		cb(null, 1 === docs.length ? docs[0] : null);
+		cb(null, mysql.checkOnly(docs) ? docs[0] : null);
 	});
 };
 
