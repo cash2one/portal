@@ -44,15 +44,11 @@
         
           <!-- Wrapper for slides -->
           <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img src="/public/assets/images/img1.jpg" alt="..." onerror="img404(event);" />
-             
-            </div>
-            <div class="item">
-              <img src="/public/assets/images/img1.jpg" alt="...">
-             
-            </div>
-           
+            #set($_9b484e073d9b4201859650551f52f5eb = $!data.ads['9b484e073d9b4201859650551f52f5eb'])
+            #foreach($doc in $!_9b484e073d9b4201859650551f52f5eb.ads)
+            <div class='item#if($!velocityCount == 1) active#end'>
+              <img src='#fileServUrlFill($!doc.AD_PIC)' alt='$!doc.AD_NAME' title='$!doc.AD_NAME' onerror='img404(event);' />
+            </div>#end
           </div>
 
           <!-- Controls -->

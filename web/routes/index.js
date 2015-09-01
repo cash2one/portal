@@ -14,6 +14,8 @@ var front = {
 var back = {};
 var manage = {};
 
+console.log(util.uuid());
+
 /**
  *
  * @param
@@ -35,7 +37,7 @@ function proc_front(app){
 	// app.get('/', site.indexUI);
 	// app.get('/w/:wifi_mac/', wifi.indexUI);
 
-	app.get('/:zone/', front.site.checkExistOpenSite, function (req, res, next){ req.flash('page_id', '1'); next(); }, front.site.findAds_zoneUI, front.site.zoneUI);
+	app.get('/:zone/', front.site.checkExistOpenSite, function (req, res, next){ req.flash('page_id', 'dad9657792274e0e95a15c8901573c11'); next(); }, front.site.findAds_zoneUI, front.site.zoneUI);
 }
 
 /**

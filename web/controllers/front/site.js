@@ -36,23 +36,10 @@ exports.findAds_zoneUI = function(req, res, next){
 	var zone_id = req.flash('zone_id')[0];
 	var page_id = req.flash('page_id')[0];
 
-	var ep = EventProxy.create('ads', 'positions', function (ads, positions){
-		console.log(arguments);
-		next();
-	});
-
-	ep.fail(function (err){
-		next(err);
-	});
-
 	biz.ad.findAdsByPage(page_id, zone_id, function (err, docs){
-		if(err) return ep.emit('error', err);
-		ep.emit('ads', docs);
-	});
-
-	biz.page_position.findPositionsByPage(page_id, function (err, docs){
-		if(err) return ep.emit('error', err);
-		ep.emit('positions', docs);
+		if(err) return next(err);
+		req.flash('ads', docs);
+		next();
 	});
 };
 
@@ -67,12 +54,15 @@ exports.zoneUI = function(req, res, next){
 	var openSites = req.flash('openSites')[0],
 		zone = openSites[zone_name];
 
+	var ads = req.flash('ads')[0];
+
 	res.render('front/Zone', {
 		conf: conf,
 		title: conf.corp.name,
 		description: '',
 		keywords: ',dolalive,html5',
 		data: {
+			ads: ads,
 			zone: zone,
 			openSites: openSites
 		}

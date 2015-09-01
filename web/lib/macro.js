@@ -10,6 +10,8 @@ var fs = require('fs'),
 	util = require('speedt-utils'),
 	cwd = process.cwd();
 
+var conf = require('../settings');
+
 module.exports = {
 	parse: function(file){
 		var tpl = fs.readFileSync(require('path').join(cwd, 'views', file)).toString();
@@ -45,5 +47,7 @@ module.exports = {
 			case 2: return '短信';
 			default: return '未知';
 		}
+	}, fileServUrlFill: function(href){
+		return conf.html.fileServ + href;
 	}
 };
