@@ -22,9 +22,15 @@
 <link rel='stylesheet' type='text/css' media='screen' href='$!{conf.html.cdn}bootstrap/3.3.5/dist/css/bootstrap-theme.min.css?v3.3.5' />
 <link rel='stylesheet' type='text/css' media='screen' href='$!{conf.html.cdn}flexslider/2.2.2/flexslider.css' />
 <link rel='stylesheet' type='text/css' media='screen' href='$!{conf.html.cdn}font-awesome/4.1.0/css/font-awesome.min.css' />
-<script language='JavaScript' type='text/javascript'>
+<script type='text/javascript'>
 function isIE(){
 	return (!!window.ActiveXObject || 'ActiveXObject' in window);
+}
+function img404(event){
+	// 获取img对象，火狐是event.target ，IE及谷歌其他是event.srcElement
+	var img = event.srcElement || event.target;
+	img.src = '$!{conf.html.static_res}assets/images/img404.jpg';
+	img.onerror = null;
 }
 if(isIE()){
 	// console.log('I use IE.');
