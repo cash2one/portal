@@ -2,9 +2,9 @@
 <header>
   <div id="slider4" class="swipe" style="visibility: visible;">
     <div class="swipe-wrap">
-        #set($_841ede8c0a9943cb9f2714e9dc840e5a = $!data.ads['841ede8c0a9943cb9f2714e9dc840e5a'])
-        #set($size = $!_841ede8c0a9943cb9f2714e9dc840e5a.ads.size())
-        #foreach($doc in $!_841ede8c0a9943cb9f2714e9dc840e5a.ads)
+        #set($_e24045b09ee34f6881188019ab8917b9 = $!data.ads['e24045b09ee34f6881188019ab8917b9'])
+        #set($size = $!_e24045b09ee34f6881188019ab8917b9.ads.size())
+        #foreach($doc in $!_e24045b09ee34f6881188019ab8917b9.ads)
 
           #if($!velocityCount == 1)
             <figure>
@@ -49,9 +49,15 @@
   </div>
   <nav>
     <ul id="position4">
-      <li class="on"></li>
-      <li class=""></li>
-      <li class=""></li>
+        #foreach($doc in $!_e24045b09ee34f6881188019ab8917b9.ads)
+          #if($!velocityCount == 1)
+            <li class='on'></li>
+          #else
+            #if($!velocityCount % 8 == 1)
+              <li class=''></li>
+            #end
+          #end
+        #end
     </ul>
   </nav>
 </header>

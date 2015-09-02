@@ -1,10 +1,10 @@
-<div class="thead" style="background:#ef8c42"><p style="background:url(/public/assets/images/ms.jpg) no-repeat">美食小吃</p></div>
+<div class='thead' style='background:#ef8c42'><p style='background:url(/public/assets/images/ms.jpg) no-repeat'>美食小吃</p></div>
 <header>
-  <div id="slider1" class="swipe" style="visibility: visible;">
-    <div class="swipe-wrap">
-        #set($_841ede8c0a9943cb9f2714e9dc840e5a = $!data.ads['841ede8c0a9943cb9f2714e9dc840e5a'])
-        #set($size = $!_841ede8c0a9943cb9f2714e9dc840e5a.ads.size())
-        #foreach($doc in $!_841ede8c0a9943cb9f2714e9dc840e5a.ads)
+  <div id='slider1' class='swipe' style='visibility: visible;'>
+    <div class='swipe-wrap'>
+        #set($_60b33f3be6d0481884e1cda8b2155b34 = $!data.ads['60b33f3be6d0481884e1cda8b2155b34'])
+        #set($size = $!_60b33f3be6d0481884e1cda8b2155b34.ads.size())
+        #foreach($doc in $!_60b33f3be6d0481884e1cda8b2155b34.ads)
 
           #if($!velocityCount == 1)
             <figure>
@@ -30,7 +30,7 @@
                     <li><a href='#fileServUrlFill($!doc.LINK_URL)'><img src='#fileServUrlFill($!doc.AD_PIC)' /></a></li>
 
                   #if($!velocityCount % 4 == 0)
-                    <div class="clearfix"></div>
+                    <div class='clearfix'></div>
                   #end
               #end
             #end
@@ -48,10 +48,16 @@
     </div>
   </div>
   <nav>
-    <ul id="position1">
-      <li class="on"></li>
-      <li class=""></li>
-      <li class=""></li>
+    <ul id='position1'>
+        #foreach($doc in $!_60b33f3be6d0481884e1cda8b2155b34.ads)
+          #if($!velocityCount == 1)
+            <li class='on'></li>
+          #else
+            #if($!velocityCount % 8 == 1)
+              <li class=''></li>
+            #end
+          #end
+        #end
     </ul>
   </nav>
 </header>
