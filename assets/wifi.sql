@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2015-09-02 16:12:46
+Date: 2015-09-02 17:28:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -100,7 +100,7 @@ INSERT INTO `w_ad` VALUES ('6666', null, '2015-08-24 17:51:03', '2015-09-02 17:5
 INSERT INTO `w_ad` VALUES ('7', null, '2015-08-24 17:51:03', '2015-09-02 17:51:30', '13', '201503/2/201508/tj5.jpg', '3cfa3945f6cc4b468a13f8c6d5d4f473', 'aa4bcd4b0e034243be6054e0635066aa', '8eff5b4b478844b383e54a8e5c98449a', '841ede8c0a9943cb9f2714e9dc840e5a', null, null, null, '1');
 INSERT INTO `w_ad` VALUES ('7777', null, '2015-08-24 17:51:03', '2015-09-02 17:51:30', '7', '201503/2/201508/tj7.jpg', '3cfa3945f6cc4b468a13f8c6d5d4f473', 'aa4bcd4b0e034243be6054e0635066aa', '8eff5b4b478844b383e54a8e5c98449a', '60b33f3be6d0481884e1cda8b2155b34', null, null, null, '1');
 INSERT INTO `w_ad` VALUES ('8', null, '2015-08-24 17:51:03', '2015-09-02 17:51:30', '14', '201503/2/201508/tj6.jpg', '3cfa3945f6cc4b468a13f8c6d5d4f473', 'aa4bcd4b0e034243be6054e0635066aa', '8eff5b4b478844b383e54a8e5c98449a', '841ede8c0a9943cb9f2714e9dc840e5a', null, null, null, '1');
-INSERT INTO `w_ad` VALUES ('841ede8c0a9943cb9f2714e9dc840e5a', null, '2015-08-24 17:51:03', '2015-09-02 17:51:30', '2', '201503/2/201508/tj2.jpg', '3cfa3945f6cc4b468a13f8c6d5d4f473', 'aa4bcd4b0e034243be6054e0635066aa', '8eff5b4b478844b383e54a8e5c98449a', '841ede8c0a9943cb9f2714e9dc840e5a', null, null, null, '1');
+INSERT INTO `w_ad` VALUES ('841ede8c0a9943cb9f2714e9dc840e5a', null, '2015-08-24 17:51:03', '2015-09-02 17:51:30', '2', '201503/2/201508/tj2.jpg', '3cfa3945f6cc4b468a13f8c6d5d4f473', '7126ea5c2c8f4177a756e87433d04bf6', '8eff5b4b478844b383e54a8e5c98449a', '841ede8c0a9943cb9f2714e9dc840e5a', null, null, null, '1');
 INSERT INTO `w_ad` VALUES ('8888', null, '2015-08-24 17:51:03', '2015-09-02 17:51:30', '8', '201503/2/201508/tj8.jpg', '3cfa3945f6cc4b468a13f8c6d5d4f473', 'aa4bcd4b0e034243be6054e0635066aa', '8eff5b4b478844b383e54a8e5c98449a', '60b33f3be6d0481884e1cda8b2155b34', null, null, null, '1');
 INSERT INTO `w_ad` VALUES ('8a9ad3c1a79d42ed8c8b9dfe341dd43d', null, '2015-08-24 17:51:03', '2015-09-02 17:51:30', '3', '201503/2/201508/tj3.jpg', '3cfa3945f6cc4b468a13f8c6d5d4f473', 'aa4bcd4b0e034243be6054e0635066aa', '8eff5b4b478844b383e54a8e5c98449a', '841ede8c0a9943cb9f2714e9dc840e5a', null, null, null, '1');
 INSERT INTO `w_ad` VALUES ('9', null, '2015-08-24 17:51:03', '2015-09-02 17:51:30', '15', '201503/2/201508/tj7.jpg', '3cfa3945f6cc4b468a13f8c6d5d4f473', 'aa4bcd4b0e034243be6054e0635066aa', '8eff5b4b478844b383e54a8e5c98449a', '841ede8c0a9943cb9f2714e9dc840e5a', null, null, null, '1');
