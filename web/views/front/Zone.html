@@ -34,33 +34,8 @@
         </form>
         </div>   
     </div>
-        <div id="carousel-example-generic" class="carousel slide"  data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-           
-          </ol>
-        
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-            #set($_9b484e073d9b4201859650551f52f5eb = $!data.ads['9b484e073d9b4201859650551f52f5eb'])
-            #foreach($doc in $!_9b484e073d9b4201859650551f52f5eb.ads)
-            <div class='item#if($!velocityCount == 1) active#end'>
-              <img src='#fileServUrlFill($!doc.AD_PIC)' alt='$!doc.AD_NAME' title='$!doc.AD_NAME' onerror='img404(event);' />
-            </div>#end
-          </div>
 
-          <!-- Controls -->
-          <a class="left carousel-control hidden-xs" href="#carousel-example-generic" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control hidden-xs" href="#carousel-example-generic" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-      </div>
+    #parse('front/_pagelet/Zone.Ad.Top.html')
       
 		<!--<div class="tjfj">
         	<div class="tit">推荐附近</div>
@@ -106,65 +81,16 @@
          
       </div>
         </div>-->
-        	<div class="tjfj">
-                <div class="tit">推荐附近</div>
-                <header>
-      <div id="slider" class="swipe" style="visibility: visible;">
-        <div class="swipe-wrap">
-          <figure>
-            <div class="wrap">
-              <div class="image">
-                 <ul>
-                        <li><a href="#"><img src="/public/assets/images/tj1.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj2.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj3.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj4.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj5.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj6.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj7.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj8.jpg"></a></li>
-                   </ul>
-              
-              </div>
-            </div>
-          </figure>
-          <figure>
-            <div class="wrap">
-              <div class="image" >
-               <ul>
-                        <li><a href="#"><img src="/public/assets/images/tj1.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj2.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj3.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj4.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj5.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj6.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj7.jpg"></a></li>
-                        <li><a href="#"><img src="/public/assets/images/tj8.jpg"></a></li>
-                   </ul>
-              
-               </div>
-            </div>
-          </figure>
-          
-        </div>
-      </div>
-        <nav>
-    <ul id="position0">
-      <li class="on"></li>
-      <li class=""></li>
-      
-    </ul>
-  </nav>
-    </header>
-            
-            </div> 
+
+      #parse('front/_pagelet/Zone.Ad.Nearby.html')
+
+
         <div class="ad carousel-inner">
-        	
-            	<a href="#"><img src="/public/assets/images/img2.jpg"></a>
-                <a href="#"><img src="/public/assets/images/img3.jpg"></a>
-            	<a href="#"><img src="/public/assets/images/img4.jpg"></a>
-           
+          <a href="#"><img src="/public/assets/images/img2.jpg"></a>
+          <a href="#"><img src="/public/assets/images/img3.jpg"></a>
+          <a href="#"><img src="/public/assets/images/img4.jpg"></a>
         </div>
+
 		<div class="tjfj rmfl">
         	<div class="tit">热门分类</div>
      
@@ -566,7 +492,7 @@
 			 
 
 var bullets0 = document.getElementById('position0').getElementsByTagName('li');
-var slider0 =Swipe(document.getElementById('slider'), {auto: false,continuous: true,callback: function(pos) {
+var slider0 =Swipe(document.getElementById('slider'), {auto: true,continuous: true,callback: function(pos) {
 
       var i = bullets0.length;
       while (i--) {
