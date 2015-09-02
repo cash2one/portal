@@ -1,0 +1,57 @@
+<div class="thead" style="background:#5eb2de"><p style="background:url(/public/assets/images/fw.jpg) no-repeat">生活服务</p></div>
+<header>
+  <div id="slider3" class="swipe" style="visibility: visible;">
+    <div class="swipe-wrap">
+        #set($_841ede8c0a9943cb9f2714e9dc840e5a = $!data.ads['841ede8c0a9943cb9f2714e9dc840e5a'])
+        #set($size = $!_841ede8c0a9943cb9f2714e9dc840e5a.ads.size())
+        #foreach($doc in $!_841ede8c0a9943cb9f2714e9dc840e5a.ads)
+
+          #if($!velocityCount == 1)
+            <figure>
+              <div class='wrap'>
+                <div class='image'>
+                  <ul>
+                    <li><a href='#fileServUrlFill($!doc.LINK_URL)'><img src='#fileServUrlFill($!doc.AD_PIC)' /></a></li>
+          #else
+            #if($!velocityCount % 8 == 0)
+                    <li><a href='#fileServUrlFill($!doc.LINK_URL)'><img src='#fileServUrlFill($!doc.AD_PIC)' /></a></li>
+                  </ul>
+                </div>
+              </div>
+            </figure>
+            #else
+              #if($!velocityCount % 8 == 1)
+            <figure>
+              <div class='wrap'>
+                <div class='image'>
+                  <ul>
+                    <li><a href='#fileServUrlFill($!doc.LINK_URL)'><img src='#fileServUrlFill($!doc.AD_PIC)' /></a></li>
+              #else
+                    <li><a href='#fileServUrlFill($!doc.LINK_URL)'><img src='#fileServUrlFill($!doc.AD_PIC)' /></a></li>
+
+                  #if($!velocityCount % 4 == 0)
+                    <div class="clearfix"></div>
+                  #end
+              #end
+            #end
+          #end
+
+          #if($!velocityCount == $size)
+            #if($!velocityCount % 8 > 0)
+                  </ul>
+                </div>
+              </div>
+            </figure>
+            #end
+          #end
+        #end
+    </div>
+  </div>
+  <nav>
+    <ul id="position3">
+      <li class="on"></li>
+      <li class=""></li>
+      <li class=""></li>
+    </ul>
+  </nav>
+</header>
