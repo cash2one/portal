@@ -58,7 +58,7 @@ exports.zoneUI = function(req, res, next){
 
 	res.render('front/Zone', {
 		conf: conf,
-		title: conf.corp.name,
+		title: zone.SHORT_ZONE_NAME +' | '+ conf.corp.name,
 		description: '',
 		keywords: ',dolalive,html5',
 		data: {

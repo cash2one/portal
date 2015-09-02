@@ -9,7 +9,7 @@ module.exports = {
 	cookie: {
 		secret: 'hnzswh-dolalive'
 	}, corp: {
-		name: '河南正森文化传媒有限公司',
+		name: '多啦生活',
 		website: 'http://www.dolalive.com/'
 	}, mysql: {
 		database: 'wifi',
