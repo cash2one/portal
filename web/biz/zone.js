@@ -18,7 +18,7 @@ var exports = module.exports;
  * @return
  */
 exports.findOpenSiteList = function(cb){
-	mysql_util.find(null, 'w_zone', [['IS_OPEN', '=', '1']], null, null, function (err, docs){
+	mysql_util.find(null, 'w_zone', [['IS_OPEN', '=', '1']], [['SORT', 'ASC']], null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
 	});

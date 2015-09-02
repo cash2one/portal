@@ -3,85 +3,29 @@
 	<head>
 		#parse('front/_pagelet/Common.IndexHeader.html')
     <link rel='stylesheet' type='text/css' media='screen'  href='$!{conf.html.static_res}assets/css/front/1.0.1/style.css' />
+    <style type="text/css">
+    .droplist a:hover {
+      text-decoration: none;
+    }
+    </style>
 	</head>
   <body style="margin-bottom:68px;">
-         <div class="top">
-  
-
-       #* <div class="dropdown pull-left">
-              <button class="btn btn-default dropdown-toggle t_drop" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup=               "true" aria-expanded="true">
-                郑州
-                <span class="caret"></span>
-              </button>             
-               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#">上海</a></li>
-                <li><a href="#">北京</a></li>
-                <li><a href="#">广州</a></li>
-                <li><a href="#">杭州</a></li>
-              </ul>
-        <div>*#
-		<div class="container">
-      <div class="droplist">
-        <span>$!data.zone.SHORT_ZONE_NAME</span>
-        <ul>
-          #foreach($doc in $!{data.openSites})<li><a href='/$!{doc.SHORT_NAME}/'>$!doc.SHORT_ZONE_NAME</a></li>
-          #end
-        </ul>
-      </div>
-        <form>            
+    <div class="top">
+      <div class="container">
+        <div class="droplist">
+          <span>$!data.zone.SHORT_ZONE_NAME</span>
+          <ul>
+            #foreach($doc in $!{data.openSites})<a href='/$!{doc.SHORT_NAME}/'><li style='color:#ed5446;font-size:12px'>$!doc.SHORT_ZONE_NAME</li></a>#end
+          </ul>
+        </div>
+        <form>
           <input type="text" class="form-control search" placeholder="Search">
-          <a class="dj"></a>
+          <a href='javascript:;' class="dj"></a>
         </form>
-        </div>   
+      </div>
     </div>
 
-    #parse('front/_pagelet/Zone.Ad.Top.html')
-      
-		<!--<div class="tjfj">
-        	<div class="tit">推荐附近</div>
-            <div id="carousel-example-generic2" class="carousel slide" >
-         
-          <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic2" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic2" data-slide-to="1"></li>
-           
-          </ol>
-        
-         
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-               <ul>
-               		<li><a href="#"><img src="/public/assets/images/tj1.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj2.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj3.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj4.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj5.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj6.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj7.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj8.jpg"></a></li>
-               </ul>
-             
-            </div>
-            <div class="item ">
-             	 <ul>
-               		<li><a href="#"><img src="/public/assets/images/tj1.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj2.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj3.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj4.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj5.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj6.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj7.jpg"></a></li>
-                    <li><a href="#"><img src="/public/assets/images/tj8.jpg"></a></li>
-               </ul>
-             
-            </div>
-           
-          </div>
-
-         
-      </div>
-        </div>-->
-
+      #parse('front/_pagelet/Zone.Ad.Top.html')
       #parse('front/_pagelet/Zone.Ad.Nearby.html')
       #parse('front/_pagelet/Zone.Ad.3.html')
 
@@ -92,37 +36,36 @@
       #parse('front/_pagelet/Zone.Ad.6.html')
       #parse('front/_pagelet/Zone.Ad.7.html')
     </div>
-		<div class="foot navbar navbar-default navbar-fixed-bottom">
-        	<ul>
-            	<li>
-                	<a href="#"><img src="/public/assets/images/sy.jpg">
-                    	<p>首页</p>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-            	<li>
-                	<a href="#"><img src="/public/assets/images/fj.jpg">
-                    	<p>附近</p>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-            	<li>
-                	<a href="#"><img src="/public/assets/images/yh.jpg">
-                    	<p>优惠券</p>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-            	<li>
-                	<a href="#"><img src="/public/assets/images/wd.jpg">
-                    	<p>我的</p>
-                    </a>
-                </li>
-            </ul>
-        
-        </div>
+    <div class="foot navbar navbar-default navbar-fixed-bottom">
+      <ul>
+        <li>
+          <a href="/$!data.zone.SHORT_NAME/"><img src="$!{conf.html.static_res}assets/images/sy.jpg">
+            <p>首页</p>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="javascript:;"><img src="$!{conf.html.static_res}assets/images/fj.jpg">
+            <p>附近</p>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="javascript:;"><img src="$!{conf.html.static_res}assets/images/yh.jpg">
+            <p>优惠券</p>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/i/"><img src="$!{conf.html.static_res}assets/images/wd.jpg">
+            <p>我的</p>
+          </a>
+        </li>
+      </ul>
+    </div>
 
    
 
