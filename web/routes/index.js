@@ -9,6 +9,7 @@ var util = require('speedt-utils'),
 	express = util.express;
 
 var front = {
+	my: require('../controllers/front/my'),
 	site: require('../controllers/front/site')
 };
 var back = {};
@@ -37,6 +38,11 @@ function proc_front(app){
 	// app.get('/', site.indexUI);
 	// app.get('/w/:wifi_mac/', wifi.indexUI);
 
+	app.get('/', function (req, res, next){ res.redirect('/zz/'); });
+
+	// 我的
+	app.get('/i/', front.my.indexUI);
+	// 首页
 	app.get('/:zone/', front.site.checkExistOpenSite, function (req, res, next){ req.flash('page_id', 'dad9657792274e0e95a15c8901573c11'); next(); }, front.site.findAds_zoneUI, front.site.zoneUI);
 }
 

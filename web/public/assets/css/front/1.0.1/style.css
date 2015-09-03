@@ -347,7 +347,7 @@ float: right;
 .wsy b{ font-size:18px; font-weight:normal;}
 .syqk_r{ width:20%; height:80%; border:1px solid #ccc;  border-radius:5px; float:left; }
 .syqk_l_c{ float:right; width:68%; padding-top:10px; }
-.syqk_l_c p{ -webkit-transform:scale(0.75);margin-left:-18px; margin-bottom:0; width:108%; height:17px; background:url(../../../images/st.png) left top no-repeat; font-size:10px; padding-left:20px}
+.syqk_l_c p{ -webkit-transform:scale(0.75);margin-left:-18px; margin-bottom:0; width:108%; height:17px; background:url(../../../images/st.png) left top no-repeat; font-size:13px; padding-left:20px}
 
 .syqk_l_c p:nth-of-type(4){ background:none; padding-left:0; margin-top:20px}
 

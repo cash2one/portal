@@ -25,7 +25,7 @@ module.exports = {
 		external_res: 'http://www.foreworld.net/public/',
 		pagesize: 10,
 		cache_time: 1000 * 3,
-		fileServ: 'http://127.0.0.1:3013/public/files/'
+		fileServ: 'http://192.168.0.104:3013/public/files/'
 	}, mail: {
 		secureConnection: true,
 		host: 'smtp.163.com',
