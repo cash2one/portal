@@ -41,6 +41,8 @@ function proc_front(app){
 
 	app.get('/', function (req, res, next){ res.redirect('/zz/'); });
 
+	// 商铺的优惠券领取
+	app.get('/shop/coupon/receive/', front.shop.coupon_receiveUI);
 	// 商铺的优惠券
 	app.get('/shop/coupon/', front.shop.couponUI);
 	// 商铺
