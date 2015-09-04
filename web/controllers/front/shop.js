@@ -41,3 +41,19 @@ exports.indexUI = function(req, res, next){
 		keywords: ',dolalive,html5'
 	});
 };
+
+/**
+ *
+ * @param
+ * @return
+ */
+exports.couponUI = function(req, res, next){
+	var shop_name = req.params.shop;
+	// TODO
+	res.render('front/shop/Coupon', {
+		conf: conf,
+		title: '优惠券 | 商铺 | '+ conf.corp.name,
+		description: '',
+		keywords: ',dolalive,html5'
+	});
+};
