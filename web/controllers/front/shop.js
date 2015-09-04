@@ -31,10 +31,12 @@ var exports = module.exports;
  * @return
  */
 exports.indexUI = function(req, res, next){
+	var shop_name = req.params.shop;
+	console.log(shop_name);
 	// TODO
-	res.render('front/my/Index', {
+	res.render('front/shop/Index', {
 		conf: conf,
-		title: '我的 | '+ conf.corp.name,
+		title: '商铺 | '+ conf.corp.name,
 		description: '',
 		keywords: ',dolalive,html5'
 	});

@@ -9,6 +9,7 @@ var util = require('speedt-utils'),
 	express = util.express;
 
 var front = {
+	shop: require('../controllers/front/shop'),
 	my: require('../controllers/front/my'),
 	site: require('../controllers/front/site')
 };
@@ -40,6 +41,8 @@ function proc_front(app){
 
 	app.get('/', function (req, res, next){ res.redirect('/zz/'); });
 
+	// 商铺
+	app.get('/shop/:shop/', front.shop.indexUI);
 	// 我的
 	app.get('/i/', front.my.indexUI);
 	// 首页
