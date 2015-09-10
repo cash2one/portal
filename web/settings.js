@@ -12,7 +12,7 @@ module.exports = {
 		name: '多啦生活',
 		website: 'http://www.dolalive.com/'
 	}, mysql: {
-		database: 'wifi',
+		database: 'dolalive',
 		host: '127.0.0.1',
 		port: 22306,
 		user: 'root',
