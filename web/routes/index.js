@@ -16,8 +16,6 @@ var front = {
 var back = {};
 var manage = {};
 
-console.log(util.uuid());
-
 /**
  *
  * @param

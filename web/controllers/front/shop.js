@@ -32,7 +32,7 @@ var exports = module.exports;
  */
 exports.indexUI = function(req, res, next){
 	var shop_name = req.params.shop;
-	console.log(shop_name);
+	// console.log(shop_name);
 	// TODO
 	res.render('front/shop/Index', {
 		conf: conf,
