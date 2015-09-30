@@ -18,6 +18,7 @@ var fs = require('fs'),
 	velocity = require('velocityjs');
 
 var biz = {
+	customer: require('../../biz/customer'),
 	page_position: require('../../biz/page_position'),
 	zone: require('../../biz/zone'),
 	ad: require('../../biz/ad')
@@ -32,10 +33,19 @@ var exports = module.exports;
  */
 exports.indexUI = function(req, res, next){
 	// TODO
-	res.render('front/my/Index', {
-		conf: conf,
-		title: '我的 | '+ conf.corp.name,
-		description: '',
-		keywords: ',dolalive,html5'
+	biz.customer.findById('1', function (err, doc){
+		if(err) return next(err);
+		if(!doc) return res.redirect('/');
+
+		// TODO
+		res.render('front/my/Index', {
+			conf: conf,
+			title: '我的 | '+ conf.corp.name,
+			description: '',
+			keywords: ',dolalive,html5',
+			data: {
+				customer: doc
+			}
+		});		
 	});
 };
