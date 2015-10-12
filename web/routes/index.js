@@ -9,6 +9,7 @@ var util = require('speedt-utils'),
 	express = util.express;
 
 var front = {
+	house: require('../controllers/front/house'),
 	shop: require('../controllers/front/shop'),
 	my: require('../controllers/front/my'),
 	site: require('../controllers/front/site')
@@ -37,8 +38,8 @@ function proc_front(app){
 	// app.get('/', site.indexUI);
 	// app.get('/w/:wifi_mac/', wifi.indexUI);
 
-	app.get('/', function (req, res, next){ res.redirect('/zz/'); });
-
+	// 房产
+	app.get('/house/', front.house.indexUI);
 	// 商铺的优惠券领取
 	app.get('/shop/coupon/receive/', front.shop.coupon_receiveUI);
 	// 商铺的优惠券
@@ -49,6 +50,8 @@ function proc_front(app){
 	app.get('/i/', front.my.indexUI);
 	// 首页
 	app.get('/:zone/', front.site.checkExistOpenSite, function (req, res, next){ req.flash('page_id', 'dad9657792274e0e95a15c8901573c11'); next(); }, front.site.findAds_zoneUI, front.site.zoneUI);
+	// 默认
+	app.get('/', function (req, res, next){ res.redirect('/zz/'); });
 }
 
 /**

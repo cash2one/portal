@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+  <head>
+    <meta http-equiv='content-type' content='text/html;charset=utf-8' />
+    <title>房地产 | 郑州 | 多啦生活</title>
+    <style type="text/css">
+    body {
+      margin: 0;
+    }
+    img {
+      width: 100%
+    }
+    </style>
+  </head>
+  <body>
+    <map name="mymap">
+      <area href="kqyd/" shape="rect" coords="68,1324,498,1628" title='康桥悦岛' id='area_1'>
+      <area href="zylt/" shape="rect" coords="68,1720,498,2024" title='紫域澜庭' id='area_2'>
+      <area href="xmgct/" shape="rect" coords="68,2221,498,2525" title='新芒果春天' id='area_3'>
+      <area href="eqjywt/" shape="rect" coords="68,2722,498,3026" title='二七金运外滩' id='area_4'>
+      <area href="hdfcht/" shape="rect" coords="68,3224,498,3528" title='恒大翡翠华庭' id='area_5'>
+    </map>
+    <img src="/public/assets/images/fc.jpg" usemap="#mymap">
+
+    <script>
+
+    var oldSize = {
+      height: document.body.scrollHeight,
+      width: document.body.scrollWidth
+    };
+    oldSize.width = 1349;
+
+    function get(id){
+      return document.getElementById(id);
+    }
+
+    function setAllHref(){
+      // 新窗口大小
+      var newSize = {
+        height: document.body.scrollHeight,
+        width: document.body.scrollWidth
+      };
+
+      var ratio = newSize.width / oldSize.width;
+
+      var area_1 = get('area_1');
+      area_1.coords = resize(area_1.coords, ratio);
+      var area_2 = get('area_2');
+      area_2.coords = resize(area_2.coords, ratio);
+      var area_3 = get('area_3');
+      area_3.coords = resize(area_3.coords, ratio);
+      var area_4 = get('area_4');
+      area_4.coords = resize(area_4.coords, ratio);
+      var area_5 = get('area_5');
+      area_5.coords = resize(area_5.coords, ratio);
+    }
+
+    function resize(coords, ratio){
+      var arr = coords.split(',');
+
+      var x1 = arr[0] * ratio;
+      var y1 = arr[1] * ratio;
+      var x2 = arr[2] * ratio;
+      var y2 = arr[3] * ratio;
+
+      return x1 +','+ y1 +','+ x2 +','+ y2;
+    }
+
+    window.onresize = function(resize){
+      setAllHref();
+    };
+
+    (function(window){
+      var area_1 = get('area_1');
+      setAllHref();
+    })(window);
+    </script>
+  </body>
+</html>
