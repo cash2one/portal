@@ -39,6 +39,8 @@ function proc_front(app){
 	// app.get('/w/:wifi_mac/', wifi.indexUI);
 
 	// 房产
+	app.get('/house/:house/', front.house.houseUI);
+	// 房产
 	app.get('/house/', front.house.indexUI);
 	// 商铺的优惠券领取
 	app.get('/shop/coupon/receive/', front.shop.coupon_receiveUI);

@@ -34,8 +34,35 @@ exports.indexUI = function(req, res, next){
 	// TODO
 	res.render('front/house/1.0.1/Index', {
 		conf: conf,
-		title: '房产 | '+ conf.corp.name,
+		title: '房产 | 郑州 | '+ conf.corp.name,
 		description: '',
 		keywords: ',dolalive,html5'
+	});
+};
+
+var houses = {
+	'kqyd': '康桥悦岛',
+	'zylt': '紫域澜庭',
+	'xmgct': '新芒果春天',
+	'eqjywt': '二七金运外滩',
+	'hdfcht': '恒大翡翠华庭'
+};
+
+/**
+ *
+ * @param
+ * @return
+ */
+exports.houseUI = function(req, res, next){
+	var house = req.params.house;
+	// TODO
+	res.render('front/house/1.0.1/House', {
+		conf: conf,
+		title: houses[house] +' | 房产 | 郑州 | '+ conf.corp.name,
+		description: '',
+		keywords: ',dolalive,html5',
+		data: {
+			house: house
+		}
 	});
 };
