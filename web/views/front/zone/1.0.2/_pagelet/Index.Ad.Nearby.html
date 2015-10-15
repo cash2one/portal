@@ -1,0 +1,109 @@
+<div class='tjfj'>
+  <div class='tit'>推荐附近</div>
+  <header>
+    <div id='slider' class='swipe' style='visibility: visible;'>
+      <div class='swipe-wrap'>
+        #set($_841ede8c0a9943cb9f2714e9dc840e5a = $!data.ads['841ede8c0a9943cb9f2714e9dc840e5a'])
+        #set($size = $!_841ede8c0a9943cb9f2714e9dc840e5a.ads.size())
+        #foreach($doc in $!_841ede8c0a9943cb9f2714e9dc840e5a.ads)
+
+          #if($!velocityCount == 1)
+            <figure>
+              <div class='wrap'>
+                <div class='image'>
+                  <ul>
+                    <li><a href='/shop/$!doc.CORP_NAME/'><img src='#fileServUrlFill($!doc.AD_PIC)' /></a></li>
+          #else
+            #if($!velocityCount % 8 == 0)
+                    <li><a href='/shop/$!doc.CORP_NAME/'><img src='#fileServUrlFill($!doc.AD_PIC)' /></a></li>
+                  </ul>
+                </div>
+              </div>
+            </figure>
+            #else
+              #if($!velocityCount % 8 == 1)
+            <figure>
+              <div class='wrap'>
+                <div class='image'>
+                  <ul>
+                    <li><a href='/shop/$!doc.CORP_NAME/'><img src='#fileServUrlFill($!doc.AD_PIC)' /></a></li>
+              #else
+                    <li><a href='/shop/$!doc.CORP_NAME/'><img src='#fileServUrlFill($!doc.AD_PIC)' /></a></li>
+
+                  #if($!velocityCount % 4 == 0)
+                    <div class="clearfix"></div>
+                  #end
+              #end
+            #end
+          #end
+
+          #if($!velocityCount == $size)
+            #if($!velocityCount % 8 > 0)
+                  </ul>
+                </div>
+              </div>
+            </figure>
+            #end
+          #end
+        #end
+        #* <figure>
+          <div class='wrap'>
+            <div class='image'>
+              <ul>
+                <li><a href='#'><img src='/public/assets/images/tj1.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj2.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj3.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj4.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj5.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj6.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj7.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj8.jpg'></a></li>
+              </ul>
+            </div>
+          </div>
+        </figure>
+        <figure>
+          <div class='wrap'>
+            <div class='image' >
+              <ul>
+                <li><a href='#'><img src='/public/assets/images/tj1.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj2.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj3.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj4.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj5.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj6.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj7.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj8.jpg'></a></li>
+              </ul>
+            </div>
+          </div>
+        </figure>
+        <figure>
+          <div class='wrap'>
+            <div class='image' >
+              <ul>
+                <li><a href='#'><img src='/public/assets/images/tj1.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj2.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj3.jpg'></a></li>
+                <li><a href='#'><img src='/public/assets/images/tj4.jpg'></a></li>
+              </ul>
+            </div>
+          </div>
+        </figure> *#
+      </div>
+    </div>
+    <nav>
+      <ul id='position0'>
+        #foreach($doc in $!_841ede8c0a9943cb9f2714e9dc840e5a.ads)
+          #if($!velocityCount == 1)
+            <li class='on'></li>
+          #else
+            #if($!velocityCount % 8 == 1)
+              <li class=''></li>
+            #end
+          #end
+        #end
+      </ul>
+    </nav>
+  </header>
+</div> 

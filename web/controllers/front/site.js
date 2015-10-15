@@ -56,7 +56,7 @@ exports.zoneUI = function(req, res, next){
 
 	var ads = req.flash('ads')[0];
 
-	res.render('front/zone/1.0.1/Index', {
+	res.render('front/zone/1.0.2/Index', {
 		conf: conf,
 		title: zone.SHORT_ZONE_NAME +' | '+ conf.corp.name,
 		description: '',

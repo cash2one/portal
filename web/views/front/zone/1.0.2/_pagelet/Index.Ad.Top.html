@@ -1,0 +1,28 @@
+<div id='carousel-example-generic' class='carousel slide'  data-ride='carousel'>
+  <!-- Indicators -->
+  <ol class='carousel-indicators'>
+    #set($i=0)
+    #set($_9b484e073d9b4201859650551f52f5eb = $!data.ads['9b484e073d9b4201859650551f52f5eb'])
+    #foreach($doc in $!_9b484e073d9b4201859650551f52f5eb.ads)
+    <li data-target='#carousel-example-generic' data-slide-to='$i#set($i=$i+1)'#if($!velocityCount == 1) class='active'#end></li>#end           
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class='carousel-inner' role='listbox'>
+    #set($_9b484e073d9b4201859650551f52f5eb = $!data.ads['9b484e073d9b4201859650551f52f5eb'])
+    #foreach($doc in $!_9b484e073d9b4201859650551f52f5eb.ads)
+	<div class='item#if($!velocityCount == 1) active#end'>
+      <a href='$!doc.LINK_URL'><img src='#fileServUrlFill($!doc.AD_PIC)' alt='$!doc.AD_NAME' title='$!doc.AD_NAME' onerror='img404(event);' /></a>
+    </div>#end
+  </div>
+
+  <!-- Controls -->
+  <a class='left carousel-control hidden-xs' href='#carousel-example-generic' role='button' data-slide='prev'>
+    <span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>
+    <span class='sr-only'>Previous</span>
+  </a>
+  <a class='right carousel-control hidden-xs' href='#carousel-example-generic' role='button' data-slide='next'>
+    <span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span>
+    <span class='sr-only'>Next</span>
+  </a>
+</div>
