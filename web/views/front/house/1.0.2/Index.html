@@ -6,24 +6,47 @@
 		#top {
 			background: #e3393c none repeat scroll 0 0;
 			height: 45px;
-			line-height: 45px;
+			line-height: 44px;
 			width: 100%;
-			padding-left: 10px;
+		}
+
+		#top .logo {
+			width: 21%;
+			float: left;
+		}
+
+		#top .logo img{
+			height: 34px;
+		}
+
+		#top .search {
+			float: left;
+			width: 58%;
+		}
+
+		#top .search input{
+			width: 100%;
+			border-radius: 10px;
+			display: inline;
+			padding-left: 25px;
+			background: #fff3e9 url('/public/assets/images/icon.png') no-repeat scroll -190px -6px;
 		}
 
 		/* droplist start */
 		.droplist {
 			position: relative;
 			cursor: pointer;
+			height: 45px;
+			line-height: 45px;
 		}
 
 		.droplist > a {
 			color: #fff;
 			font-size: 16px;
 			text-decoration: none;
-			line-height: 45px;
 			display: inline-block;
 			outline: none;
+			float: right;
 		}
 
 		.droplist ul {
@@ -57,12 +80,29 @@
 			text-decoration: none;
 		}
 		/* droplist end */
+
+		#top .zone {
+			float: right;
+			width: 21%;
+		}
+
+		#top .container {
+			padding: 0 10px 0 10px;
+		}
 		</style>
 	</head>
 	<body>
 		<div id='top' role='top'>
 			<div class='container'>
-				<div class='droplist'>
+				<div class='logo'>
+					<a href='javascript:;'><img src='/public/assets/images/logo/logo.png'></a>
+				</div>
+				<div class='search'>
+					<form>
+						<input type='text' class='form-control' placeholder='楼盘/地名/开发商等'>
+					</form>
+				</div>
+				<div class='zone droplist'>
 					<a href='javascript:;'>
 						郑州
 						<b class='caret'></b>

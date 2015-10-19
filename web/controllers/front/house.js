@@ -32,7 +32,7 @@ var exports = module.exports;
  */
 exports.indexUI = function(req, res, next){
 	// TODO
-	res.render('front/house/1.0.1/Index', {
+	res.render('front/house/1.0.2/Index', {
 		conf: conf,
 		title: '房产 | 郑州 | '+ conf.corp.name,
 		description: '',
