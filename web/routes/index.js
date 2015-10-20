@@ -14,7 +14,9 @@ var front = {
 	my: require('../controllers/front/my'),
 	site: require('../controllers/front/site')
 };
-var back = {};
+var back = {
+	customer: require('../controllers/back/customer')
+};
 var manage = {};
 
 /**
@@ -62,7 +64,8 @@ function proc_front(app){
  * @return
  */
 function proc_back(app){
-	// TODO
+	app.get('/user/login', back.customer.loginUI);
+	app.post('/user/login$', express.valiPostData, back.customer.login);
 }
 
 /**
