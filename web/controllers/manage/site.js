@@ -9,7 +9,9 @@ var util = require('speedt-utils');
 
 var conf = require('../../settings');
 
-var biz = {};
+var biz = {
+	menu: require('../../../biz/menu')
+};
 
 /**
  *
@@ -17,9 +19,29 @@ var biz = {};
  * @return
  */
 exports.indexUI = function(req, res, next){
-	res.render('manage/Index', {
+	biz.menu.getByPId('0', function (err, docs){
+
+		res.render('manage/Index', {
+			conf: conf,
+			title: '后台管理 | '+ conf.corp.name,
+			description: '',
+			keywords: ',dolalive,html5',
+			data: {
+				menu: docs
+			}
+		});
+	});
+};
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.welcomeUI = function(req, res, next){
+	res.render('manage/Welcome', {
 		conf: conf,
-		title: '后台管理 | '+ conf.corp.name,
+		title: '欢迎页 | 后台管理 | '+ conf.corp.name,
 		description: '',
 		keywords: ',dolalive,html5'
 	});

@@ -79,7 +79,9 @@ function proc_back(app){
 function proc_manage(app){
 	app.get('/manager/login$', manage.manager.loginUI);
 	app.post('/manager/login$', express.valiPostData, manage.manager.login);
+	app.get('/manager/logout$', manage.manager.logoutUI);
 
+	app.get('/manage/welcome', manage.site.welcomeUI);
 	// manager login
 	app.get('/manage/', manage.site.indexUI);
 }

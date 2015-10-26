@@ -52,3 +52,14 @@ exports.login = function(req, res, next){
 		res.send(result);
 	});
 };
+
+/**
+ * 用户退出
+ *
+ * @params
+ * @return
+ */
+exports.logoutUI = function(req, res, next){
+	req.session.destroy();
+	res.redirect('/manager/login');
+};
