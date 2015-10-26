@@ -17,7 +17,9 @@ var front = {
 var back = {
 	customer: require('../controllers/back/customer')
 };
-var manage = {};
+var manage = {
+	manager: require('../controllers/manage/manager')
+};
 
 /**
  *
@@ -74,5 +76,6 @@ function proc_back(app){
  * @return
  */
 function proc_manage(app){
-	// TODO
+	app.get('/manager/login$', manage.manager.loginUI);
+	app.post('/manager/login$', express.valiPostData, manage.manager.login);
 }

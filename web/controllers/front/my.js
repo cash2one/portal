@@ -18,10 +18,10 @@ var fs = require('fs'),
 	velocity = require('velocityjs');
 
 var biz = {
-	customer: require('../../biz/customer'),
-	page_position: require('../../biz/page_position'),
-	zone: require('../../biz/zone'),
-	ad: require('../../biz/ad')
+	customer: require('../../../biz/customer'),
+	page_position: require('../../../biz/page_position'),
+	zone: require('../../../biz/zone'),
+	ad: require('../../../biz/ad')
 };
 
 var exports = module.exports;
