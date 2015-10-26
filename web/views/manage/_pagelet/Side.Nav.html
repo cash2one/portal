@@ -1,27 +1,22 @@
 <div class='panel-group' id='accordion'>
+	#foreach($!obj in $!data.childMenu)
+		#if(3 == $!obj.PATH.split(",").length)
 	<div class='panel panel-default'>
 		<div class='panel-heading'>
 			<h4 class='panel-title'>
-				<a data-toggle='collapse' data-parent='#accordion' href='#collapseSys'>系统管理</a>
+				<a data-toggle='collapse' data-parent='#accordion' href='#collapse$!obj.id'>$!obj.MENU_NAME</a>
 			</h4>
 		</div>
-		<div id='collapseSys' class='panel-collapse collapse'>
+		<div id='collapse$!obj.id' class='panel-collapse collapse#if(1 == $velocityCount) in#end'>
 			<div class='panel-body'>
-				<p><a href='javascript:;'>用户管理</a></p>
+				#foreach($!obj2 in $!data.childMenu)
+					#if(4 == $!obj2.PATH.split(",").length && $!obj.id == $!obj2.PID)
+				<p><a href='#page/${virtualPath}$!obj2.MENU_URL'>$!obj2.MENU_NAME</a></p>
+					#end
+				#end
 			</div>
 		</div>
 	</div>
-	<div class='panel panel-default'>
-		<div class='panel-heading'>
-			<h4 class='panel-title'>
-				<a data-toggle='collapse' data-parent='#accordion' href='#collapseBlog'>博客管理</a>
-			</h4>
-		</div>
-		<div id='collapseBlog' class='panel-collapse collapse in'>
-			<div class='panel-body'>
-				<p><a href='/manage/article/category/'>文章分类</a></p>
-				<p><a href='/manage/article/tag/'>文章标签</a></p>
-			</div>
-		</div>
-	</div>
+		#end
+	#end
 </div>

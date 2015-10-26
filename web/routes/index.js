@@ -82,6 +82,8 @@ function proc_manage(app){
 	app.get('/manager/logout$', manage.manager.logoutUI);
 
 	app.get('/manage/welcome', manage.site.welcomeUI);
+
+	app.get('/manage/:pid', manage.site.indexUI_sideNav);
 	// manager login
 	app.get('/manage/', manage.site.indexUI);
 }
