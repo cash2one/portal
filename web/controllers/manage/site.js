@@ -25,32 +25,26 @@ var biz = {
  * @return
  */
 exports.indexUI = function(req, res, next){
-	// TODO
-	var ep = EventProxy.create('topMenu', 'childMenu', function (topMenu, childMenu){
-		res.render('manage/Index', {
-			conf: conf,
-			title: '后台管理 | '+ conf.corp.name,
-			description: '',
-			keywords: ',dolalive,html5',
-			data: {
-				topMenu: topMenu,
-				childMenu: childMenu
-			}
-		});
-	});
-
-	ep.fail(function (err){
-		next(err);
-	});
-
 	biz.menu.getByPId('0', function (err, docs){
-		if(err) return ep.emit('error', err);
-		ep.emit('topMenu', docs);
-	});
-
-	biz.menu.getChildrenByPId('4', function (err, docs){
-		if(err) return ep.emit('error', err);
-		ep.emit('childMenu', docs);
+		if(err) return next(err);
+		var topMenu = docs;
+		var first = docs[0];
+		// TODO
+		biz.menu.getChildrenByPId(first.id, function (err, docs){
+			if(err) return next(err);
+			var childMenu = docs;
+			// TODO
+			res.render('manage/Index', {
+				conf: conf,
+				title: '后台管理 | '+ conf.corp.name,
+				description: '',
+				keywords: ',dolalive,html5',
+				data: {
+					topMenu: topMenu,
+					childMenu: childMenu
+				}
+			});
+		});
 	});
 };
 
@@ -94,12 +88,11 @@ exports.indexUI_sideNav = function(req, res, next){
 	 * @return
 	 */
 	exports.getTemplate = function(cb){
-		if(temp) return cb(null, temp);
-
+		// if(temp) return cb(null, temp);
 		fs.readFile(path.join(cwd, 'views', 'manage', '_pagelet', 'Side.Nav.html'), 'utf8', function (err, template){
 			if(err) return cb(err);
 			temp = template;
-			cb(null, temp);
+			cb(null, template);
 		});
 	};
 })(exports);
