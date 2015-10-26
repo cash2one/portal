@@ -18,6 +18,7 @@ var back = {
 	customer: require('../controllers/back/customer')
 };
 var manage = {
+	site: require('../controllers/manage/site'),
 	manager: require('../controllers/manage/manager')
 };
 
@@ -27,9 +28,9 @@ var manage = {
  * @return
  */
 module.exports = function(app){
-	proc_front(app);
-	proc_back(app);
 	proc_manage(app);
+	proc_back(app);
+	proc_front(app);
 };
 
 /**
@@ -78,4 +79,7 @@ function proc_back(app){
 function proc_manage(app){
 	app.get('/manager/login$', manage.manager.loginUI);
 	app.post('/manager/login$', express.valiPostData, manage.manager.login);
+
+	// manager login
+	app.get('/manage/', manage.site.indexUI);
 }
