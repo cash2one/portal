@@ -6,6 +6,7 @@
 'use strict';
 
 var util = require('speedt-utils'),
+	md5 = util.md5,
 	mysql_util = util.mysql_util,
 	mysql = util.mysql;
 
@@ -13,16 +14,13 @@ var exports = module.exports;
 
 /**
  *
- * @param
+ * @params
  * @return
  */
-exports.findById = function(id, cb){
-	mysql_util.find(null, 'p_customer', [['id', '=', id]], null, null, function (err, docs){
+exports.findAll = function(name, cb){
+	name = !!name ? '%'+ name +'%' : '%%';
+	mysql_util.find(null, 'p_customer', [['USER_NAME', 'like', name]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
 		if(err) return cb(err);
-		cb(null, mysql.checkOnly(docs) ? docs[0] : null);
+		cb(null, docs);
 	});
 };
-
-(function (exports){
-	// TODO
-})(exports);
