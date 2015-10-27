@@ -79,18 +79,7 @@
 		<script>
 			$('#searchFrm_btn_search').click(function(){
 				var formObj = $('#searchFrm').serializeObjectForm();
-				$ .ajax({
-					url: 'list.do',
-					type: 'GET',
-					dataType: 'JSON',
-					data: formObj
-				}).done(function (data) {
-					var data = data.msg;
-					if(!data.success) return;
-					var _data = data.data;
-					if(!_data) return;
-					$('#table1').html(_data);
-				});
+				console.log(formObj);
 			});
 		</script>
 		<SCRIPT type='text/javascript'>
@@ -106,20 +95,16 @@
 							var zTree = $ .fn.zTree.getZTreeObj(treeId);
 							if(treeNode.children) return;
 							$ .ajax({
-								url: 'list.do',
-								type: 'GET',
-								dataType: 'JSON',
-								data: {
-									pid: treeNode.id,
-									type: 'object'
-								}
-							}).done(function (data) {
-								if(!data.msg.success) return;
-								var items = data.msg.data.items;
+								url: '/manage/menu/'+ treeNode.id,
+								type: 'POST',
+								dataType: 'JSON'
+							}).done(function (data){
+								if(!data.success) return;
+								var items = data.data;
 								for(var i=0,j=items.length;i<j;i++){
 									var item = items[i];
 									zTree.addNodes(treeNode, {
-										id: item.ID,
+										id: item.id,
 										pId: treeNode.id,
 										isParent: !!item.ISPARENT,
 										name: item.MENU_NAME
@@ -129,18 +114,12 @@
 						}, onClick: function(event, treeId, treeNode, clickFlag){
 							var zTree = $ .fn.zTree.getZTreeObj(treeId);
 							$ .ajax({
-								url: 'list.do',
-								type: 'GET',
-								dataType: 'JSON',
-								data: {
-									pid: treeNode.id
-								}
-							}).done(function (data) {
-								var data = data.msg;
+								url: '/manage/menu/list/'+ treeNode.id,
+								type: 'POST',
+								dataType: 'JSON'
+							}).done(function (data){
 								if(!data.success) return;
-								var _data = data.data;
-								if(!_data) return;
-								$('#table1').html(_data);
+								$('#table1').html(data.data);
 							});
 						}
 					}
@@ -149,8 +128,8 @@
 					id: '0',
 					name: 'Root',
 					open: true
-				}#foreach($!obj in $!treeView.records),{
-					id: '$!obj.ID',
+				}#foreach($!obj in $!data.tree),{
+					id: '$!obj.id',
 					pId: '$!obj.PID',
 					name: '$!obj.MENU_NAME',
 					isParent: !!$!obj.ISPARENT

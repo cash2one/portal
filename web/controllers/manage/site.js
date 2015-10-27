@@ -53,13 +53,13 @@ exports.indexUI = function(req, res, next){
  * @params
  * @return
  */
-exports.indexUI_sideNav = function(req, res, next){
+exports.indexUI_side = function(req, res, next){
 	var result = { success: false };
 	var pid = req.params.pid;
 
 	biz.menu.getChildrenByPId(pid, function (err, docs){
 		if(err) return next(err);
-
+		// TODO
 		exports.getTemplate(function (err, template){
 			if(err){
 				result.msg = err;

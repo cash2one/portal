@@ -43,7 +43,7 @@ function sideNav(menuId, self){
 	$(self).parents().find('.active').removeClass();
 	$(self).parent().addClass('active');
 	$.ajax({
-		url: '/manage/'+ menuId,
+		url: '/manage/side/'+ menuId,
 		type: 'POST',
 		dataType: 'JSON'
 	}).done(function (data){

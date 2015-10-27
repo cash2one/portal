@@ -84,9 +84,11 @@ function proc_manage(app){
 
 	// 菜单
 	app.get('/manage/menu/', manage.menu.indexUI);
+	app.post('/manage/menu/:pid', manage.menu.children);
+	app.post('/manage/menu/list/:pid', manage.menu.indexUI_list);
 
 	app.get('/manage/welcome', manage.site.welcomeUI);
-	app.post('/manage/:pid', manage.site.indexUI_sideNav);
+	app.post('/manage/side/:pid', manage.site.indexUI_side);
 	// manager login
 	app.get('/manage/', manage.site.indexUI);
 }

@@ -8,8 +8,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		#foreach($!obj in $!pageView.records)<tr>
-			<td class='ta'><input type='checkbox' value='$!obj.ID'></td>
+		#foreach($!obj in $!data.tree)<tr>
+			<td class='ta'><input type='checkbox' value='$!obj.id'></td>
 			<td>$!obj.MENU_NAME</td>
 			<td>$!obj.MENU_URL</td>
 			<td>$!obj.SORT</td>
