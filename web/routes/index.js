@@ -18,6 +18,7 @@ var back = {
 	customer: require('../controllers/back/customer')
 };
 var manage = {
+	menu: require('../controllers/manage/menu'),
 	site: require('../controllers/manage/site'),
 	manager: require('../controllers/manage/manager')
 };
@@ -81,9 +82,11 @@ function proc_manage(app){
 	app.post('/manager/login$', express.valiPostData, manage.manager.login);
 	app.get('/manager/logout$', manage.manager.logoutUI);
 
-	app.get('/manage/welcome', manage.site.welcomeUI);
+	// 菜单
+	app.get('/manage/menu/', manage.menu.indexUI);
 
-	app.get('/manage/:pid', manage.site.indexUI_sideNav);
+	app.get('/manage/welcome', manage.site.welcomeUI);
+	app.post('/manage/:pid', manage.site.indexUI_sideNav);
 	// manager login
 	app.get('/manage/', manage.site.indexUI);
 }
