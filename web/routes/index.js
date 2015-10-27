@@ -82,6 +82,7 @@ function proc_manage(app){
 	app.get('/manager/login$', manage.manager.loginUI);
 	app.post('/manager/login$', express.valiPostData, manage.manager.login);
 	app.get('/manager/logout$', manage.manager.logoutUI);
+	app.get('/manager/changePwd$', manage.manager.login_validate, manage.manager.changePwdUI);
 
 	// 角色管理
 	app.get('/manage/role/', manage.manager.login_validate, manage.role.indexUI);

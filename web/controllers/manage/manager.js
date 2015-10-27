@@ -18,6 +18,20 @@ var biz = {
  * @params
  * @return
  */
+exports.changePwdUI = function(req, res, next){
+	res.render('manage/manager/ChangePwd', {
+		conf: conf,
+		title: '修改密码 | '+ conf.corp.name,
+		description: '',
+		keywords: ',dolalive,html5'
+	});
+};
+
+/**
+ *
+ * @params
+ * @return
+ */
 exports.indexUI = function(req, res, next){
 	biz.manager.findAll(null, function (err, docs){
 		// TODO
