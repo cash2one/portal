@@ -25,7 +25,7 @@ var biz = {
  * @return
  */
 exports.indexUI = function(req, res, next){
-	biz.menu.getByPId('0', function (err, docs){
+	biz.menu.getByPId('1', function (err, docs){
 		if(err) return next(err);
 		var topMenu = docs;
 		var first = docs[0];
