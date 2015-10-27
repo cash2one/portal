@@ -18,6 +18,26 @@ var biz = {
  * @params
  * @return
  */
+exports.indexUI = function(req, res, next){
+	biz.manager.findAll(null, function (err, docs){
+		// TODO
+		res.render('manage/manager/Index', {
+			conf: conf,
+			title: '用户管理 | '+ conf.corp.name,
+			description: '',
+			keywords: ',dolalive,html5',
+			data: {
+				managers: docs
+			}
+		});
+	});
+};
+
+/**
+ *
+ * @params
+ * @return
+ */
 exports.loginUI = function(req, res, next){
 	res.render('manage/manager/Login', {
 		conf: conf,
@@ -61,5 +81,17 @@ exports.login = function(req, res, next){
  */
 exports.logoutUI = function(req, res, next){
 	req.session.destroy();
+	res.redirect('/manager/login');
+};
+
+/**
+ * 用户会话验证
+ *
+ * @params
+ * @return
+ */
+exports.login_validate = function(req, res, next){
+	if(1 === req.session.lv) return next();
+	if(req.xhr) return res.send({ success: false, msg: '无权访问' });
 	res.redirect('/manager/login');
 };

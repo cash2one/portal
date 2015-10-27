@@ -82,13 +82,16 @@ function proc_manage(app){
 	app.post('/manager/login$', express.valiPostData, manage.manager.login);
 	app.get('/manager/logout$', manage.manager.logoutUI);
 
-	// 菜单
-	app.get('/manage/menu/', manage.menu.indexUI);
-	app.post('/manage/menu/:pid', manage.menu.children);
-	app.post('/manage/menu/list/:pid', manage.menu.indexUI_list);
+	// 用户管理
+	app.get('/manage/manager/', manage.manager.login_validate, manage.manager.indexUI);
 
-	app.get('/manage/welcome/', manage.site.welcomeUI);
-	app.post('/manage/side/:pid', manage.site.indexUI_side);
+	// 菜单
+	app.get('/manage/menu/', manage.manager.login_validate, manage.menu.indexUI);
+	app.post('/manage/menu/:pid', manage.manager.login_validate, manage.menu.children);
+	app.post('/manage/menu/list/:pid', manage.manager.login_validate, manage.menu.indexUI_list);
+
+	app.get('/manage/welcome/', manage.manager.login_validate, manage.site.welcomeUI);
+	app.post('/manage/side/:pid', manage.manager.login_validate, manage.site.indexUI_side);
 	// manager login
-	app.get('/manage/', manage.site.indexUI);
+	app.get('/manage/', manage.manager.login_validate, manage.site.indexUI);
 }

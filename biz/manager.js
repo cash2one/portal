@@ -53,3 +53,16 @@ exports.findByName = function(name, cb){
 		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
 	});
 };
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.findAll = function(name, cb){
+	name = !!name ? '%'+ name +'%' : '%%';
+	mysql_util.find(null, 's_manager', [['USER_NAME', 'like', name]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
+		if(err) return cb(err);
+		cb(null, docs);
+	});
+};

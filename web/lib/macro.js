@@ -40,6 +40,12 @@ module.exports = {
 			case 2: return '女';
 			default: return '未知';
 		}
+	}, toStatus: function(n){
+		switch(n){
+			case 1: return '启用';
+			case 2: return '禁用';
+			default: return '未知';
+		}
 	}, userState: function(n){
 		switch(n){
 			case 0: return '未激活';
