@@ -87,7 +87,7 @@ function proc_manage(app){
 	app.post('/manage/menu/:pid', manage.menu.children);
 	app.post('/manage/menu/list/:pid', manage.menu.indexUI_list);
 
-	app.get('/manage/welcome', manage.site.welcomeUI);
+	app.get('/manage/welcome/', manage.site.welcomeUI);
 	app.post('/manage/side/:pid', manage.site.indexUI_side);
 	// manager login
 	app.get('/manage/', manage.site.indexUI);
