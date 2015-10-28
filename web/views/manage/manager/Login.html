@@ -52,7 +52,7 @@
 			}, function (valiResu){
 			}, function (data){
 				if(data.success) location.href = '/manage/';
-				if(data.msg) alert(data.msg[0]);
+				if(data.msg) alert('object' === (typeof data.msg) ? data.msg[0] : data.msg);
 			}]);
 		});
 		</script>
