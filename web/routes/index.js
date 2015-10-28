@@ -18,6 +18,7 @@ var back = {
 	customer: require('../controllers/back/customer')
 };
 var manage = {
+	comment: require('../controllers/manage/comment'),
 	house_project: require('../controllers/manage/house_project'),
 	customer: require('../controllers/manage/customer'),
 	role: require('../controllers/manage/role'),
@@ -85,6 +86,9 @@ function proc_manage(app){
 	app.post('/manager/login$', express.valiPostData, manage.manager.login);
 	app.get('/manager/logout$', manage.manager.logoutUI);
 	app.get('/manager/changePwd$', manage.manager.login_validate, manage.manager.changePwdUI);
+
+	// 评论信息维护
+	app.get('/manage/comment/', manage.manager.login_validate, manage.comment.indexUI);
 
 	// 房产项目
 	app.get('/manage/house/project/', manage.manager.login_validate, manage.house_project.indexUI);
