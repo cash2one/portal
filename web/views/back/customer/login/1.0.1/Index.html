@@ -18,7 +18,7 @@
 									<div class='form-group'>
 										<label for='logFrm_Email' class='col-sm-3 control-label'>电子邮箱</label>
 										<div class='col-sm-9'>
-											<input type='text' class='form-control' id='logFrm_Email' name='Email' placeholder='手机号/邮箱/用户名' required data-original-title='电子邮箱不能为空。'>
+											<input type='text' class='form-control' id='logFrm_Email' name='Email' placeholder='手机号/邮箱/用户名' required data-original-title='电子邮箱不能为空'>
 										</div>
 									</div>
 									<div class='form-group wrong_tip'>
@@ -27,13 +27,13 @@
 									<div class='form-group'>
 										<label for='logFrm_UserPass' class='col-sm-3 control-label'>登陆密码</label>
 										<div class='col-sm-9'>
-											<input type='password' class='form-control' id='logFrm_UserPass' name='UserPass' placeholder='登陆密码' required data-original-title='登陆密码不能为空。'>
+											<input type='password' class='form-control' id='logFrm_UserPass' name='UserPass' placeholder='登陆密码' required data-original-title='登陆密码不能为空'>
 										</div>
 									</div>
 									<div class='form-group wrong_tip'>
 										<label id='logFrm_UserPass_Vali' class='col-sm-offset-3 col-sm-9'></label>
 									</div>
-									<div class='form-group'>
+									#*<!-- <div class='form-group'>
 										<label for='logFrm_VerifyCode' class='col-sm-3 control-label'>验证码</label>
 										<div class='col-sm-4'>
 											<input type='text' class='form-control' id='logFrm_VerifyCode' name='VerifyCode' placeholder='验证码' required data-original-title='验证码不能为空。'>
@@ -47,7 +47,7 @@
 										<div class='col-sm-offset-3 col-sm-9'>
 											<img id='img_VerifyCode' title='点击更换验证码' src=''>
 										</div>
-									</div>
+									</div> -->*#
 									<div class='form-group'>
 										<div class='col-sm-offset-3 col-sm-9'>
 											<div class='checkbox'>
@@ -71,7 +71,7 @@
 								<div><b>为什么总提示验证码错误？</b></div>
 								<ol>
 									<li>首先请确定浏览器已经启用Cookie。</li>
-									<li>实在不行，邮件给我 3203317 AT qq.com。</li>
+									<li>实在不行，邮件给我 webmaster AT dolalive.com。</li>
 								</ol>
 							</div>
 						</div>
@@ -81,6 +81,7 @@
 		</div>
 		#parse('back/_pagelet/Side.IndexFooter.html')
 		#parse('front/_pagelet/Common.IndexJs.html')
+		#parse('front/_pagelet/Common.LastJs.html')
 		<!-- Own -->
 		<script type='text/javascript'>
 			$('#img_VerifyCode').click(function(){
@@ -110,9 +111,8 @@
 
 			$('#btn_log').click(function(){
 				$('#logFrm').olxForm('submit', [function(){
-					if(!$.trim($('#logFrm_Email').val()).length) return ['电子邮箱不能为空。', 'Email'];
-					if(!$.trim($('#logFrm_UserPass').val()).length) return ['登陆密码不能为空。', 'UserPass'];
-					if(!$.trim($('#logFrm_VerifyCode').val()).length) return ['验证码不能为空。', 'VerifyCode'];
+					if(!$.trim($('#logFrm_Email').val()).length) return ['电子邮箱不能为空', 'Email'];
+					if(!$.trim($('#logFrm_UserPass').val()).length) return ['登陆密码不能为空', 'UserPass'];
 				}, function (valiResu){
 					showVali(valiResu);
 				}, function (data){
@@ -121,6 +121,5 @@
 				}]);
 			});
 		</script>
-		#parse('front/_pagelet/Common.LastJs.html')
 	</body>
 </html>

@@ -24,3 +24,33 @@ exports.findAll = function(name, cb){
 		cb(null, docs);
 	});
 };
+
+/**
+ * 用户登陆
+ *
+ * @params {Object} logInfo 用户登陆信息
+ * @params {Function} cb 回调函数
+ * @return
+ */
+exports.login = function(logInfo, cb){
+	this.findByName(logInfo.Email, function (err, doc){
+		if(err) return cb(err);
+		if(!doc) return cb(null, 3, ['用户名或密码输入错误', 'Email']);
+		if(md5.hex(logInfo.UserPass) !== doc.USER_PASS)
+			return cb(null, 6, ['用户名或密码输入错误', 'UserPass'], doc);
+		cb(null, null, null, doc);
+	});
+};
+
+/**
+ * 查找用户通过用户名
+ *
+ * @params
+ * @return
+ */
+exports.findByName = function(name, cb){
+	mysql_util.find(null, 'p_customer', [['USER_NAME', '=', name]], null, null, function (err, docs){
+		if(err) return cb(err);
+		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
+	});
+};

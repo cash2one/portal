@@ -74,6 +74,7 @@ function proc_front(app){
 function proc_back(app){
 	app.get('/user/login', back.customer.loginUI);
 	app.post('/user/login$', express.valiPostData, back.customer.login);
+	app.get('/user/login/success$', back.customer.login_success);
 }
 
 /**

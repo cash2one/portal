@@ -18,6 +18,7 @@ var fs = require('fs'),
 	velocity = require('velocityjs');
 
 var biz = {
+	customer: require('../../../biz/customer')
 };
 
 var exports = module.exports;
@@ -63,4 +64,15 @@ exports.login = function(req, res, next){
 		result.success = true;
 		res.send(result);
 	});
+};
+
+/**
+ * 用户登陆成功
+ *
+ * @params
+ * @return
+ */
+exports.login_success = function(req, res, next){
+	var user = req.session.user;
+	res.redirect('/i/');
 };
