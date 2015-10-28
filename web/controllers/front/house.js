@@ -8,7 +8,8 @@
 var util = require('speedt-utils'),
 	cache = util.cache;
 
-var conf = require('../../settings');
+var conf = require('../../settings'),
+	macros = require('../../lib/macro');
 
 var fs = require('fs'),
 	path = require('path'),
@@ -18,6 +19,7 @@ var fs = require('fs'),
 	velocity = require('velocityjs');
 
 var biz = {
+	house_project: require('../../../biz/house_project'),
 	page_position: require('../../../biz/page_position'),
 	zone: require('../../../biz/zone'),
 	ad: require('../../../biz/ad')
@@ -31,12 +33,26 @@ var exports = module.exports;
  * @return
  */
 exports.indexUI = function(req, res, next){
-	// TODO
-	res.render('front/house/1.0.2/Index', {
-		conf: conf,
-		title: '房产 | 郑州 | '+ conf.corp.name,
-		description: '',
-		keywords: ',dolalive,html5'
+	var ep = EventProxy.create('house_project', function (house_project){
+		// TODO
+		res.render('front/house/1.0.3/Index', {
+			conf: conf,
+			title: '房产 | 郑州 | '+ conf.corp.name,
+			description: '',
+			keywords: ',dolalive,html5',
+			data: {
+				house_project: house_project
+			}
+		});
+	});
+
+	ep.fail(function (err){
+		next(err);
+	});
+
+	biz.house_project.findAll(null, function (err, docs){
+		if(err) return ep.emit('error', err);
+		ep.emit('house_project', docs);
 	});
 };
 
