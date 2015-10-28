@@ -76,3 +76,27 @@ exports.login_success = function(req, res, next){
 	var user = req.session.user;
 	res.redirect('/i/');
 };
+
+/**
+ *
+ * @param
+ * @return
+ */
+exports.indexUI = function(req, res, next){
+	// TODO
+	biz.customer.findByName('mega', function (err, doc){
+		if(err) return next(err);
+		if(!doc) return res.redirect('/');
+
+		// TODO
+		res.render('back/my/Index', {
+			conf: conf,
+			title: '我的 | '+ conf.corp.name,
+			description: '',
+			keywords: ',dolalive,html5',
+			data: {
+				customer: doc
+			}
+		});
+	});
+};

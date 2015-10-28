@@ -11,7 +11,6 @@ var util = require('speedt-utils'),
 var front = {
 	house: require('../controllers/front/house'),
 	shop: require('../controllers/front/shop'),
-	my: require('../controllers/front/my'),
 	site: require('../controllers/front/site')
 };
 var back = {
@@ -58,8 +57,6 @@ function proc_front(app){
 	app.get('/shop/coupon/', front.shop.couponUI);
 	// 商铺
 	app.get('/shop/:shop/', front.shop.indexUI);
-	// 我的
-	app.get('/i/', front.my.indexUI);
 	// 首页
 	app.get('/:zone/', front.site.checkExistOpenSite, function (req, res, next){ req.flash('page_id', 'dad9657792274e0e95a15c8901573c11'); next(); }, front.site.findAds_zoneUI, front.site.zoneUI);
 	// 默认
@@ -75,6 +72,8 @@ function proc_back(app){
 	app.get('/user/login', back.customer.loginUI);
 	app.post('/user/login$', express.valiPostData, back.customer.login);
 	app.get('/user/login/success$', back.customer.login_success);
+	// 我的
+	app.get('/i/', back.customer.indexUI);
 }
 
 /**
