@@ -82,3 +82,18 @@ exports.houseUI = function(req, res, next){
 		}
 	});
 };
+
+/**
+ *
+ * @param
+ * @return
+ */
+exports.caculateUI = function(req, res, next){
+	// TODO
+	res.render('front/Caculate', {
+		conf: conf,
+		title: '房贷计算 | '+ conf.corp.name,
+		description: '',
+		keywords: ',dolalive,html5'
+	});
+};
