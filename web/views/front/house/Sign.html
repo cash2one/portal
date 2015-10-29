@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+	<head>
+		#parse('front/_pagelet/Common.IndexHeader.html')
+		<link rel="stylesheet" type="text/css" href="http://demo.zzmekj.com/dcxm/css/normal.css">
+  </head>
+  <body>
+	<div class="top de_top">
+	<div class="head ">
+        <p class="back"><a href="#"> <img src="http://demo.zzmekj.com/dcxm/images/back.jpg"></img></a></p>
+        <p>优惠报名</p>
+		<p class="gz"><a href="#"> <img src="http://demo.zzmekj.com/dcxm/images/colse.jpg"></img></a></p>
+    </div>
+   </div>
+   <div class="">
+
+	<div class="yh_tit">
+		<p>限时团购5千抵2万</p>
+		<p>剩余时间：<span>15天7小时44分</span></p>
+	</div>
+	<form action="" class="myform">
+	  <fieldset>
+		
+		<div class="form-group">
+		  <p><label>姓 <span style="color:#fff">&nbsp;</span> 名:</label>
+		  <input type="text"  minlength="3" placeholder="请填写姓名"  required/></p>
+		  <p><label>报名人数:</label>
+		  <input type="text"  minlength="3" placeholder="请填写报名人数"  required/></p>
+		   <p><label>手 机 号:</label>
+		  <input type="text"  minlength="3" placeholder="请输入手机号"  required/></p>
+		  <p> <label>验 证 码:</label>
+		  <input type="text"  minlength="3" placeholder="请输入验证码"  required/>  <span>获取验证码</span></p>
+		<button type="button" class="btn btn-danger">立即报名</button>
+		</div>
+	  </fieldset>
+	</form>
+
+</div>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+		#parse('front/_pagelet/Common.IndexJs.html')
+		#parse('front/_pagelet/Common.LastJs.html')
+    <script>
+    	$(function(){
+			var w=$(window).width();
+			
+			$('.drop .d_list .dropdown-menu').css('min-width',w);
+			
+			
+			 $(".carousel").swipe({
+
+				  swipeLeft: function() { $(this).carousel('next'); },
+				
+				  swipeRight: function() { $(this).carousel('prev'); },
+				
+				 });
+			})
+			
+    </script>
+  </body>
+</html>

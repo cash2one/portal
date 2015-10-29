@@ -47,6 +47,10 @@ function proc_front(app){
 	// app.get('/', site.indexUI);
 	// app.get('/w/:wifi_mac/', wifi.indexUI);
 
+	// 房产
+	app.get('/house/project/:id/', front.house.projectUI);
+	// 活动报名
+	app.get('/house/sign', front.house.signUI);
 	// 房贷计算
 	app.get('/house/caculate/', front.house.caculateUI);
 	// 房产

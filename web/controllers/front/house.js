@@ -90,7 +90,37 @@ exports.houseUI = function(req, res, next){
  */
 exports.caculateUI = function(req, res, next){
 	// TODO
-	res.render('front/Caculate', {
+	res.render('front/house/Caculate', {
+		conf: conf,
+		title: '房贷计算 | '+ conf.corp.name,
+		description: '',
+		keywords: ',dolalive,html5'
+	});
+};
+
+/**
+ *
+ * @param
+ * @return
+ */
+exports.signUI = function(req, res, next){
+	// TODO
+	res.render('front/house/Sign', {
+		conf: conf,
+		title: '房贷计算 | '+ conf.corp.name,
+		description: '',
+		keywords: ',dolalive,html5'
+	});
+};
+
+/**
+ *
+ * @param
+ * @return
+ */
+exports.projectUI = function(req, res, next){
+	// TODO
+	res.render('front/house/Project', {
 		conf: conf,
 		title: '房贷计算 | '+ conf.corp.name,
 		description: '',
