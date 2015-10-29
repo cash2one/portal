@@ -73,7 +73,7 @@ exports.login = function(req, res, next){
  * @return
  */
 exports.login_success = function(req, res, next){
-	var user = req.session.user;
+	var customer = req.session.customer;
 	res.redirect('/i/');
 };
 
@@ -83,20 +83,27 @@ exports.login_success = function(req, res, next){
  * @return
  */
 exports.indexUI = function(req, res, next){
+	var customer = req.session.customer;
 	// TODO
-	biz.customer.findByName('mega', function (err, doc){
-		if(err) return next(err);
-		if(!doc) return res.redirect('/');
-
-		// TODO
-		res.render('back/my/Index', {
-			conf: conf,
-			title: '我的 | '+ conf.corp.name,
-			description: '',
-			keywords: ',dolalive,html5',
-			data: {
-				customer: doc
-			}
-		});
+	res.render('back/my/Index', {
+		conf: conf,
+		title: '我的 | '+ conf.corp.name,
+		description: '',
+		keywords: ',dolalive,html5',
+		data: {
+			customer: customer
+		}
 	});
+};
+
+/**
+ * 用户会话验证
+ *
+ * @params
+ * @return
+ */
+exports.login_validate = function(req, res, next){
+	if(2 === req.session.lv) return next();
+	if(req.xhr) return res.send({ success: false, msg: '无权访问' });
+	res.redirect('/user/login?refererUrl='+ escape(req.url));
 };
