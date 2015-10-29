@@ -107,3 +107,13 @@ exports.login_validate = function(req, res, next){
 	if(req.xhr) return res.send({ success: false, msg: '无权访问' });
 	res.redirect('/user/login?refererUrl='+ escape(req.url));
 };
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.logoutUI = function(req, res, next){
+	req.session.destroy();
+	res.redirect('/user/login');
+};

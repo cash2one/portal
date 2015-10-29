@@ -72,6 +72,7 @@ function proc_back(app){
 	app.get('/user/login', back.customer.loginUI);
 	app.post('/user/login$', express.valiPostData, back.customer.login);
 	app.get('/user/login/success$', back.customer.login_validate, back.customer.login_success);
+	app.get('/user/logout$', back.customer.logoutUI);
 	// 我的
 	app.get('/i/', back.customer.login_validate, back.customer.indexUI);
 }

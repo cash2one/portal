@@ -18,8 +18,8 @@ var exports = module.exports;
  * @return
  */
 exports.findAll = function(name, cb){
-	name = !!name ? '%'+ name +'%' : '%%';
-	mysql_util.find(null, 'h_house_project', [['PROJECT_NAME', 'like', name]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
+	var sql = 'SELECT a.*, b.TYPE_NAME HOUSE_TYPE_NAME, c.ZONE_NAME FROM h_house_project a, h_house_type b, w_zone c WHERE a.ZONE_ID=c.id AND a.HOUSE_TYPE_ID=b.id ORDER BY a.CREATE_TIME DESC';
+	mysql.query(sql, null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
 	});
