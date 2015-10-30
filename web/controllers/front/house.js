@@ -119,11 +119,27 @@ exports.signUI = function(req, res, next){
  * @return
  */
 exports.projectUI = function(req, res, next){
+	var id = req.params.id;
 	// TODO
-	res.render('front/house/Project', {
-		conf: conf,
-		title: '房贷计算 | '+ conf.corp.name,
-		description: '',
-		keywords: ',dolalive,html5'
+	var ep = EventProxy.create('house_project', function (house_project){
+		// TODO
+		res.render('front/house/Project', {
+			conf: conf,
+			title: '房贷计算 | '+ conf.corp.name,
+			description: '',
+			keywords: ',dolalive,html5',
+			data: {
+				house_project: house_project
+			}
+		});
+	});
+
+	ep.fail(function (err){
+		next(err);
+	});
+
+	biz.house_project.getById(id, function (err, doc){
+		if(err) return ep.emit('error', err);
+		ep.emit('house_project', doc);
 	});
 };

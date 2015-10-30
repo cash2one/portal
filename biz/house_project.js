@@ -24,3 +24,15 @@ exports.findAll = function(name, cb){
 		cb(null, docs);
 	});
 };
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.getById = function(id, cb){
+	mysql_util.find(null, 'h_house_project', [['id', '=', id]], null, null, function (err, docs){
+		if(err) return cb(err);
+		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
+	});
+};
