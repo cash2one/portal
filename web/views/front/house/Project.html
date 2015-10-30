@@ -3,6 +3,16 @@
 	<head>
 		#parse('front/_pagelet/Common.IndexHeader.html')
 		<link rel="stylesheet" type="text/css" href="/public/assets/house/1.0.1/css/style.css">
+		<style>
+			#map {
+				height: 200px;
+				width: 100%;
+			}
+		</style>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=C678QKucRji9ykCMCULgRBpG">
+			//v1.5版本的引用方式：src="http://api.map.baidu.com/api?v=1.5&ak=您的密钥"
+			//v1.4版本及以前版本的引用方式：src="http://api.map.baidu.com/api?v=1.4&key=您的密钥&callback=initialize"
+		</script>
   </head>
   <body>
   	#set($doc=$data.house_project)
@@ -57,8 +67,8 @@
 <div class="">
 	<p class="de_tit">$!{doc.PROJECT_NAME}<span>待售</span> <span>#*<a href="#">论坛（22）<img src="/public/assets/house/1.0.1/images/s_r.jpg"></img>*#</span></a></p>
 	<div class="de_con">
-		<p>均价：<span><b>8600元/㎡</b></span>
-        		<span><a href="#"><img src="/public/assets/house/1.0.1/images/jsq.jpg"></img>算房贷</span></a>
+		<p>均价：<span><b>$!{doc.PRICE}元/㎡</b></span>
+        		<span><a href="../../caculate/"><img src="/public/assets/house/1.0.1/images/jsq.jpg"></img>算房贷</span></a>
         </p>
 		<p>时间：<span>预计2015-10（待售）</span></p>
 		<p>地址：<span>经开区-经开十七大街与南三环交汇处南500米</span></p>
@@ -190,7 +200,7 @@
 	</div>
    <div class="wz">
 		<p class="com_tit">位置周边</p>
-		<img src="/public/assets/house/1.0.1/images/map.jpg"></img>
+		<div id='map'>#*<img src="/public/assets/house/1.0.1/images/map.jpg"></img>*#</div>
 		<p>周边配套：地铁、医院、学校、银行、公交....<img src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></p>
 	</div>
 	<div class="fj">
@@ -333,6 +343,21 @@
 				})
 			})
 			
+    </script>
+    <script>
+		(function(){
+			var map = new BMap.Map("map");          // 创建地图实例
+			var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
+			map.centerAndZoom(point, 15);                 // 初始化地图，设置中心点坐标和地图级别
+			map.enableScrollWheelZoom(true);
+
+			var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+			map.addControl(top_left_control);
+
+			var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+			map.addControl(top_left_navigation);
+
+		})();
     </script>
   </body>
 </html>
