@@ -1,0 +1,286 @@
+@charset "utf-8";
+/* CSS Document */
+body{ font-family:"黑体"}
+.am-slider-default .am-control-nav li a.am-active{ background:#fff;}
+.top{ width:100%; height:50px; background:#e3393c}
+.top .head{ padding:0 10px; padding-top:10px; margin:0 }
+.top .logo{ width:32%;  height:100%; float:left; margin-bottom:0}
+.top .logo a{ padding:0}
+.top .logo img{ height:30px}
+
+.top input{  height:30px; border-radius:5px; float:left; font-size:12px}
+.top a{ border:0; background:none; height:50px; padding-left:5px}
+.top .btn-group{ float:right;  }
+.top .btn-group .dropdown-menu{ right:0; left:-150%}
+.top .btn-group .btn-danger{ background:#e3393c; border:#e3393c}
+
+
+
+
+.city li{ height:30px; line-height:30px}
+.banner .am-slider-default .am-control-nav{ bottom:9px}
+.sub_nav{ margin:10px 0}
+.sub_nav .item{ width:25%; float:left;}
+.sub_nav .item a{ display:block; float:left; width:100%; text-align:center}
+.sub_nav .item img{ width:50px;}
+.sub_nav .item p{ width:100%; margin:5px 0; font-size:14px; color:#555}
+
+
+
+.tit{ clear:both; width:100%; height:50px; background:#f1f1f1; border-top:1px solid #dcdcdc; border-bottom:1px solid #dcdcdc; padding-left:10px; line-height:50px}
+.tit img{ width:22px; margin-right:10px}
+.drop{ background:#fff; width:100%; height:55px; line-height:30px; padding:10px 0; border-bottom:1px solid #dcdcdc}
+
+.drop .d_list{ width:25%; float:left; color:#000; text-align:center;border-right:1px solid #d3d3d3;}
+.drop .d_list .btn{ font-size:16px}
+.drop .d_list .btn-default{ border:0 }
+.drop .d_list .am-dropdown-toggle span{ color:#717171}
+.drop .d_list .btn-default:hover{ background:#fff}
+.drop .d_list .open>.dropdown-toggle.btn-default:focus,.drop .d_list .open>.dropdown-toggle.btn-default:hover{ background:#fff}
+.drop .d_list .dropdown-menu{ top:155%; border:0}
+.drop .d_list .dropdown-menu:before{ content:'scrow'; color:#fff; width:15px; height:10px; background:url(../images/s_t.png) no-repeat; position:absolute; left:13%; top:-8px}
+.drop .d_list:nth-of-type(2) .dropdown-menu:before{left:38%}
+.drop .d_list:nth-of-type(3) .dropdown-menu:before{left:63%}
+.drop .d_list:nth-of-type(4) .dropdown-menu:before{left:88%}
+
+
+.drop .d_list  .tab{ width:40%; float:left;}
+.drop .d_list   h5{ font-size:16px;border-bottom:1px solid #d3d3d3; height:50px; line-height:50px; margin:0; padding-left:20px }
+
+.drop .d_list  .tab p{ margin:0;height:50px; line-height:50px; padding-left:20px; border-bottom:1px solid #d3d3d3;font-size:16px}
+.drop .d_list .tab_sub{ width:60%; float:left; display:none}
+
+.drop .d_list .tab_sub h5{border-left:1px solid #d3d3d3;}
+.drop .d_list .tab_sub ul{ padding:0; margin:0}
+.drop .d_list .tab_sub li{ list-style:none;height:50px; line-height:50px; padding-left:20px;border-left:1px solid #d3d3d3;border-bottom:1px solid #d3d3d3; font-size:16px}
+.drop .d_list .am-dropdown{ width:100%}
+.drop .d_list .dropdown-menu{ padding:0;  padding-bottom:20px; box-shadow:0px 3px 5px #d3d3d3}
+
+
+.price{ left:-101%; border-left:0}
+.drop .d_list .price  .tab{ width:50%;}
+.drop .d_list  .price  .tab_sub{width:50%}
+.type{left:-203%;} 
+.drop .d_list .type .tab{ width:100%}
+
+.more{ left:-304%}
+.more .sub_tab{ display:none}
+.drop .d_list .more .btn-default{ background-color:#fff; border:1px solid #ccc} 
+.d_list:nth-of-type(1) .am-dropdown-content:after,.d_list:nth-of-type(1) .am-dropdown-content:before{ left:12%}
+.d_list:nth-of-type(2) .am-dropdown-content:after,.d_list:nth-of-type(2) .am-dropdown-content:before{ left:38%}
+.d_list:nth-of-type(3) .am-dropdown-content:after,.d_list:nth-of-type(3) .am-dropdown-content:before{ left:62%}
+.d_list:nth-of-type(4) .am-dropdown-content:after,.d_list:nth-of-type(4) .am-dropdown-content:before{ left:87%}
+
+
+
+
+
+ .line{clear:both; width:100%; height:1px; background:#ccc}
+  .con_list{ clear:both; padding:10px 0;border-bottom:1px solid #f1f1f1; height:110px; position:relative; margin:0}
+ .con_list dt{width:35%; float:left; padding-top:5px}
+  .con_list dt img{  width:105px}
+  .con_list dd{ width:65%; float:right; margin-top:0}
+  .con_list dd p{ margin:3px 0; margin-left:5px}
+   .con_list dd p:nth-of-type(1){ font-weight:bold; font-size:16px}
+ .con_list dd p:nth-of-type(1) a{ float:right}
+  .con_list dd p:nth-of-type(1) a img{ width:25px}
+.con_list dd p:nth-of-type(2){ color:#878787; clear:both}
+.con_list dd p:nth-of-type(2) img{ width:14px}
+.con_list dd p:nth-of-type(2) span{ font-size:12px; }
+.con_list dd p:nth-of-type(2) span:nth-of-type(2){ color:#e81617; font-weight:bold; margin-left:5px}
+.con_list dd p:nth-of-type(3){ font-size:12px;color:#878787}
+.con_list dd p:nth-of-type(4){ font-size:10px; color:#fff}
+.con_list dd p:nth-of-type(4) span{padding:2px;}
+.con_list dd p:nth-of-type(4) span:nth-of-type(1){ background:#f43b39}
+.con_list dd p:nth-of-type(4) span:nth-of-type(2){ background:#29c4c0; margin:0 2px}
+.con_list dd p:nth-of-type(4) span:nth-of-type(3){ background:#5eaa3d}
+.con_list dd p:nth-of-type(5) img{ width:24px; position:absolute; left:0; top:15px}
+.type_list .type_tit{ margin:10px 0; border-left:3px solid #51c654; padding-left:5px; font-size:15px;}
+.type_list .type_tit span{ margin-left:5px; color:#ababab; font-size:12px}
+.type_list .type_tit a{ font-size:12px;float:right; padding:3px; border:1px solid #51c654; color:#51c654; border-radius:3px;}
+.type_list .con_list{ border-top:1px solid #f1f1f1; border-bottom:0;}
+
+.bot{padding:5px 0; position:; border-top:1px solid #d3d3d3; background:#fff; width:100%; z-index:999999}
+.bot a{ display:block; width:20%; float:left; text-align:center; margin:10px 0; color:#767676;  }
+.bot  a img{ width:30px}
+ .de_top{ margin:0}  
+.de_top .back { width:10%; float:left; margin:0}
+.de_top .back a{ padding-left:0}
+.de_top .back img{ width:30px} 
+.de_top p:nth-of-type(2) {width:80%; text-align:center; float:left; margin:0; font-size:18px; color:#fff}
+.de_top .gz { width:10%; float:right; margin:0; text-align:right}
+.de_top .gz  img{ width:30px}
+
+.de_tit{ height:50px; line-height:50px; margin:0; font-size:18px; padding:0 10px}
+.de_tit span:nth-of-type(1){margin:0 5px; font-size:12px; border:1px solid #68bb4f; border-radius:3px; color:#68bb4f; padding:1px 5px}
+.de_tit span:nth-of-type(2){float:right; font-size:15px; }
+.de_tit span:nth-of-type(2) img{ width:20%}
+.de_tit span:nth-of-type(2) a{color:#f44041}
+.de_con{ padding:10px; border-top:1px solid #ccc;border-bottom:1px solid #ccc;}
+.de_con p{ margin:0; font-size:14px; color:#000; }
+.de_con p span{ font-size:12px}
+.de_con p:nth-of-type(1) span:nth-of-type(1){ font-size:18px; color:#f45152}
+.de_con p:nth-of-type(1) span:nth-of-type(2){ float:right;}
+.de_con p:nth-of-type(1) span:nth-of-type(2) a{color:#f45152}
+.de_con p:nth-of-type(1) span:nth-of-type(2) img{ width:28%}
+.ph{ padding:10px; background:#f8ffed; height:65px}
+.ph p:nth-of-type(1){ width:80%; float:left; font-size:14px; color:#8b8e87}
+.ph p:nth-of-type(1) span:nth-of-type(1){ color:#68bb4f; font-size:16px}
+.ph p:nth-of-type(1) span:nth-of-type(2){font-size:12px}
+
+.ph p:nth-of-type(2){ width:20%; float:right; text-align:right; margin:0}
+.ph p:nth-of-type(2) img{ width:30px}
+.tz{ height:50px; border-top:1px solid #ccc;border-bottom:1px solid #ccc}
+.tz span{ display:block; float:left; margin:10px 0;text-align:center;}
+.tz span img{ width:30px; margin-right:10px}
+.tz span:nth-of-type(1){ width:45%;  border-right:1px solid #ccc; color:#969696}
+.tz span:nth-of-type(2){ width:45%; color:#969696}
+.yy { background:#f7f7f7; padding:0 10px; padding-bottom:10px}
+.yy .yy_tit{ padding:10px 0; margin-bottom:0; font-size:16px}
+.yy .yy_con{ background:#fff; font-size:12px; height:80px; padding:10px 0}
+.yy .yy_con p:nth-of-type(1){ width:75%; float:left; margin-bottom:10px; color:#969696}
+.yy .yy_con p:nth-of-type(1) b{ color:#1a1a1a}
+.yy .yy_con p:nth-of-type(2){ width:25%; float:right; text-align:center; margin-top:0}
+
+.com_tit{border-left:3px solid #ff5152; line-height:40px; line-height:40px; padding-left:10px; border-bottom:1px solid #ccc;}
+.hx{ border-bottom:5px solid #e7e7e7; margin-bottom:0;-webkit-box-shadow:0 0 0}
+.hx_slider{ width:33.3%; float:left; padding:3px}
+.hx_slider img{ width:100%;border:1px solid #ccc; padding:3px;}
+.hx_slider span{ text-align:center; font-size:12px; text-align:center}
+
+hx .carousel-control.left{background-image:none}
+/*.hx .item .hx_silder{ margin:0 10px; width:100%}
+.hx_silder { padding-left:0}
+.hx_silder li{ width:33%; float:left; list-style:none; padding:0 4px}
+.hx_silder li:nth-of-type(3n){ padding-right:0}
+.hx_silder li img{ border:1px solid #ccc; padding:3px; width:100% }
+.hx_silder li span{ font-size:0.8rem; color:#555}
+.hx .am-direction-nav .am-next{right:0; background:url(../images/s_r2.png) right bottom no-repeat; opacity:1}
+.hx .am-direction-nav a{ top:35%}
+.hx .am-direction-nav .am-prev{left:-5px;background:url(../images/s_l2.png) left bottom no-repeat; opacity:1 }
+
+.hx .am-control-nav{ display:none}
+.hx .am-direction-nav a:before{ content:"";}
+.hx .am-direction-nav a.am-next:before{content:"";}*/
+.lp_con p{ margin:5px 0; padding:0 10px}
+.lp_con p:nth-of-type(1) span{ border:1px solid #ccc; padding:3px 5px; margin-right:10px;}
+.lp_con p:nth-of-type(6){ padding:10px 0; text-align:center; border-top:1px solid #ccc; border-bottom:5px solid #e7e7e7 }
+.lp_con p:nth-of-type(6) img{ width:25px}
+.lp_con p:nth-of-type(6)  a{color:#ff5152; display:block}
+.show_de{ font-size:13px; text-align:left; display:none;}
+ .wz{ width:100%;}
+ .wz p{ margin-bottom:0}
+ .wz img{ width:100%}
+ .wz p:nth-of-type(2){ font-size:13px; border-bottom:5px solid #ccc; text-align:center; margin:0; line-height:30px}
+  .wz p:nth-of-type(2) img{ width:17px;}
+   .fj p:nth-of-type(1) a{ display:block; float:right}
+  .fj p:nth-of-type(1) span{ cursor:pointer; display:block; width:30px; height:20px; line-height:20px; font-size:12px; float:left; border-radius:20px 0 0 20px; background:#ccc; color:#fff; margin-top:10px;border:1px solid #ccc}
+  .fj p:nth-of-type(1) span:nth-of-type(2){ color:#555;border-radius:0 20px 20px 0px; background:#fff; border:1px solid #ccc}  
+   .fj{ width:100%;}
+  .fj img{ width:100%; display:none}
+  .fj img:nth-of-type(1){ display:block}
+  .pl p:nth-of-type(1) {margin-bottom:5px; padding:0 10px}
+  .pl p:nth-of-type(1) img{ float:right; width:22px; margin-top:10px}
+  .pl_con  p:nth-of-type(1) img {width:20px; float:left; margin:0}
+.pl_con  p:nth-of-type(1) span{ margin-left:10px; color:#ff7f00}
+ .pl_con  p:nth-of-type(2){ border-top:1px solid #ccc;border-bottom:1px solid #ccc; height:30px; line-height:30px; margin:5px 0}
+  .pl_con  p:nth-of-type(2) span{ width:25%; float:left; display:block; text-align:center; font-size:12px}  
+ .pl_detail{ border-bottom:1px solid #ccc; padding:10px}
+ .pl_detail p:nth-of-type(1){ line-height:45px; height:45px;} 
+.pl_detail p:nth-of-type(1) span:nth-of-type(1){ width:60%; float:left; margin-left:0; color:#ccc} 
+.pl_detail p:nth-of-type(1) span:nth-of-type(1) img{ width:45px; margin-right:10px}
+.pl_detail p:nth-of-type(1) span:nth-of-type(2){  float:right; }  
+.pl_detail p:nth-of-type(1) span:nth-of-type(2) img{ width:17px;}
+.pl_detail p:nth-of-type(2){margin-bottom:0; font-size:13px; border:0; height:auto; line-height:18px; font-weight:700}
+.pl_detail p:nth-of-type(3){ margin:0; font-size:12px }
+.de_bot{ height:50px; background:#f04243; padding:15px 0}
+.de_bot span{ width:33.3%; float:left; border-right:1px solid #fff; text-align:center;}
+.de_bot span:nth-of-type(3){ border:0}
+.de_bot span a{ color:#fff;}
+.yh_tit{ background:#f5f5f5; padding:20px 10px;  }
+.yh_tit p:nth-of-type(2) span{ color:#de3031; }
+ .myform .form-group p{ border-bottom:1px solid #ccc; height:40px; line-height:36px; padding:0 10px}
+  .myform .form-group label{ width:25%; float:left; display:block;line-height:40px}
+ .myform .form-group  input{ width:75%; float:left; border:0}
+  .myform .form-group p:nth-of-type(4){ position:relative}
+  .myform .form-group p:nth-of-type(4) span{ position:absolute; right:10px; color:#de3031; margin-top:5px}
+  
+   .myform .form-group button{ width:80%; margin-left:10%} 
+.dp_tit p:nth-of-type(1){ width:40%; float:left; text-align:center}
+.dp_tit p:nth-of-type(1) img{ width:125px}
+.dp_tit p:nth-of-type(2){ width:60%; float:left; line-height:40px; margin:0; text-align:center}
+
+.dp_tit p:nth-of-type(2) img{ margin-right:0px; width:20px}
+.dp_tit{ margin:20px 0; margin-bottom:0; height:150px; border-bottom:1px  dashed #ccc;}
+.dp{ background:#fafcfb; height:35px; line-height:35px; padding:0 10px; border-bottom:1px solid #ccc; margin:0}
+.dp img{ margin-right:10px}
+.wr{ text-align:center; border-bottom:10px solid #f5f5f5;border-top:10px solid #f5f5f5; margin:0; height:60px; line-height:35px; color:red; }
+.wr img{ width:24px}
+.zj{ padding:0 10px; border-bottom:1px solid #ccc; padding-bottom:10px; margin-top:10px}
+.zj span{ padding:5px 1px; border:1px solid #ccc; border-radius:3px; font-size:12px; color:#ccc}
+ .pl_detail2 p:nth-of-type(1) span:nth-of-type(2) { width:40%; text-align:right}
+ .pl_detail2 p:nth-of-type(1) span:nth-of-type(2) img{ width:16px}
+ .pl_detail2 p:nth-of-type(2) span:nth-of-type(1){ width:100%; display:block; text-align:center}
+ .pl_detail2 p:nth-of-type(2) span:nth-of-type(2){ width:100%; display:none}
+ 
+ .bot2{ background:rgba(255,255,255,0.7); height:70px;}
+ .bot2  button{ width:70%; margin-left:15%; margin-top:10px}
+  .h_t { padding:0 10px;border-bottom:5px solid #f5f5f5; }
+ .hxxq{ margin:15px 0}
+.hxxq .p1 span{ padding:3px 5px; border:1px solid #70cc4d; color:#70cc4d; border-radius:3px; font-size:12px; margin-left:10px}
+.hxxq .p2 span:nth-of-type(2){float:right}
+.hxxq .p2 span:nth-of-type(1){padding:5px; border:1px solid #e3393c; color:#e3393c; border-radius:3px;}
+  .hxxq .p2 span:nth-of-type(2){ color:#e3393c} 
+ .hxxq .p2 span:nth-of-type(2) img{ width:30%} 
+ .hxxq .mode1{ padding-bottom:10px; height:150px; line-height:24px; color:#7a7f83}
+ .hxxq .mode1 p span:nth-of-type(1){ width:55%; float:left}
+  .hxxq .mode1 p span:nth-of-type(1) b{ color:#e3393c}
+ .hxxq .mode1 p span:nth-of-type(2){ width:45%; float:left}
+  .hxxq .mode1 p:nth-of-type(4) span{ width:100%}
+    .hxxq .mode1 p:nth-of-type(5) span:nth-of-type(2){ text-align:right; }
+	.hxxq .mode1 p:nth-of-type(5) span:nth-of-type(2) a{color:#e3393c}
+.mode2{ border-bottom:10px solid #f5f5f5;color:#7a7f83}
+	.mode2 p { margin:5px 0; padding:0 10px; font-size:13px}
+.mode2 p:nth-of-type(1){ color:#000; border-bottom:1px solid #ccc; height:40px; line-height:40px; margin-bottom:10px; font-size:16px}
+.mode3{ height:115px;  border-bottom:10px solid #f5f5f5;color:#7a7f83}  
+.mode3 p:nth-of-type(2) span,.mode3 p:nth-of-type(3) span{ width:33.3%; float:left; font-size:14px; line-height:24px}
+.mode3 p:nth-of-type(2) span:nth-of-type(2){ text-align:center;}
+.mode3 p:nth-of-type(2) span:nth-of-type(3){ text-align:right}
+.mode3 p:nth-of-type(3) span{ color:#b8bdc1; text-align:left}
+.mode3 p:nth-of-type(3) span:nth-of-type(2){ text-align:center;}
+.mode3 p:nth-of-type(3) span:nth-of-type(3){ text-align:right}
+.mode4{ background:#f0f6e8;color:#7a7f83} 
+.tab{ margin:0; }
+
+.tab_p1 img{ width:25px; margin-right:10px; margin-left:5px}
+.tab_p2{ width:100%}
+.tab_p2 span:nth-of-type(1){ width:50%; float:right; text-align:right}
+.tab_p2 span:nth-of-type(1) input{ width:80%; float:left; border:0; height:30px; }
+    .tab_p3 span{ float:right}
+	    .tab_p3 span img{ width:16px}
+  
+     .tab_p4 span{ float:right} 
+	 .tab_p4 span img{ width:16px}
+	 
+.tab .tab-pane  p{ border-bottom:1px solid #ccc; height:40px; line-height:40px; padding:0 10px}	 
+.tab_p5{ text-align:right; font-size:14px;  }
+.tab .tab-pane .tab_p5{border:0}
+.tab_btn{ width:60%; margin-left:20%}
+	 
+	 
+#myTab{height:44px;  background:#ccc;}
+#myTab li{width:32%; float:left}
+#myTab li:nth-of-type(1){ width:36%;}
+#myTab li a{ color:#000; font-size:16px; background:#ccc; border:0} 
+#myTab .active{ background:#ccc; border-bottom:2px solid #f30}
+
+
+	 
+	 
+	 
+	 
+  
+  
+  
+  
+  
