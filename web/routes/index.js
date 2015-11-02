@@ -52,7 +52,7 @@ function proc_front(app){
 	// 房产
 	app.get('/house/project/:id/', front.house.projectUI);
 	// 活动报名
-	app.get('/house/sign', front.house.signUI);
+	app.get('/house/project/:id/sign/', front.house.signUI);
 	// 房贷计算
 	app.get('/house/caculate/', front.house.caculateUI);
 	// 房产
