@@ -37,7 +37,7 @@
 		</p>
 		
 	</div>
-	<p class="dp"><img src="/public/assets/house/1.0.1/images/wr2.jpg"></img>共32条点评</p>
+	<p class="dp"><img src="/public/assets/house/1.0.1/images/wr2.jpg"></img>共$!data.comments.length条点评</p>
 	<p class="wr"> <img src="/public/assets/house/1.0.1/images/wr.jpg"></img>写点评</p>
 	<p class="zj">
 	
@@ -50,7 +50,7 @@
 	
 	
 	</p>
-	<div class="pl_detail pl_detail2">
+	<!-- <div class="pl_detail pl_detail2">
 		<p>
 			<span><img src="/public/assets/house/1.0.1/images/tx.jpg"></img>小明</span>
 			<span>
@@ -95,7 +95,8 @@
 		
 	   
 	   
-	</div>
+	</div> -->
+	#foreach($!doc in $!data.comments)
 	<div class="pl_detail pl_detail2">
 		<p>
 			<span><img src="/public/assets/house/1.0.1/images/tx.jpg"></img>小明</span>
@@ -108,17 +109,14 @@
 			</span>
 		</p>
 		<p>
-			郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责郑州博颂职业责任有限公司郑州博颂职
-			
-			<span class="xq"><img src="/public/assets/house/1.0.1/images/s_b2.jpg"></img></span>
-			<span class="xq_des">业责任有限公司郑州博颂职业责业责任有限公司郑州博颂职业责业责任有限公司郑州博颂职业责</span>
+			$!doc.CONTENT
 		
 		</p>
-		<p>2015-10-24 12:34:56</p>
+		<p>#formatDate2($!doc.CREATE_TIME)</p>
 		
 	   
 	   
-	</div>
+	</div>#end
 	
 
 </div>
