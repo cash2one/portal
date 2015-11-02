@@ -47,6 +47,8 @@ function proc_front(app){
 	// app.get('/', site.indexUI);
 	// app.get('/w/:wifi_mac/', wifi.indexUI);
 
+	// 房产评论
+	app.get('/house/project/:id/comment/', front.house.commentUI);
 	// 房产
 	app.get('/house/project/:id/', front.house.projectUI);
 	// 活动报名

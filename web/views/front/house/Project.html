@@ -21,7 +21,7 @@
 	<div class="head ">
         <p class="back"><a href="javascript:history.back();"> <img src="/public/assets/house/1.0.1/images/back.jpg"></img></a></p>
         <p>$!{doc.PROJECT_NAME}</p>
-		<p class="gz"><a href="#"> <img src="/public/assets/house/1.0.1/images/heart.jpg"></img></a></p>
+		<p class="gz"><a href="javascript:;"> <img src="/public/assets/house/1.0.1/images/heart.jpg"></img></a></p>
     </div>
 </div>
 <div class="banner" style="clear:both"> 
@@ -65,19 +65,19 @@
 
 
 <div class="">
-	<p class="de_tit">$!{doc.PROJECT_NAME}<span>待售</span> <span>#*<a href="#">论坛（22）<img src="/public/assets/house/1.0.1/images/s_r.jpg"></img>*#</span></a></p>
+	<p class="de_tit">$!{doc.PROJECT_NAME}<span>$!{doc.STATUS_NAME}</span> <span>#*<a href="javascript:;">论坛（22）<img src="/public/assets/house/1.0.1/images/s_r.jpg"></img>*#</span></a></p>
 	<div class="de_con">
 		<p>均价：<span><b>$!{doc.PRICE}元/㎡</b></span>
         		<span><a href="../../caculate/"><img src="/public/assets/house/1.0.1/images/jsq.jpg"></img>算房贷</span></a>
         </p>
-		<p>时间：<span>预计2015-10（待售）</span></p>
-		<p>地址：<span>经开区-经开十七大街与南三环交汇处南500米</span></p>
+		<p>时间：<span>预计#formatDate3($!{doc.PLAN_SALE_TIME})（$!{doc.STATUS_NAME}）</span></p>
+		<p>地址：<span>$!{doc.ZONE_NAME}-$!{doc.ADDR}</span></p>
 	</div>
 	<div class="ph">
-		<p>咨询电话：<span><b>400-890-1111转56533</b></span></br>
+		<p>咨询电话：<span><b style='cursor: pointer;' title='拨打电话' onclick='location.href="tel:$!{doc.TEL}"'>$!{doc.TEL}</b></span></br>
 			<span>最新政策，更多优惠详情，请拨打咨询电话。</span>
 		</p>
-		<p><img src="/public/assets/house/1.0.1/images/phone2.jpg"></img></p>
+		<p><img style='cursor: pointer;' title='拨打电话' src="/public/assets/house/1.0.1/images/phone2.jpg" onclick='location.href="tel:$!{doc.TEL}"'></img></p>
 	</div>
 	<div class="tz">
 		<span><img src="/public/assets/house/1.0.1/images/zx.jpg"></img>降价通知我</span>
@@ -191,7 +191,7 @@
 			<p><a href="javascript:void(0)">详细信息<img src="/public/assets/house/1.0.1/images/s_b.jpg"></img></a>
 			
 			<span class="show_de container">
-				郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责任有限公司
+				$!{doc.INTRO}
 			</span>
 			
 			</p>
@@ -212,7 +212,7 @@
 	
 	</div>
     <div class="pl">
-	<p class="com_tit">楼盘点评（共17条）<img src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></p>
+	<p class="com_tit">楼盘点评（共17条）<img style='cursor: pointer;' title='查看更多' onclick='location.href="comment/"' src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></p>
 	<div class="pl_con am-container">
 		<p>
 		<img src="/public/assets/house/1.0.1/images/star_a1.jpg"></img>
@@ -295,9 +295,9 @@
    
    
  <div class="de_bot">
-	<span><a href="#">获取优惠</a></span>
-	<span><a href="#">在线咨询</a></span>
-	<span><a href="#">联系售楼处</a></span>
+	<span><a href="javascript:;">获取优惠</a></span>
+	<span><a href="javascript:;">在线咨询</a></span>
+	<span><a href="javascript:;">联系售楼处</a></span>
 	
 </div>  
    
@@ -341,7 +341,7 @@
 				})
 			$('.com_tit span').click(function(){
 				$(this).css('background','#ccc').css('color','#fff').siblings('span').css('background','#fff').css('color','#000')
-				$(this).parent().parent().siblings('img').attr('src','images/chart'+$(this).index()+'.jpg');
+				$(this).parent().parent().siblings('img').attr('src','/public/assets/house/1.0.1/images/chart'+$(this).index()+'.jpg');
 				
 				})
 			})

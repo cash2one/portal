@@ -150,3 +150,40 @@ exports.projectUI = function(req, res, next){
 		ep.emit('comments', docs);
 	});
 };
+
+/**
+ *
+ * @param
+ * @return
+ */
+exports.commentUI = function(req, res, next){
+	var id = req.params.id;
+	// TODO
+	var ep = EventProxy.create('house_project', 'comments', function (house_project, comments){
+		// TODO
+		res.render('front/house/Comment', {
+			conf: conf,
+			title: '房贷计算 | '+ conf.corp.name,
+			description: '',
+			keywords: ',dolalive,html5',
+			data: {
+				comments: comments,
+				house_project: house_project
+			}
+		});
+	});
+
+	ep.fail(function (err){
+		next(err);
+	});
+
+	biz.house_project.getById(id, function (err, doc){
+		if(err) return ep.emit('error', err);
+		ep.emit('house_project', doc);
+	});
+
+	biz.comment.findBySource(id, function (err, docs){
+		if(err) return ep.emit('error', err);
+		ep.emit('comments', docs);
+	});
+};

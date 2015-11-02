@@ -12,13 +12,15 @@ var util = require('speedt-utils'),
 
 var exports = module.exports;
 
+var _sql = "SELECT a.*, b.TYPE_NAME HOUSE_TYPE_NAME, c.ZONE_NAME, d.STATUS_NAME FROM h_house_project a, h_house_type b, w_zone c, h_house_project_status d WHERE a.ZONE_ID=c.id AND a.HOUSE_TYPE_ID=b.id AND a.STATUS_ID=d.id";
+
 /**
  *
  * @params
  * @return
  */
 exports.findAll = function(name, cb){
-	var sql = 'SELECT a.*, b.TYPE_NAME HOUSE_TYPE_NAME, c.ZONE_NAME FROM h_house_project a, h_house_type b, w_zone c WHERE a.ZONE_ID=c.id AND a.HOUSE_TYPE_ID=b.id ORDER BY a.CREATE_TIME DESC';
+	var sql = _sql +' ORDER BY a.CREATE_TIME DESC';
 	mysql.query(sql, null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
@@ -31,7 +33,8 @@ exports.findAll = function(name, cb){
  * @return
  */
 exports.getById = function(id, cb){
-	mysql_util.find(null, 'h_house_project', [['id', '=', id]], null, null, function (err, docs){
+	var sql = _sql +' AND a.id=?';
+	mysql.query(sql, [id], function (err, docs){
 		if(err) return cb(err);
 		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
 	});
