@@ -25,6 +25,8 @@ module.exports = {
 		return util.padLeft(t.getDate(), '0', 2);
 	}, formatDate: function(t){
 		return util.format(t, 'YY-MM-dd hh:mm:ss.S');
+	}, formatDate2: function(t){
+		return util.format(t, 'YY-MM-dd hh:mm:ss');
 	}, num2Money: function(n){
 		return util.currencyformat(n);
 	}, toSDate: function(t){

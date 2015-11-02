@@ -227,7 +227,7 @@
 	   <span>价格3.0分</span>
 	   <span>价格3.0分</span></p>
 	   
-	   <div class="pl_detail">
+	   <!-- <div class="pl_detail">
 		<p>
 			<span><img src="/public/assets/house/1.0.1/images/tx.jpg"></img>小明</span>
 			<span>
@@ -264,7 +264,10 @@
 		<p>2015-10-24 12:34:56</p>
 	   
 	   
-	   </div>
+	   </div> -->
+
+
+	#foreach($!doc in $!data.comments)
 	   <div class="pl_detail">
 		<p>
 			<span><img src="/public/assets/house/1.0.1/images/tx.jpg"></img>小明</span>
@@ -277,11 +280,11 @@
 			</span>
 		</p>
 		<p>
-			郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责郑州博颂职业责任有限公司郑州博颂职业责任有限公司郑州博颂职业责
+			$!doc.CONTENT
 		</p>
-	   <p>2015-10-24 12:34:56</p>
+	   <p>#formatDate2($!doc.CREATE_TIME)</p>
 	   
-	   </div>
+	   </div>#end
 	   
 	   
 	

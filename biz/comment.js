@@ -24,3 +24,15 @@ exports.findAll = function(content, cb){
 		cb(null, docs);
 	});
 };
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.findBySource = function(source_id, cb){
+	mysql_util.find(null, 'p_comment', [['SOURCE_ID', '=', source_id]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
+		if(err) return cb(err);
+		cb(null, docs);
+	});
+};

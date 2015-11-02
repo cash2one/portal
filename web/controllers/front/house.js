@@ -19,6 +19,7 @@ var fs = require('fs'),
 	velocity = require('velocityjs');
 
 var biz = {
+	comment: require('../../../biz/comment'),
 	house_project: require('../../../biz/house_project'),
 	page_position: require('../../../biz/page_position'),
 	zone: require('../../../biz/zone'),
@@ -121,7 +122,7 @@ exports.signUI = function(req, res, next){
 exports.projectUI = function(req, res, next){
 	var id = req.params.id;
 	// TODO
-	var ep = EventProxy.create('house_project', function (house_project){
+	var ep = EventProxy.create('house_project', 'comments', function (house_project, comments){
 		// TODO
 		res.render('front/house/Project', {
 			conf: conf,
@@ -129,6 +130,7 @@ exports.projectUI = function(req, res, next){
 			description: '',
 			keywords: ',dolalive,html5',
 			data: {
+				comments: comments,
 				house_project: house_project
 			}
 		});
@@ -141,5 +143,10 @@ exports.projectUI = function(req, res, next){
 	biz.house_project.getById(id, function (err, doc){
 		if(err) return ep.emit('error', err);
 		ep.emit('house_project', doc);
+	});
+
+	biz.comment.findBySource(id, function (err, docs){
+		if(err) return ep.emit('error', err);
+		ep.emit('comments', docs);
 	});
 };
