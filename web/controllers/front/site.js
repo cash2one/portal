@@ -33,7 +33,7 @@ var exports = module.exports;
  */
 exports.findAds_zoneUI = function(req, res, next){
 	// TODO
-	var zone_id = req.flash('zone_id')[0];
+	var zone_id = req.flash('zone_id')[0] || '';
 	var page_id = req.flash('page_id')[0];
 
 	biz.ad.findAdsByPage(page_id, zone_id, function (err, docs){

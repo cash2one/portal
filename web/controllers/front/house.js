@@ -34,6 +34,9 @@ var exports = module.exports;
  * @return
  */
 exports.indexUI = function(req, res, next){
+	// TODO
+	var ads = req.flash('ads')[0];
+
 	var ep = EventProxy.create('house_project', function (house_project){
 		// TODO
 		res.render('front/house/1.0.3/Index', {
@@ -42,6 +45,7 @@ exports.indexUI = function(req, res, next){
 			description: '',
 			keywords: ',dolalive,html5',
 			data: {
+				ads: ads,
 				house_project: house_project
 			}
 		});
