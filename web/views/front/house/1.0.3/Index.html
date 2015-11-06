@@ -19,18 +19,18 @@
 
 <div class="top">
     <div class="head">
-        <p class="logo"><a href="javascript:;"> <img src="/public/assets/images/logo/logo.png"></a></p>
+        <p class="logo"><a href="/house/"> <img src="/public/assets/images/logo/logo.png"></a></p>
         <input type="text" placeholder="商家分类、商圈">
         <div class="btn-group">
           <button id='top_nav' type="button" class="btn btn-danger dropdown-toggle noShadow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             郑州 <span class="glyphicon glyphicon-menu-down"></span>
           </button>
-         <!--  <ul class="dropdown-menu city">
+          <ul class="dropdown-menu city">
             <li><a href="javascript:;">北京</a></li>
             <li><a href="javascript:;">上海</a></li>
             <li><a href="javascript:;">广州</a></li>
             <li><a href="javascript:;">深圳</a></li>
-          </ul> -->
+          </ul>
         </div>
     </div>
 </div>
@@ -48,8 +48,8 @@
   <div class="carousel-inner" role="listbox">
     #set($_16b6862a15cd4a11a07b155c1cfac4fa = $!data.ads['16b6862a15cd4a11a07b155c1cfac4fa'])
     #foreach($doc in $!_16b6862a15cd4a11a07b155c1cfac4fa.ads)
-    <div class="item active">
-      <img class="img-responsive" src="/public/assets/house/1.0.1/images/img1.jpg" alt="...">
+    <div class="item#if($!velocityCount == 1) active#end">
+      <img class="img-responsive" src="#fileServUrlFill($!doc.AD_PIC)" alt="...">
       
     </div>#end
    

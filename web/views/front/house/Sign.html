@@ -2,14 +2,19 @@
 <html lang='zh-CN'>
 	<head>
 		#parse('front/_pagelet/Common.IndexHeader.html')
-		<link rel="stylesheet" type="text/css" href="http://demo.zzmekj.com/dcxm/css/normal.css">
+		<link rel="stylesheet" type="text/css" href="/public/assets/house/1.0.1/css/style.css">
+		<style>
+		#getCode {
+			cursor: pointer;
+		}
+		</style>
   </head>
   <body>
 	<div class="top de_top">
 	<div class="head ">
-        <p class="back"><a href="javascript:history.back();"> <img src="http://demo.zzmekj.com/dcxm/images/back.jpg"></img></a></p>
+        <p class="back"><a href="javascript:history.back();"> <img src="/public/assets/house/1.0.1/images/back.jpg"></img></a></p>
         <p>优惠报名</p>
-		<p class="gz"><a href="javascript:;"> <img src="http://demo.zzmekj.com/dcxm/images/colse.jpg"></img></a></p>
+		<p class="gz"><a href="javascript:;"> <img src="/public/assets/house/1.0.1/images/colse.jpg"></img></a></p>
     </div>
    </div>
    <div class="">
@@ -29,8 +34,8 @@
 		   <p><label>手 机 号:</label>
 		  <input type="text"  minlength="3" placeholder="请输入手机号"  required/></p>
 		  <p> <label>验 证 码:</label>
-		  <input type="text"  minlength="3" placeholder="请输入验证码"  required/>  <span>获取验证码</span></p>
-		<button type="button" class="btn btn-danger">立即报名</button>
+		  <input type="text"  minlength="3" placeholder="请输入验证码"  required/>  <span id='getCode'>获取验证码</span></p>
+		<button type="button" class="btn btn-danger" id='sign_btn'>立即报名</button>
 		</div>
 	  </fieldset>
 	</form>
@@ -65,6 +70,16 @@
 				 });
 			})
 			
+    </script>
+    <script>
+    $(function(){
+    	$('#getCode').click(function(){
+    		console.log('获取验证码')
+    	});
+    	$('#sign_btn').click(function(){
+    		console.log('立即报名')
+    	});
+    })
     </script>
   </body>
 </html>
