@@ -128,7 +128,7 @@ exports.projectUI = function(req, res, next){
 	// TODO
 	var ep = EventProxy.create('house_project', 'comments', function (house_project, comments){
 		// TODO
-		res.render('front/house/Project', {
+		res.render('front/house/project/1.0.2/Index', {
 			conf: conf,
 			title: '房产项目 | '+ conf.corp.name,
 			description: '',

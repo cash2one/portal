@@ -8,13 +8,18 @@
   
 <div class="top de_top">
 	<div class="head ">
-        <p class="back"><a href="javascript:history.back()"> <img src="/public/assets/house/1.0.1/images/back.jpg"></img></a></p>
+        <p class="back"><a href="javascript:history.back();"> <img src="/public/assets/house/1.0.1/images/back.jpg"></img></a></p>
         <p>房贷计算</p>
-		<p class="gz"><a href="#"> <img src="/public/assets/house/1.0.1/images/colse.jpg"></img></a></p>
+		<p class="gz"><a href="javascript:;"> <img src="/public/assets/house/1.0.1/images/colse.jpg"></img></a></p>
     </div>
 </div>
     
-    
+  <script>
+  	$('.tab_p1 span').click(function(){
+		$(this).children('img').attr('src','/public/assets/house/1.0.1/images/radio_a.jpg').parent().siblings().children('img').attr('src','/public/assets/house/1.0.1/images/radio_b.jpg');
+		
+		})
+  </script>  
  <div class="tab">   
     <ul id="myTab" class="nav nav-tabs" >
        <li class="active">
@@ -34,7 +39,11 @@
 			<p class="tab_p3">按揭年数：<span>20年(240期)<img src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></span></p>
 			<p class="tab_p4">利&nbsp;&nbsp;&nbsp;&nbsp;率:<span>15年8月26基准利率<img src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></span></p>
 			<p class="tab_p5">公积金贷款利率为3.25%</p>
-			<button type="button" class="btn btn-danger tab_btn">开始计算</button>
+			<p class="tab_btnbox"><button type="button" class="btn btn-danger tab_btn">开始计算</button></p>
+            
+            <div class="tab_p6">
+            	<p><img src="/public/assets/house/1.0.1/images/lb.jpg"> 贷款难？立即申请贷款，让搜房贷款专家为您服务！更快、更省心！</p>
+            </div>
        </div>
         <div class="tab-pane fade" id="sydk">
            <p class="tab_p1">还款方式：<span><img src="/public/assets/house/1.0.1/images/radio_a.jpg"></img>等额本息</span><span><img src="/public/assets/house/1.0.1/images/radio_b.jpg"></img>等额本金</span></p>
@@ -42,7 +51,11 @@
 			<p class="tab_p3">按揭年数：<span>20年(240期)<img src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></span></p>
 			<p class="tab_p4">利&nbsp;&nbsp;&nbsp;&nbsp;率:<span>15年8月26基准利率<img src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></span></p>
 			<p class="tab_p5">商业贷款利率为5.15%</p>
-			<button type="button" class="btn btn-danger  tab_btn">开始计算</button>
+			<p class="tab_btnbox"><button type="button" class="btn btn-danger tab_btn">开始计算</button></p>
+            
+            <div class="tab_p6">
+            	<p><img src="/public/assets/house/1.0.1/images/lb.jpg"> 贷款难？立即申请贷款，让搜房贷款专家为您服务！更快、更省心！</p>
+            </div>
        </div>
        <div class="tab-pane fade" id="zhdk">
            <p class="tab_p1">还款方式：<span><img src="/public/assets/house/1.0.1/images/radio_a.jpg"></img>等额本息</span><span><img src="/public/assets/house/1.0.1/images/radio_b.jpg"></img>等额本金</span></p>
@@ -52,7 +65,11 @@
 			<p class="tab_p3">商业贷款按揭年数：<span>20年(240期)<img src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></span></p>
 			<p class="tab_p4">利&nbsp;&nbsp;&nbsp;&nbsp;率:<span>15年8月26基准利率<img src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></span></p>
 			<p class="tab_p5">公积金贷款利率为3.25% 商业贷款利率为5.15%</p>
-			<button type="button" class="btn btn-danger tab_btn">开始计算</button>
+			<p class="tab_btnbox"><button type="button" class="btn btn-danger tab_btn">开始计算</button></p>
+            
+            <div class="tab_p6">
+            	<p><img src="/public/assets/house/1.0.1/images/lb.jpg"> 贷款难？立即申请贷款，让搜房贷款专家为您服务！更快、更省心！</p>
+            </div>
        </div>
       
     </div>
@@ -94,6 +111,10 @@
 				$(this).siblings('.xq_des').toggle();
 				
 				})
+			$('.tab_p1 span').click(function(){
+		$(this).children('img').attr('src','/public/assets/house/1.0.1/images/radio_a.jpg').parent().siblings().children('img').attr('src','/public/assets/house/1.0.1/images/radio_b.jpg');
+		
+		})
 			})
 			
     </script>
