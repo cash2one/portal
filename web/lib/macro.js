@@ -59,5 +59,11 @@ module.exports = {
 		}
 	}, fileServUrlFill: function(href){
 		return conf.html.fileServ + href;
+	}, recommendType: function(type){
+		switch(type){
+			case 1: return '热门户型';
+			case 2: return '推荐户型';
+			default: return '热门户型';
+		}
 	}
 };

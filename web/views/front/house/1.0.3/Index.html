@@ -20,16 +20,16 @@
 <div class="top">
     <div class="head">
         <p class="logo"><a href="/house/"> <img src="/public/assets/images/logo/logo.png"></a></p>
-        <input type="text" placeholder="商家分类、商圈">
+        <input type="text" placeholder="楼盘">
         <div class="btn-group">
           <button id='top_nav' type="button" class="btn btn-danger dropdown-toggle noShadow" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             郑州 <span class="glyphicon glyphicon-menu-down"></span>
           </button>
           <ul class="dropdown-menu city">
-            <li><a href="javascript:;">北京</a></li>
-            <li><a href="javascript:;">上海</a></li>
+            <li><a href="javascript:;">洛阳</a></li>
+            <!-- <li><a href="javascript:;">上海</a></li>
             <li><a href="javascript:;">广州</a></li>
-            <li><a href="javascript:;">深圳</a></li>
+            <li><a href="javascript:;">深圳</a></li> -->
           </ul>
         </div>
     </div>
@@ -481,7 +481,7 @@
 
 	#foreach($!doc in $!data.house_project)
 	<div class="type_list">
-		<p class="type_tit">热门户型<span>3室2厅</span><span>106.1(建面)</span><span>450.万起</span><a href="javascript:;">预约看房</a></p>
+		#if ($!{doc.RECOMMEND_TYPE} > 0)<p class="type_tit">#recommendType($!{doc.RECOMMEND_TYPE})<span>$!{doc.RECOMMEND_HOUSE_SIZE}</span><span>$!{doc.RECOMMEND_HOUSE_AREA}</span><span>$!{doc.RECOMMEND_HOUSE_PRICE}</span><a href="project/$!{doc.id}/sign/">预约看房</a></p>#end
 		<dl class="con_list">
 		<dt>
 		<a href='project/$!{doc.id}/'><img src="#fileServUrlFill($!doc.IMG_1)"></img></a></dt>
@@ -491,7 +491,7 @@
 		<img src="/public/assets/images/grade/$!{doc.GRADE}.png"></img>
 		<span>$!{doc.HOUSE_TYPE_NAME}</span><span>$!{doc.PRICE}元/平</span>
 		</p>
-		<p>$!{doc.ZONE_NAME}-板楼  双卫 飘窗</p>
+		<p>$!{doc.ZONE_NAME}-$!{doc.STYLE_1}</p>
 		<p><span>额外优惠</span><span>代金券3000元</span><span>贷款优惠</span></p>
 		<p><img src="/public/assets/house/1.0.1/images/new.png"></img></p>
 		</dd>
@@ -501,11 +501,11 @@
 	#end
 </div>
 <div class='bot'>
-	<a href="javascript:;"><img src="/public/assets/house/1.0.1/images/icon2.jpg"> </img></br><span>首页</span></a>
+	<a href="/house/"><img src="/public/assets/house/1.0.1/images/icon2.jpg"> </img></br><span>首页</span></a>
 	<a href="javascript:;"><img src="/public/assets/house/1.0.1/images/icon3.jpg"> </img></br><span>附近</span></a>
 	<a href="javascript:;"><img src="/public/assets/house/1.0.1/images/icon4.jpg"> </img></br><span>购物车</span></a>
 	<a href="javascript:;"><img src="/public/assets/house/1.0.1/images/icon5.jpg"> </img></br><span>优惠券</span></a>
-	<a href="javascript:;"><img src="/public/assets/house/1.0.1/images/icon6.jpg"> </img></br><span>我的</span></a>
+	<a href="/i/"><img src="/public/assets/house/1.0.1/images/icon6.jpg"> </img></br><span>我的</span></a>
 </div>
 
 
