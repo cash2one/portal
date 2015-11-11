@@ -172,7 +172,7 @@ hx .carousel-control.left{background-image:none}
 .show_de{ font-size:13px; text-align:left; display:none;}
  .wz{ width:100%;}
  .wz p{ margin-bottom:0}
- .wz img{ width:100%}
+/* .wz img{ width:100%}*/
  .wz p:nth-of-type(2){ font-size:13px; border-bottom:5px solid #ccc; text-align:center; margin:0; line-height:30px}
   .wz p:nth-of-type(2) img{ width:17px;}
    .fj p:nth-of-type(1) a{ display:block; float:right}

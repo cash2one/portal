@@ -9,7 +9,7 @@
 				width: 100%;
 			}
 		</style>
-		<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=C678QKucRji9ykCMCULgRBpG">
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=C678QKucRji9ykCMCULgRBpG">
 			//v1.5版本的引用方式：src="http://api.map.baidu.com/api?v=1.5&ak=您的密钥"
 			//v1.4版本及以前版本的引用方式：src="http://api.map.baidu.com/api?v=1.4&key=您的密钥&callback=initialize"
 		</script>
@@ -187,15 +187,13 @@
 		<p class="com_tit">楼盘详情</p>
 		<div class="lp_con">
 			<p><span>采光</span><span>小三室</span><span>通风</span></p>
-			<p><b>入住时间：</b>预计2017年底一期交房</p>
+			<p><b>入住时间：</b>$!{doc.ABODE_TIME}</p>
 			<p><b>物业类别：</b>住宅</p>
-			<p><b>建筑类型：</b>楼板 高层</p>
-			<p><b>开发商：</b>郑州博颂职业责任有限公司</p>
+			<p><b>建筑类型：</b>$!{doc.STYLE_1}</p>
+			<p><b>开发商：</b>$!doc.CORP_NAME</p>
 			<p><a href="javascript:void(0)">详细信息<img src="/public/assets/house/1.0.1/images/s_b.jpg"></img></a>
 			
-			<span class="show_de container">
-				$!{doc.INTRO}
-			</span>
+			<span class="show_de container">$!{doc.INTRO}</span>
 			
 			</p>
 			
@@ -215,7 +213,7 @@
 	
 	</div>
     <div class="pl">
-	<p class="com_tit">楼盘点评（共17条）<img style='cursor: pointer;' title='查看更多' onclick='location.href="comment/"' src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></p>
+	<p class="com_tit">楼盘点评（共$!data.comments.length条）<img style='cursor: pointer;' title='查看更多' onclick='location.href="comment/"' src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></p>
 	<div class="pl_con am-container">
 		<p>
 		<img src="/public/assets/house/1.0.1/images/star_a1.jpg"></img>
@@ -223,7 +221,7 @@
 		<img src="/public/assets/house/1.0.1/images/star_a1.jpg"></img>
 		<img src="/public/assets/house/1.0.1/images/star_a1.jpg"></img>
 		<img src="/public/assets/house/1.0.1/images/star_a1.jpg"></img>
-		<span>3.0</span>
+		<span>5.0</span>
 	   </p>
 	   <p><span>价格3.0分</span>
 	   <span>价格3.0分</span>
@@ -377,13 +375,20 @@
 			var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
 			map.addControl(top_left_navigation);
 
-			var infoWindow = new BMap.InfoWindow('$!{doc.PROJECT_NAME}');  // 创建信息窗口对象
+			var opts = {
+				width : 200,     // 信息窗口宽度
+				height: 100,     // 信息窗口高度
+				title : '<span style="font-size:12px;font-weight:bold">$!{doc.PROJECT_NAME}</span>' , // 信息窗口标题
+				enableMessage: true,//设置允许信息窗发送短息
+				message: ""
+			}
+
+			var infoWindow = new BMap.InfoWindow('<span style="font-size:11px">地址：$!{doc.ADDR}</span>', opts);  // 创建信息窗口对象
 			map.openInfoWindow(infoWindow, point); //开启信息窗口
 
 			var marker = new BMap.Marker(point);// 创建标注
 			map.addOverlay(marker);             // 将标注添加到地图中
 			marker.disableDragging();           // 不可拖拽
-
 		})();
     </script>
   </body>

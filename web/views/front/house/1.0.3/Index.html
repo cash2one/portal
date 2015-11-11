@@ -49,7 +49,7 @@
     #set($_16b6862a15cd4a11a07b155c1cfac4fa = $!data.ads['16b6862a15cd4a11a07b155c1cfac4fa'])
     #foreach($doc in $!_16b6862a15cd4a11a07b155c1cfac4fa.ads)
     <div class="item#if($!velocityCount == 1) active#end">
-      <img class="img-responsive" src="#fileServUrlFill($!doc.AD_PIC)" alt="...">
+      <img class="img-responsive" src="#fileServUrlFill($!doc.AD_PIC)" alt="$!{doc.AD_NAME}" title="$!{doc.AD_NAME}" onclick='location.href="/house/"'>
       
     </div>#end
    
