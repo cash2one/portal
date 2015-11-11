@@ -337,7 +337,13 @@
 				
 				 });
 			$('.lp_con p:nth-of-type(6) a').click(function(){
-				$('.show_de').toggle();
+				// $('.show_de').toggle();
+				if('none' === $('.show_de').css('display')){
+					$('.show_de').css('display', 'inline-flex');
+				}else{
+					$('.show_de').css('display', 'none');
+				}
+
 				
 				})
 			$('.com_tit span').click(function(){
