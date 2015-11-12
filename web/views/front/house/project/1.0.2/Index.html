@@ -202,12 +202,13 @@
    <div class="wz">
 		<p class="com_tit">位置周边</p>
 		<div id='map'>#*<img src="/public/assets/house/1.0.1/images/map.jpg"></img>*#</div>
-		<p>周边配套：地铁、医院、学校、银行、公交....<img src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></p>
+		<p>周边配套：地铁、医院、学校、银行、公交...<img src="/public/assets/house/1.0.1/images/s_r2.jpg"></img></p>
 	</div>
 	<div class="fj">
-		<p class="com_tit">房价走势<a><span>一年</span><span>两年</span></a></p>
+		<p class="com_tit">房价走势<a><span>去年</span><span>今年</span></a></p>
 		
-		<img src="/public/assets/house/1.0.1/images/chart0.jpg"></img>
+		<!-- <img src="/public/assets/house/1.0.1/images/chart0.jpg"></img> -->
+		<p style='width:100%'><canvas id="introChart" style="width: 100%; height: 246px;"></canvas></p>
 		
 		
 	
@@ -223,10 +224,10 @@
 		<img src="/public/assets/house/1.0.1/images/star_a1.jpg"></img>
 		<span>5.0</span>
 	   </p>
-	   <p><span>价格3.0分</span>
-	   <span>价格3.0分</span>
-	   <span>价格3.0分</span>
-	   <span>价格3.0分</span></p>
+	   <p><span>价格5.0分</span>
+	   <span>价格5.0分</span>
+	   <span>价格5.0分</span>
+	   <span>价格5.0分</span></p>
 	   
 	   <!-- <div class="pl_detail">
 		<p>
@@ -315,6 +316,8 @@
    
 		#parse('front/_pagelet/Common.IndexJs.html')
 		#parse('front/_pagelet/Common.LastJs.html')
+		<script type="text/javascript" src="http://www.bootcss.com/p/chart.js/assets/Chart.js"></script>
+		<script src="http://cdn.bootcss.com/modernizr/2.8.2/modernizr.min.js"></script>
     <script>
     	$(function(){
 			var w=$(window).width();
@@ -369,33 +372,60 @@
 			
     </script>
     <script>
+    $(function(){
+		var map = new BMap.Map("map");          // 创建地图实例
+		var point = new BMap.Point($!{doc.LNG}, $!{doc.LAT});  // 创建点坐标
+		map.centerAndZoom(point, 17);                 // 初始化地图，设置中心点坐标和地图级别
+		map.enableScrollWheelZoom(true);
+
+		// var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+		// map.addControl(top_left_control);
+
+		var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+		map.addControl(top_left_navigation);
+
+		var opts = {
+			width : 100,     // 信息窗口宽度
+			height: 60,     // 信息窗口高度
+			title : '<span style="font-size:12px;font-weight:bold">$!{doc.PROJECT_NAME}</span>' , // 信息窗口标题
+			enableMessage: true,//设置允许信息窗发送短息
+			message: ""
+		}
+
+		var infoWindow = new BMap.InfoWindow('<span style="font-size:11px">地址：$!{doc.ADDR}</span>', opts);  // 创建信息窗口对象
+		map.openInfoWindow(infoWindow, point); //开启信息窗口
+
+		var marker = new BMap.Marker(point);// 创建标注
+		map.addOverlay(marker);             // 将标注添加到地图中
+		marker.disableDragging();           // 不可拖拽
+		marker.addEventListener("click", function(){
+			map.openInfoWindow(infoWindow, point);
+		});
+    });
+
+	$(function(){
+		var lineChartData = {
+			labels: ["01","02","03","04","05","06","07","08","09","10","11","12"],
+			datasets: [{
+					fillColor : "rgba(220,220,220,0.5)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					data : [6500,5900,9000,8100,5600,5500,4000,4563,7856,4452,2332,7564]
+				}, {
+					fillColor : "rgba(151,187,205,0.5)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					data : [2800,4800,4000,1900,9600,2700,10000,7656,2457,7645,2376,9287]
+				}]
+		};
 		(function(){
-			var map = new BMap.Map("map");          // 创建地图实例
-			var point = new BMap.Point($!{doc.LNG}, $!{doc.LAT});  // 创建点坐标
-			map.centerAndZoom(point, 17);                 // 初始化地图，设置中心点坐标和地图级别
-			map.enableScrollWheelZoom(true);
-
-			var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
-			map.addControl(top_left_control);
-
-			var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
-			map.addControl(top_left_navigation);
-
-			var opts = {
-				width : 200,     // 信息窗口宽度
-				height: 100,     // 信息窗口高度
-				title : '<span style="font-size:12px;font-weight:bold">$!{doc.PROJECT_NAME}</span>' , // 信息窗口标题
-				enableMessage: true,//设置允许信息窗发送短息
-				message: ""
-			}
-
-			var infoWindow = new BMap.InfoWindow('<span style="font-size:11px">地址：$!{doc.ADDR}</span>', opts);  // 创建信息窗口对象
-			map.openInfoWindow(infoWindow, point); //开启信息窗口
-
-			var marker = new BMap.Marker(point);// 创建标注
-			map.addOverlay(marker);             // 将标注添加到地图中
-			marker.disableDragging();           // 不可拖拽
+			var ctx = document.getElementById("introChart").getContext("2d");			
+			new Chart(ctx).Line(lineChartData,{animation: Modernizr.canvas, scaleShowLabels : true, scaleFontColor : "#767C8D"});
+			$('#introChart').css('width', '98%');
 		})();
+	});
     </script>
   </body>
 </html>
