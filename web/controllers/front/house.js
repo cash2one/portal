@@ -109,12 +109,16 @@ exports.caculateUI = function(req, res, next){
  * @return
  */
 exports.signUI = function(req, res, next){
+	var id = req.params.id;
 	// TODO
 	res.render('front/house/Sign', {
 		conf: conf,
 		title: '获取优惠 | '+ conf.corp.name,
 		description: '',
-		keywords: ',dolalive,html5'
+		keywords: ',dolalive,html5',
+		data: {
+			id: id
+		}
 	});
 };
 
