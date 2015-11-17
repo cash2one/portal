@@ -10,7 +10,7 @@ var util = require('speedt-utils');
 var conf = require('../../settings');
 
 var biz = {
-	manager: require('../../../biz/manager')
+	user: require('../../../biz/manage/user')
 };
 
 /**
@@ -33,7 +33,7 @@ exports.changePwdUI = function(req, res, next){
  * @return
  */
 exports.indexUI = function(req, res, next){
-	biz.manager.findAll(null, function (err, docs){
+	biz.user.findAll(null, function (err, docs){
 		// TODO
 		res.render('manage/manager/Index', {
 			conf: conf,
@@ -53,7 +53,7 @@ exports.indexUI = function(req, res, next){
  * @return
  */
 exports.loginUI = function(req, res, next){
-	res.render('manage/manager/Login', {
+	res.render('manage/user/Login', {
 		conf: conf,
 		title: '后台登陆 | '+ conf.corp.name,
 		description: '',
@@ -69,8 +69,8 @@ exports.loginUI = function(req, res, next){
 exports.login = function(req, res, next){
 	var result = { success: false },
 		data = req._data;
-
-	biz.manager.login(data, function (err, status, msg, doc){
+	// TODO
+	biz.user.login(data, function (err, status, msg, doc){
 		if(err) return next(err);
 		if(!!status){
 			result.msg = msg;
@@ -79,7 +79,7 @@ exports.login = function(req, res, next){
 		/* session */
 		req.session.lv = 1;
 		req.session.userId = doc.id;
-		req.session.role = 'admin';
+		req.session.role = 'manager';
 		req.session.user = doc;
 		/* result */
 		result.success = true;
@@ -95,7 +95,7 @@ exports.login = function(req, res, next){
  */
 exports.logoutUI = function(req, res, next){
 	req.session.destroy();
-	res.redirect('/manager/login');
+	res.redirect('/manage/user/login');
 };
 
 /**
@@ -107,5 +107,5 @@ exports.logoutUI = function(req, res, next){
 exports.login_validate = function(req, res, next){
 	if(1 === req.session.lv) return next();
 	if(req.xhr) return res.send({ success: false, msg: '无权访问' });
-	res.redirect('/manager/login');
+	res.redirect('/manage/user/login');
 };

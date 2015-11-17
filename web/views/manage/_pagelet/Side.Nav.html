@@ -11,7 +11,7 @@
 			<div class='panel-body'>
 				#foreach($!obj2 in $!data.childMenu)
 					#if(4 == $!obj2.PATH.split(",").length && $!obj.id == $!obj2.PID)
-				<p><a href='#if($!obj2.MENU_URL == '')javascript:;#else#page/$!obj2.MENU_URL#end'>$!obj2.MENU_NAME</a></p>
+				<p><a href='#if($!obj2.MENU_URL == '')javascript:;#else#page/$!obj2.MENU_URL?name=$!obj2.MENU_NAME#end'>$!obj2.MENU_NAME</a></p>
 					#end
 				#end
 			</div>

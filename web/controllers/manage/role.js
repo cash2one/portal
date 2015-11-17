@@ -10,7 +10,7 @@ var util = require('speedt-utils');
 var conf = require('../../settings');
 
 var biz = {
-	role: require('../../../biz/manage_role')
+	role: require('../../../biz/manage/role')
 };
 
 /**
@@ -27,6 +27,7 @@ exports.indexUI = function(req, res, next){
 			description: '',
 			keywords: ',dolalive,html5',
 			data: {
+				title: req.query.name,
 				roles: docs
 			}
 		});
