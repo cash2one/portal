@@ -3,8 +3,7 @@
 	<head>
 		#parse('front/_pagelet/Common.IndexHeader.html')
 		<link rel='stylesheet' type='text/css' href='/public/assets/css/manage/1.0.1/index.css' />
-		<link rel='stylesheet' type='text/css' href='/public/assets/css//manage/1.0.1/iframe.css' />
-		<link rel='stylesheet' type='text/css' href='$!{conf.html.cdn}ztree/3.5.15/css/zTreeStyle/zTreeStyle.css' media='screen' />
+		<link rel='stylesheet' type='text/css' href='/public/assets/css/manage/1.0.1/iframe.css' />
 	</head>
 	<body>
 		<div class='container'>
@@ -34,7 +33,7 @@
 					<div class='panel panel-default table-responsive'>
 						<div class='panel-heading'>
 							<div class='btn-group btn-group-sm'>
-								<a class='btn btn-primary glyphicon glyphicon-plus-sign' href="javascript:go('#page/manager/add')">新增</a>
+								<a class='btn btn-primary glyphicon glyphicon-plus-sign' href='javascript:;'>新增</a>
 								<button id='btn_edit' class='btn btn-default glyphicon glyphicon-edit' data-toggle='modal' data-target='#editModal'>编辑</button>
 								<button id='btn_del' class='btn btn-danger glyphicon glyphicon-remove-sign'>删除</button>
 							</div>
@@ -42,14 +41,14 @@
 						#parse('manage/manager/_pagelet/Side.List.html')
 					</div>
 					<nav>
-						<ul class="pagination pagination-sm">
-							<li class="disabled"><a href="javascript:;">&laquo;</a></li>
-							<li class="active"><a href="javascript:;">1</a></li>
-							<li><a href="javascript:;">2</a></li>
-							<li><a href="javascript:;">3</a></li>
-							<li><a href="javascript:;">4</a></li>
-							<li><a href="javascript:;">5</a></li>
-							<li><a href="javascript:;">&raquo;</a></li>
+						<ul class='pagination pagination-sm'>
+							<li class='disabled'><a href='javascript:;'>&laquo;</a></li>
+							<li class='active'><a href='javascript:;'>1</a></li>
+							<li><a href='javascript:;'>2</a></li>
+							<li><a href='javascript:;'>3</a></li>
+							<li><a href='javascript:;'>4</a></li>
+							<li><a href='javascript:;'>5</a></li>
+							<li><a href='javascript:;'>&raquo;</a></li>
 						</ul>
 					</nav>
 				</div>

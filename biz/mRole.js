@@ -18,7 +18,7 @@ var exports = module.exports;
  * @return
  */
 exports.getById = function(id, cb){
-	mysql_util.getById(null, 's_role', id, function (err, doc){
+	mysql_util.getById(null, 'm_role', id, function (err, doc){
 		if(err) return cb(err);
 		cb(null, doc);
 	});
@@ -31,7 +31,7 @@ exports.getById = function(id, cb){
  */
 exports.findAll = function(name, cb){
 	name = !!name ? '%'+ name +'%' : '%%';
-	mysql_util.find(null, 's_role', [['ROLE_NAME', 'like', name]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
+	mysql_util.find(null, 'm_role', [['ROLE_NAME', 'like', name]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
 	});

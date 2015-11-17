@@ -16,8 +16,7 @@ var conf = require('../../settings'),
 	macros = require('../../lib/macro');
 
 var biz = {
-	menu: require('../../../biz/menu'),
-	manager: require('../../../biz/manager')
+	menu: require('../../../biz/menu')
 };
 
 /**

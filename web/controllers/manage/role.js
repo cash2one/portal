@@ -10,7 +10,7 @@ var util = require('speedt-utils');
 var conf = require('../../settings');
 
 var biz = {
-	role: require('../../../biz/role')
+	role: require('../../../biz/mRole')
 };
 
 /**

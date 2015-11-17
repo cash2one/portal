@@ -10,7 +10,7 @@ var util = require('speedt-utils');
 var conf = require('../../settings');
 
 var biz = {
-	manager: require('../../../biz/manager')
+	manager: require('../../../biz/mUser')
 };
 
 /**

@@ -18,7 +18,7 @@ var exports = module.exports;
  * @return
  */
 exports.getById = function(id, cb){
-	mysql_util.getById(null, 's_manager', id, function (err, doc){
+	mysql_util.getById(null, 'm_user', id, function (err, doc){
 		if(err) return cb(err);
 		cb(null, doc);
 	});
@@ -48,7 +48,7 @@ exports.login = function(logInfo, cb){
  * @return
  */
 exports.findByName = function(name, cb){
-	mysql_util.find(null, 's_manager', [['USER_NAME', '=', name]], null, null, function (err, docs){
+	mysql_util.find(null, 'm_user', [['USER_NAME', '=', name]], null, null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
 	});
@@ -61,7 +61,7 @@ exports.findByName = function(name, cb){
  */
 exports.findAll = function(name, cb){
 	name = !!name ? '%'+ name +'%' : '%%';
-	mysql_util.find(null, 's_manager', [['USER_NAME', 'like', name]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
+	mysql_util.find(null, 'm_user', [['USER_NAME', 'like', name]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
 	});
