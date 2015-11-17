@@ -3,6 +3,7 @@
 		<tr>
 			<th class='ta'><input type='checkbox' title='全选/取消'></th>
 			<th>用户名</th>
+			<th>真实姓名</th>
 			<th>电子邮箱</th>
 			<th>手机号</th>
 			<th>创建时间</th>
@@ -13,6 +14,7 @@
 		#foreach($!doc in $!data.customers)<tr>
 			<td class='ta'><input type='checkbox' value='$!doc.id'></td>
 			<td>$!doc.USER_NAME</td>
+			<td>$!doc.REAL_NAME</td>
 			<td>$!doc.EMAIL</td>
 			<td>$!doc.MOBILE</td>
 			<td>#formatDate($!doc.CREATE_TIME)</td>
