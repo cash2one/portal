@@ -19,7 +19,7 @@ var exports = module.exports;
  */
 exports.findAll = function(name, cb){
 	name = !!name ? '%'+ name +'%' : '%%';
-	mysql_util.find(null, 'p_customer', [['USER_NAME', 'like', name]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
+	mysql_util.find(null, 'g_customer', [['USER_NAME', 'like', name]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
 	});
@@ -49,7 +49,7 @@ exports.login = function(logInfo, cb){
  * @return
  */
 exports.findByName = function(name, cb){
-	mysql_util.find(null, 'p_customer', [['USER_NAME', '=', name]], null, null, function (err, docs){
+	mysql_util.find(null, 'g_customer', [['USER_NAME', '=', name]], null, null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
 	});
