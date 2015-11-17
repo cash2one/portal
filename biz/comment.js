@@ -19,7 +19,7 @@ var exports = module.exports;
  */
 exports.findAll = function(content, cb){
 	content = !!content ? '%'+ content +'%' : '%%';
-	mysql_util.find(null, 'p_comment', [['CONTENT', 'like', content]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
+	mysql_util.find(null, 'g_comment', [['CONTENT', 'like', content]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
 	});
@@ -31,7 +31,7 @@ exports.findAll = function(content, cb){
  * @return
  */
 exports.findBySource = function(source_id, cb){
-	mysql_util.find(null, 'p_comment', [['SOURCE_ID', '=', source_id]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
+	mysql_util.find(null, 'g_comment', [['SOURCE_ID', '=', source_id]], [['CREATE_TIME', 'DESC']], null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
 	});

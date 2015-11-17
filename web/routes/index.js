@@ -23,8 +23,7 @@ var manage = {
 	role: require('../controllers/manage/role'),
 	menu: require('../controllers/manage/menu'),
 	site: require('../controllers/manage/site'),
-	user: require('../controllers/manage/user'),
-	manager: require('../controllers/manage/user')
+	user: require('../controllers/manage/user')
 };
 
 /**
@@ -97,34 +96,25 @@ function proc_manage(app){
 	app.post('/manage/user/login$', express.valiPostData, manage.user.login);
 	app.get('/manage/user/logout$', manage.user.logoutUI);
 	app.get('/manage/user/changePwd$', manage.user.login_validate, manage.user.changePwdUI);
-
-
-
-
-
-
-	// 评论信息维护
-	app.get('/manage/comment/', manage.user.login_validate, manage.comment.indexUI);
-
-	// 房产项目
-	app.get('/manage/house/project/', manage.user.login_validate, manage.house_project.indexUI);
-
-	// 客户管理
-	app.get('/manage/customer/', manage.user.login_validate, manage.customer.indexUI);
-
-	// 角色管理
-	app.get('/manage/role/', manage.user.login_validate, manage.role.indexUI);
-
 	// 用户管理
-	app.get('/manage/manager/', manage.user.login_validate, manage.manager.indexUI);
-
-	// 菜单
+	app.get('/manage/user/', manage.user.login_validate, manage.user.indexUI);
+	// 菜单相关
 	app.get('/manage/menu/', manage.user.login_validate, manage.menu.indexUI);
 	app.post('/manage/menu/:pid', manage.user.login_validate, manage.menu.children);
 	app.post('/manage/menu/list/:pid', manage.user.login_validate, manage.menu.indexUI_list);
+	// 角色管理
+	app.get('/manage/role/', manage.user.login_validate, manage.role.indexUI);
 
+	// 评论信息维护
+	app.get('/manage/comment/', manage.user.login_validate, manage.comment.indexUI);
+	// 房产项目
+	app.get('/manage/house/project/', manage.user.login_validate, manage.house_project.indexUI);
+	// 客户管理
+	app.get('/manage/customer/', manage.user.login_validate, manage.customer.indexUI);
+
+	// 欢迎页
 	app.get('/manage/welcome/', manage.user.login_validate, manage.site.welcomeUI);
-	app.post('/manage/side/:pid', manage.user.login_validate, manage.site.indexUI_side);
 	// 管理主框架页
+	app.post('/manage/side/:pid', manage.user.login_validate, manage.site.indexUI_side);
 	app.get('/manage/', manage.user.login_validate, manage.site.indexUI);
 }

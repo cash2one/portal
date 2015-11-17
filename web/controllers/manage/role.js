@@ -23,7 +23,7 @@ exports.indexUI = function(req, res, next){
 		// TODO
 		res.render('manage/role/Index', {
 			conf: conf,
-			title: '角色管理 | '+ conf.corp.name,
+			title: req.query.name +' | '+ conf.corp.name,
 			description: '',
 			keywords: ',dolalive,html5',
 			data: {

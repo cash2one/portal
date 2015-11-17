@@ -23,10 +23,11 @@ exports.indexUI = function(req, res, next){
 		// TODO
 		res.render('manage/comment/Index', {
 			conf: conf,
-			title: '评论信息维护 | '+ conf.corp.name,
+			title: req.query.name +' | '+ conf.corp.name,
 			description: '',
 			keywords: ',dolalive,html5',
 			data: {
+				title: req.query.name,
 				comments: docs
 			}
 		});

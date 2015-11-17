@@ -30,10 +30,11 @@ exports.indexUI = function(req, res, next){
 		// TODO
 		res.render('manage/menu/Index', {
 			conf: conf,
-			title: '菜单管理 | '+ conf.corp.name,
+			title: req.query.name +' | '+ conf.corp.name,
 			description: '',
 			keywords: ',dolalive,html5',
 			data: {
+				title: req.query.name,
 				tree: docs
 			}
 		});
@@ -65,9 +66,7 @@ exports.indexUI_list = function(req, res, next){
 			// TODO
 			var html = velocity.render(template, {
 				conf: conf,
-				data: {
-					tree: docs
-				}
+				data: { tree: docs }
 			}, macros);
 			// TODO
 			result.data = html;

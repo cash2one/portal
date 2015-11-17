@@ -19,7 +19,7 @@ var biz = {
  * @return
  */
 exports.changePwdUI = function(req, res, next){
-	res.render('manage/manager/ChangePwd', {
+	res.render('manage/user/ChangePwd', {
 		conf: conf,
 		title: '修改密码 | '+ conf.corp.name,
 		description: '',
@@ -35,7 +35,7 @@ exports.changePwdUI = function(req, res, next){
 exports.indexUI = function(req, res, next){
 	biz.user.findAll(null, function (err, docs){
 		// TODO
-		res.render('manage/manager/Index', {
+		res.render('manage/user/Index', {
 			conf: conf,
 			title: '用户管理 | '+ conf.corp.name,
 			description: '',
