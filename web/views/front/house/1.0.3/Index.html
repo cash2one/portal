@@ -481,7 +481,7 @@
 
 	#foreach($!doc in $!data.house_project)
 	<div class="type_list">
-		#if ($!{doc.RECOMMEND_TYPE} > 0)<p class="type_tit">#recommendType($!{doc.RECOMMEND_TYPE})<span>$!{doc.RECOMMEND_HOUSE_SIZE}</span><span>$!{doc.RECOMMEND_HOUSE_AREA}</span><span>$!{doc.RECOMMEND_HOUSE_PRICE}</span><a href="project/$!{doc.id}/sign/">预约看房</a></p>#end
+		#if ($!{doc.RECOMMEND_TYPE} > 0)<p class="type_tit">#recommendType($!{doc.RECOMMEND_TYPE})<span>$!{doc.RECOMMEND_HOUSE_SIZE}</span><span>$!{doc.RECOMMEND_HOUSE_AREA}</span><span>$!{doc.RECOMMEND_HOUSE_PRICE}</span><a href="project/$!{doc.id}/apply/">预约看房</a></p>#end
 		<dl class="con_list">
 		<dt>
 		<a href='project/$!{doc.id}/'><img src="#fileServUrlFill($!doc.IMG_1)"></img></a></dt>
