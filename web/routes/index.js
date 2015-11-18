@@ -18,7 +18,9 @@ var back = {
 };
 var manage = {
 	comment: require('../controllers/manage/comment'),
-	house_project: require('../controllers/manage/house_project'),
+	house: {
+		project: require('../controllers/manage/house/project')
+	},
 	customer: require('../controllers/manage/customer'),
 	role: require('../controllers/manage/role'),
 	menu: require('../controllers/manage/menu'),
@@ -107,8 +109,8 @@ function proc_manage(app){
 
 	// 评论信息维护
 	app.get('/manage/comment/', manage.user.login_validate, manage.comment.indexUI);
-	// 房产项目
-	app.get('/manage/house/project/', manage.user.login_validate, manage.house_project.indexUI);
+	// 房产频道
+	app.get('/manage/house/project/', manage.user.login_validate, manage.house.project.indexUI);
 	// 客户管理
 	app.get('/manage/customer/', manage.user.login_validate, manage.customer.indexUI);
 

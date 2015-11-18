@@ -7,10 +7,10 @@
 
 var util = require('speedt-utils');
 
-var conf = require('../../settings');
+var conf = require('../../../settings');
 
 var biz = {
-	house_project: require('../../../biz/house_project')
+	project: require('../../../../biz/house/project')
 };
 
 /**
@@ -19,14 +19,15 @@ var biz = {
  * @return
  */
 exports.indexUI = function(req, res, next){
-	biz.house_project.findAll(null, function (err, docs){
+	biz.project.findAll(null, function (err, docs){
 		// TODO
 		res.render('manage/house/project/Index', {
 			conf: conf,
-			title: '项目管理 | '+ conf.corp.name,
+			title: req.query.name +' | '+ conf.corp.name,
 			description: '',
 			keywords: ',dolalive,html5',
 			data: {
+				title: req.query.name,
 				projects: docs
 			}
 		});
