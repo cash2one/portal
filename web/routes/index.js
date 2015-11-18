@@ -111,6 +111,7 @@ function proc_manage(app){
 	app.get('/manage/comment/', manage.user.login_validate, manage.comment.indexUI);
 	// 房产频道
 	app.get('/manage/house/project/', manage.user.login_validate, manage.house.project.indexUI);
+	app.get('/manage/house/project/add', manage.user.login_validate, manage.house.project.addUI);
 	// 客户管理
 	app.get('/manage/customer/', manage.user.login_validate, manage.customer.indexUI);
 

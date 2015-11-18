@@ -11,7 +11,8 @@
 				<div class='col-sm-12 col-md-12'>
 					<ol class='breadcrumb'>
 						<li class='active'><i class='fa fa-home fa-fw'></i> 后台管理</li>
-						<li class='active'><a href='javascript:location.reload();'>$!{data.title}</a></li>
+						<li class='active'>$!{data.title}</li>
+						<li class='active'><a href='javascript:location.reload();'>新增</a></li>
 					</ol>
 					<div id='info_alert' class='alert alert-info'>
 						<button type='button' class='close' data-dismiss='alert'>&times;</button>
@@ -30,37 +31,12 @@
 							</form>
 						</div>
 					</div>
-					<div class='panel panel-default table-responsive'>
-						<div class='panel-heading'>
-							<div class='btn-group btn-group-sm'>
-								<a class='btn btn-primary glyphicon glyphicon-plus-sign' data-toggle='modal' href='javascript:parent.location.href="/manage/#page/house/project/add?name=$!{data.title}"'>新增</a>
-								<button id='btn_edit' class='btn btn-default glyphicon glyphicon-edit' data-toggle='modal' data-target='#editModal'>编辑</button>
-								<button id='btn_del' class='btn btn-danger glyphicon glyphicon-remove-sign'>删除</button>
-							</div>
-						</div>
-						#parse('manage/house/project/_pagelet/Side.List.html')
-					</div>
-					<nav>
-						<ul class="pagination pagination-sm">
-							<li class="disabled"><a href="javascript:;">&laquo;</a></li>
-							<li class="active"><a href="javascript:;">1</a></li>
-							<li><a href="javascript:;">2</a></li>
-							<li><a href="javascript:;">3</a></li>
-							<li><a href="javascript:;">4</a></li>
-							<li><a href="javascript:;">5</a></li>
-							<li><a href="javascript:;">&raquo;</a></li>
-						</ul>
-					</nav>
 				</div>
 			</div>
 		</div>
 		#parse('front/_pagelet/Common.IndexJs.html')
 		#parse('manage/_pagelet/Common.Iframe.html')
 		<script>
-			$('#searchFrm_btn_search').click(function(){
-				var formObj = $('#searchFrm').serializeObjectForm();
-				console.log(formObj);
-			});
 		</script>
 	</body>
 </html>
