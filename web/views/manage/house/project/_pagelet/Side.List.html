@@ -3,7 +3,11 @@
 		<tr>
 			<th class='ta'><input type='checkbox' title='全选/取消'></th>
 			<th>项目名称</th>
-			<th>项目描述</th>
+			<th>企业名称</th>
+			<th>价格</th>
+			<th>评分</th>
+			<th>区域</th>
+			<th>入住时间</th>
 			<th>创建时间</th>
 			<th>状态</th>
 		</tr>
@@ -12,9 +16,39 @@
 		#foreach($!doc in $!data.projects)<tr>
 			<td class='ta'><input type='checkbox' value='$!doc.id'></td>
 			<td>$!doc.PROJECT_NAME</td>
-			<td>$!doc.PROJECT_DESC</td>
+			<td>$!doc.CORP_NAME</td>
+			<td>$!doc.PRICE</td>
+			<td>$!doc.GRADE</td>
+			<td>$!doc.ZONE_NAME</td>
+			<td>$!doc.ABODE_TIME</td>
 			<td>#formatDate($!doc.CREATE_TIME)</td>
 			<td>#toStatus($!doc.STATUS)</td>
+		</tr><tr>
+			<td> </td>
+			<th>联系电话1</th>
+			<td>$!doc.TEL_1</td>
+			<th>联系电话2</th>
+			<td>$!doc.TEL_2</td>
+			<th>联系电话3</th>
+			<td>$!doc.TEL_3</td>
+			<th>房屋类型</th>
+			<td>$!doc.HOUSE_TYPE_ID</td>
+		</tr><tr>
+			<td> </td>
+			<th>经纬度</th>
+			<td>$!doc.LNG, $!doc.LAT</td>
+			<th>房间样式</th>
+			<td>$!doc.HOUSE_STYLE</td>
+			<th>预售日期</th>
+			<td>#formatDate($!doc.PLAN_SALE_TIME)</td>
+			<th>销售状态</th>
+			<td>$!doc.SALE_STATUS_ID</td>
+		</tr><tr>
+			<td> </td>
+			<th>地址</th>
+			<td>$!doc.ADDR</td>
+			<th>项目描述</th>
+			<td colspan='5'>$!doc.PROJECT_DESC</td>
 		</tr>#end
 	</tbody>
 </table>

@@ -23,12 +23,13 @@ module.exports = {
 		return util.padLeft(t.getMonth() + 1, '0', 2);
 	}, toDay: function(t){
 		return util.padLeft(t.getDate(), '0', 2);
-	}, formatDate: function(t){
-		return util.format(t, 'YY-MM-dd hh:mm:ss.S');
-	}, formatDate2: function(t){
-		return util.format(t, 'YY-MM-dd hh:mm:ss');
-	}, formatDate3: function(t){
-		return util.format(t, 'YY-MM');
+	}, formatDate: function(t, type){
+		switch(type){
+			case 1: return util.format(t, 'YY-MM-dd hh:mm:ss.S');
+			case 2: return util.format(t, 'YY-MM-dd hh:mm:ss');
+			case 3: return util.format(t, 'YY-MM');
+			default: return util.format(t, 'YY-MM-dd hh:mm:ss');
+		}
 	}, num2Money: function(n){
 		return util.currencyformat(n);
 	}, toSDate: function(t){
@@ -63,7 +64,6 @@ module.exports = {
 		switch(type){
 			case 1: return '热门户型';
 			case 2: return '推荐户型';
-			default: return '热门户型';
 		}
 	}
 };
