@@ -20,8 +20,9 @@ var fs = require('fs'),
 
 var biz = {
 	comment: require('../../../biz/comment'),
-	house_project: require('../../../biz/house_project'),
-	page_position: require('../../../biz/page_position'),
+	house: {
+		project: require('../../../biz/house/project')
+	},
 	zone: require('../../../biz/zone'),
 	ad: require('../../../biz/ad')
 };
@@ -37,7 +38,7 @@ exports.indexUI = function(req, res, next){
 	// TODO
 	var ads = req.flash('ads')[0];
 
-	var ep = EventProxy.create('house_project', function (house_project){
+	var ep = EventProxy.create('house_projects', function (house_projects){
 		// TODO
 		res.render('front/house/1.0.3/Index', {
 			conf: conf,
@@ -46,7 +47,7 @@ exports.indexUI = function(req, res, next){
 			keywords: ',dolalive,html5',
 			data: {
 				ads: ads,
-				house_project: house_project
+				house_projects: house_projects
 			}
 		});
 	});
@@ -55,9 +56,9 @@ exports.indexUI = function(req, res, next){
 		next(err);
 	});
 
-	biz.house_project.findAll(null, function (err, docs){
+	biz.house.project.findAll(null, function (err, docs){
 		if(err) return ep.emit('error', err);
-		ep.emit('house_project', docs);
+		ep.emit('house_projects', docs);
 	});
 };
 
@@ -130,7 +131,7 @@ exports.signUI = function(req, res, next){
 exports.projectUI = function(req, res, next){
 	var id = req.params.id;
 	// TODO
-	var ep = EventProxy.create('house_project', 'comments', function (house_project, comments){
+	var ep = EventProxy.create('house_projects', 'comments', function (house_projects, comments){
 		// TODO
 		res.render('front/house/project/1.0.2/Index', {
 			conf: conf,
@@ -139,7 +140,7 @@ exports.projectUI = function(req, res, next){
 			keywords: ',dolalive,html5',
 			data: {
 				comments: comments,
-				house_project: house_project
+				house_projects: house_projects
 			}
 		});
 	});
@@ -148,9 +149,9 @@ exports.projectUI = function(req, res, next){
 		next(err);
 	});
 
-	biz.house_project.getById(id, function (err, doc){
+	biz.house.project.getById(id, function (err, doc){
 		if(err) return ep.emit('error', err);
-		ep.emit('house_project', doc);
+		ep.emit('house_projects', doc);
 	});
 
 	biz.comment.findBySource(id, function (err, docs){
@@ -167,7 +168,7 @@ exports.projectUI = function(req, res, next){
 exports.commentUI = function(req, res, next){
 	var id = req.params.id;
 	// TODO
-	var ep = EventProxy.create('house_project', 'comments', function (house_project, comments){
+	var ep = EventProxy.create('house_projects', 'comments', function (house_projects, comments){
 		// TODO
 		res.render('front/house/Comment', {
 			conf: conf,
@@ -176,7 +177,7 @@ exports.commentUI = function(req, res, next){
 			keywords: ',dolalive,html5',
 			data: {
 				comments: comments,
-				house_project: house_project
+				house_projects: house_projects
 			}
 		});
 	});
@@ -185,9 +186,9 @@ exports.commentUI = function(req, res, next){
 		next(err);
 	});
 
-	biz.house_project.getById(id, function (err, doc){
+	biz.house.project.getById(id, function (err, doc){
 		if(err) return ep.emit('error', err);
-		ep.emit('house_project', doc);
+		ep.emit('house_projects', doc);
 	});
 
 	biz.comment.findBySource(id, function (err, docs){
