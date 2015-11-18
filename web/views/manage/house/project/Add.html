@@ -14,20 +14,165 @@
 						<li class='active'>$!{data.title}</li>
 						<li class='active'><a href='javascript:location.reload();'>新增</a></li>
 					</ol>
-					<div id='info_alert' class='alert alert-info'>
-						<button type='button' class='close' data-dismiss='alert'>&times;</button>
-						<strong>提示：</strong>查询设置项目信息。
-					</div>
-					<div class='panel panel-info'>
-						<div class='panel-heading'>
-							<h3 class='panel-title'><strong>查询条件</strong></h3>
-						</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-sm-12 col-md-12'>
+					<div class='panel panel-default'>
 						<div class='panel-body'>
-							<form id='searchFrm' class='form-inline' role='form' onsubmit='return false;'>
+							<form class='form-horizontal' id='chpwdFrm' role='form' onsubmit='return false;' data-url='changePwd'>
 								<div class='form-group'>
-									<input type='text' class='form-control' id='searchFrm_RoleName' name='role_name' placeholder='项目名称'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_OldPass'>企业名称</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' name='OldPass' id='chpwdFrm_OldPass' placeholder='企业名称'>
+									</div>
 								</div>
-								<button type='button' class='btn btn-default glyphicon glyphicon-search' id='searchFrm_btn_search'>&#8201;查询</button>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass'>项目名称</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' name='NewPass' id='chpwdFrm_NewPass' placeholder='项目名称'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>项目描述</label>
+									<div class='col-sm-4'>
+										<textarea class='form-control' rows='3' name='Content' id='smsFrm_content' placeholder='项目描述' required='required'></textarea>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>价格</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='价格'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>评分</label>
+									<div class='col-sm-4'>
+										<select class='form-control'>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option selected>5</option>
+											<option>6</option>
+											<option>7</option>
+											<option>8</option>
+											<option>9</option>
+											<option>10</option>
+										</select>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>区域</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='区域'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>入住时间</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='入住时间'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>图片1</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='图片1'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>图片2</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='图片2'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>图片3</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='图片3'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>联系电话1</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='联系电话1'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>联系电话2</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='联系电话2'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>联系电话3</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='联系电话3'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>房屋类型</label>
+									<div class='col-sm-4'>
+										<select class='form-control'>
+											<option>普通住宅</option>
+											<option>写字楼</option>
+											<option>商铺</option>
+										</select>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>经度</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='经度'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>纬度</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='纬度'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>房间样式</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='房间样式'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>预售日期</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='预售日期'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>销售状态</label>
+									<div class='col-sm-4'>
+										<select class='form-control'>
+											<option>待售</option>
+											<option>在售</option>
+										</select>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>地址</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' id='chpwdFrm_NewPass2' placeholder='地址'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='chpwdFrm_NewPass2'>状态</label>
+									<div class='col-sm-4'>
+										<select class='form-control'>
+											<option>启用</option>
+											<option>禁用</option>
+										</select>
+									</div>
+								</div>
+								<div class='form-group'>
+									<div class='col-sm-offset-2 col-sm-4'>
+										<button id='chpwdFrm_btn_sub' type='button' class='btn btn-primary'>新增</button>
+									</div>
+								</div>
 							</form>
 						</div>
 					</div>
