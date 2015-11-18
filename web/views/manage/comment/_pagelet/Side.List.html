@@ -3,6 +3,7 @@
 		<tr>
 			<th class='ta'><input type='checkbox' title='全选/取消'></th>
 			<th>评论内容</th>
+			<th>数据源</th>
 			<th>创建时间</th>
 			<th nowrap='nowrap'>状态</th>
 		</tr>
@@ -11,6 +12,7 @@
 		#foreach($!doc in $!data.comments)<tr>
 			<td class='ta'><input type='checkbox' value='$!doc.id'></td>
 			<td>$!doc.CONTENT</td>
+			<td>$!doc.SOURCE_ID</td>
 			<td>#formatDate($!doc.CREATE_TIME)</td>
 			<td>#toStatus($!doc.STATUS)</td>
 		</tr>#end
