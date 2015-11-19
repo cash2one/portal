@@ -22,24 +22,33 @@
 						<div class='panel-body'>
 							<form class='form-horizontal' id='addFrm' role='form' onsubmit='return false;' data-url='add'>
 								<div class='form-group'>
-									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CUSTOMER_ID'>所属客户</label>
+									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>用户名</label>
 									<div class='col-sm-4'>
-										<select class='form-control' name='CUSTOMER_ID' id='addFrm_CUSTOMER_ID'>
-										#foreach($!doc in $!data.customers)
-											<option value='$!doc.id'>$!doc.USER_NAME（$!doc.REAL_NAME）</option>#end
-										</select>
+										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='用户名'>
 									</div>
 								</div>
 								<div class='form-group'>
-									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>企业名称</label>
+									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>电子邮箱</label>
 									<div class='col-sm-4'>
-										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='企业名称'>
+										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='电子邮箱'>
 									</div>
 								</div>
 								<div class='form-group'>
-									<label class='col-sm-2 hidden-xs control-label' for='addFrm_INTRO'>简介</label>
+									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>手机</label>
 									<div class='col-sm-4'>
-										<textarea class='form-control' rows='3' name='INTRO' id='addFrm_INTRO' placeholder='简介' required='required'></textarea>
+										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='手机'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>真实姓名</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='真实姓名'>
+									</div>
+								</div>
+								<div class='form-group'>
+									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>头像</label>
+									<div class='col-sm-4'>
+										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='头像'>
 									</div>
 								</div>
 								<div class='form-group'>

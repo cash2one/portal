@@ -33,3 +33,21 @@ exports.indexUI = function(req, res, next){
 		});
 	});
 };
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.addUI = function(req, res, next){
+	// TODO
+	res.render('manage/customer/Add', {
+		conf: conf,
+		title: '新增 | '+ req.query.name +' | '+ conf.corp.name,
+		description: '',
+		keywords: ',dolalive,html5',
+		data: {
+			title: req.query.name
+		}
+	});
+};

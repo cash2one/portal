@@ -117,6 +117,7 @@ function proc_manage(app){
 	app.get('/manage/house/project/add', manage.user.login_validate, manage.house.project.addUI);
 	// 客户管理
 	app.get('/manage/customer/', manage.user.login_validate, manage.customer.indexUI);
+	app.get('/manage/customer/add', manage.user.login_validate, manage.customer.addUI);
 
 	// 欢迎页
 	app.get('/manage/welcome/', manage.user.login_validate, manage.site.welcomeUI);
