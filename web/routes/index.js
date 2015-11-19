@@ -19,6 +19,7 @@ var back = {
 var manage = {
 	comment: require('../controllers/manage/comment'),
 	house: {
+		corp: require('../controllers/manage/house/corp'),
 		project: require('../controllers/manage/house/project')
 	},
 	customer: require('../controllers/manage/customer'),
@@ -110,6 +111,7 @@ function proc_manage(app){
 	// 评论信息维护
 	app.get('/manage/comment/', manage.user.login_validate, manage.comment.indexUI);
 	// 房产频道
+	app.get('/manage/house/corp/', manage.user.login_validate, manage.house.corp.indexUI);
 	app.get('/manage/house/project/', manage.user.login_validate, manage.house.project.indexUI);
 	app.get('/manage/house/project/add', manage.user.login_validate, manage.house.project.addUI);
 	// 客户管理
