@@ -60,6 +60,11 @@ exports.addUI = function(req, res, next){
 exports.add = function(req, res, next){
 	var result = { success: false },
 		data = req._data;
-	result.data = data;
-	res.send(result);
+	// TODO
+	biz.corp.saveNew(data, function (err, status){
+		if(err) return next(err);
+		// TODO
+		result.success = true;
+		res.send(result);
+	});
 };

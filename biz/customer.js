@@ -75,6 +75,6 @@ exports.saveNew = function(newInfo, cb){
 	];
 	mysql.query(sql, postData, function (err, status){
 		if(err) return cb(err);
-		cb(null, status.changedRows);
+		cb(null, status);
 	});
 };
