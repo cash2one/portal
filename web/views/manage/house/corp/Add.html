@@ -33,7 +33,7 @@
 								<div class='form-group'>
 									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>企业名称</label>
 									<div class='col-sm-4'>
-										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='企业名称'>
+										<input type='text' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='企业名称'>
 									</div>
 								</div>
 								<div class='form-group'>
@@ -65,6 +65,13 @@
 		#parse('front/_pagelet/Common.IndexJs.html')
 		#parse('manage/_pagelet/Common.Iframe.html')
 		<script>
+		$(function(){
+			$('#addFrm_btn_sub').click(function(){
+				$('#addFrm').olxForm('submit', [function(){}, null, function (data){
+					// TODO
+				}]);
+			});
+		});
 		</script>
 	</body>
 </html>
