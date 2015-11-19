@@ -54,3 +54,27 @@ exports.findByName = function(name, cb){
 		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
 	});
 };
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.saveNew = function(newInfo, cb){
+	var sql = 'INSERT INTO g_customer (id, USER_NAME, USER_PASS, AVATAR_URL, EMAIL, MOBILE, REAL_NAME, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+	var postData = [
+		util.genObjectId(),
+		newInfo.USER_NAME,
+		md5.hex('123456'),
+		newInfo.AVATAR_URL,
+		newInfo.EMAIL,
+		newInfo.MOBILE,
+		newInfo.REAL_NAME,
+		new Date(),
+		newInfo.STATUS || 1
+	];
+	mysql.query(sql, postData, function (err, status){
+		if(err) return cb(err);
+		cb(null, status.changedRows);
+	});
+};

@@ -36,6 +36,6 @@ exports.saveNew = function(newInfo, cb){
 	var sql = 'INSERT INTO g_house_project_apply (id, PROJECT_ID, MOBILE, REALNAME, CREATE_TIME) values (?, ?, ?, ?, ?)';
 	mysql.query(sql, [util.genObjectId(), newInfo.PROJECT_ID, newInfo.MOBILE, newInfo.REALNAME, new Date()], function (err, status){
 		if(err) return cb(err);
-		cb(null, null, null, status.changedRows);
+		cb(null, status.changedRows);
 	});
 };
