@@ -32,7 +32,8 @@ exports.getByPId = function(pid, cb){
  * @return
  */
 exports.getChildrenByPId = function(pid, cb){
-	mysql.query('SELECT t.* FROM g_menu t WHERE CONCAT(t.path, ",") LIKE CONCAT((SELECT path FROM g_menu WHERE id=?), ",", ?, ",%") ORDER BY SORT ASC', [pid, pid], function (err, docs){
+	var sql = 'SELECT t.* FROM g_menu t WHERE CONCAT(t.PATH, ",", t.PID, ",") LIKE CONCAT((SELECT CONCAT(PATH, ",", PID) FROM g_menu WHERE id=?), ",", ?, ",%") ORDER BY SORT ASC';
+	mysql.query(sql, [pid, pid], function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
 	});
