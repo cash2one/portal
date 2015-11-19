@@ -61,7 +61,7 @@ exports.add = function(req, res, next){
 	var result = { success: false },
 		data = req._data;
 	// TODO
-	biz.corp.saveNew(data, function (err, status){
+	biz.project.saveNew(data, function (err, status){
 		if(err) return next(err);
 		// TODO
 		result.success = true;

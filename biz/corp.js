@@ -27,3 +27,25 @@ exports.findAll = function(corp_type, cb){
 		cb(null, docs);
 	});
 };
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.saveNew = function(newInfo, cb){
+	var sql = 'INSERT INTO g_customer_corp (id, CUSTOMER_ID, CORP_NAME, INTRO, CORP_TYPE_ID, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?)';
+	var postData = [
+		util.genObjectId(),
+		newInfo.CUSTOMER_ID,
+		newInfo.CORP_NAME,
+		newInfo.INTRO,
+		'564d33564e7d4a6005b371b0',
+		new Date(),
+		newInfo.STATUS || 1
+	];
+	mysql.query(sql, postData, function (err, status){
+		if(err) return cb(err);
+		cb(null, status);
+	});
+};

@@ -41,3 +41,41 @@ exports.getById = function(id, cb){
 		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
 	});
 };
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.saveNew = function(newInfo, cb){
+	var sql = 'INSERT INTO g_house_project (id, CORP_ID, PROJECT_NAME, PROJECT_DESC, PRICE, GRADE, ZONE_ID, ABODE_TIME, IMG_1, IMG_2, IMG_3, TEL_1, TEL_2, TEL_3, HOUSE_TYPE_ID, LAT, LNG, HOUSE_STYLE, PLAN_SALE_TIME, SALE_STATUS_ID, ADDR, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+	var postData = [
+		util.genObjectId(),
+		newInfo.CORP_ID,
+		newInfo.PROJECT_NAME,
+		newInfo.PROJECT_DESC,
+		newInfo.PRICE,
+		newInfo.GRADE,
+		newInfo.ZONE_ID,
+		newInfo.ABODE_TIME,
+		newInfo.IMG_1,
+		newInfo.IMG_2,
+		newInfo.IMG_3,
+		newInfo.TEL_1,
+		newInfo.TEL_2,
+		newInfo.TEL_3,
+		newInfo.HOUSE_TYPE_ID,
+		newInfo.LAT,
+		newInfo.LNG,
+		newInfo.HOUSE_STYLE,
+		newInfo.PLAN_SALE_TIME,
+		newInfo.SALE_STATUS_ID,
+		newInfo.ADDR,
+		new Date(),
+		newInfo.STATUS || 1
+	];
+	mysql.query(sql, postData, function (err, status){
+		if(err) return cb(err);
+		cb(null, status);
+	});
+};
