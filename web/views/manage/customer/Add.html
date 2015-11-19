@@ -22,33 +22,33 @@
 						<div class='panel-body'>
 							<form class='form-horizontal' id='addFrm' role='form' onsubmit='return false;' data-url='add'>
 								<div class='form-group'>
-									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>用户名</label>
+									<label class='col-sm-2 hidden-xs control-label' for='addFrm_USER_NAME'>用户名</label>
 									<div class='col-sm-4'>
-										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='用户名'>
+										<input type='password' class='form-control' name='USER_NAME' id='addFrm_USER_NAME' placeholder='用户名'>
 									</div>
 								</div>
 								<div class='form-group'>
-									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>电子邮箱</label>
+									<label class='col-sm-2 hidden-xs control-label' for='addFrm_EMAIL'>电子邮箱</label>
 									<div class='col-sm-4'>
-										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='电子邮箱'>
+										<input type='password' class='form-control' name='EMAIL' id='addFrm_EMAIL' placeholder='电子邮箱'>
 									</div>
 								</div>
 								<div class='form-group'>
-									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>手机</label>
+									<label class='col-sm-2 hidden-xs control-label' for='addFrm_MOBILE'>手机</label>
 									<div class='col-sm-4'>
-										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='手机'>
+										<input type='password' class='form-control' name='MOBILE' id='addFrm_MOBILE' placeholder='手机'>
 									</div>
 								</div>
 								<div class='form-group'>
-									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>真实姓名</label>
+									<label class='col-sm-2 hidden-xs control-label' for='addFrm_REAL_NAME'>真实姓名</label>
 									<div class='col-sm-4'>
-										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='真实姓名'>
+										<input type='password' class='form-control' name='REAL_NAME' id='addFrm_REAL_NAME' placeholder='真实姓名'>
 									</div>
 								</div>
 								<div class='form-group'>
-									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>头像</label>
+									<label class='col-sm-2 hidden-xs control-label' for='addFrm_AVATAR_URL'>头像</label>
 									<div class='col-sm-4'>
-										<input type='password' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='头像'>
+										<input type='password' class='form-control' name='AVATAR_URL' id='addFrm_AVATAR_URL' placeholder='头像'>
 									</div>
 								</div>
 								<div class='form-group'>
@@ -74,6 +74,13 @@
 		#parse('front/_pagelet/Common.IndexJs.html')
 		#parse('manage/_pagelet/Common.Iframe.html')
 		<script>
+		$(function(){
+			$('#addFrm_btn_sub').click(function(){
+				$('#addFrm').olxForm('submit', [function(){}, null, function (data){
+					// TODO
+				}]);
+			});
+		});
 		</script>
 	</body>
 </html>
