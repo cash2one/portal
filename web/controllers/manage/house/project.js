@@ -10,6 +10,7 @@ var util = require('speedt-utils');
 var conf = require('../../../settings');
 
 var biz = {
+	corp: require('../../../../biz/corp'),
 	project: require('../../../../biz/house/project')
 };
 
@@ -40,15 +41,19 @@ exports.indexUI = function(req, res, next){
  * @return
  */
 exports.addUI = function(req, res, next){
-	// TODO
-	res.render('manage/house/project/Add', {
-		conf: conf,
-		title: '新增 | '+ req.query.name +' | '+ conf.corp.name,
-		description: '',
-		keywords: ',dolalive,html5',
-		data: {
-			title: req.query.name
-		}
+	biz.corp.findAll('564d33564e7d4a6005b371b0', function (err, docs){
+		if(err) return next(err);
+		// TODO
+		res.render('manage/house/project/Add', {
+			conf: conf,
+			title: '新增 | '+ req.query.name +' | '+ conf.corp.name,
+			description: '',
+			keywords: ',dolalive,html5',
+			data: {
+				corps: docs,
+				title: req.query.name
+			}
+		});
 	});
 };
 

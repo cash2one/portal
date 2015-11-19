@@ -25,7 +25,10 @@
 								<div class='form-group'>
 									<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_ID'>企业名称</label>
 									<div class='col-sm-4'>
-										<input type='text' class='form-control' name='CORP_ID' id='addFrm_CORP_ID' placeholder='企业名称'>
+										<select class='form-control' name='CORP_ID' id='addFrm_CORP_ID'>
+										#foreach($!doc in $!data.corps)
+											<option value='$!doc.id'>$!doc.CORP_NAME</option>#end
+										</select>
 									</div>
 								</div>
 								<div class='form-group'>
@@ -66,7 +69,7 @@
 								<div class='form-group'>
 									<label class='col-sm-2 hidden-xs control-label' for='addFrm_ZONE_ID'>区域</label>
 									<div class='col-sm-4'>
-										<input type='text' class='form-control' name='ZONE_ID' id='addFrm_ZONE_ID' placeholder='区域'>
+										<input type='text' class='form-control' name='ZONE_ID' id='addFrm_ZONE_ID' placeholder='区域' value='564d2f63828c6f980a40704f'>
 									</div>
 								</div>
 								<div class='form-group'>
@@ -203,7 +206,10 @@
 
 			$('#addFrm_btn_sub').click(function(){
 				$('#addFrm').olxForm('submit', [function(){}, null, function (data){
+					$('#addFrm')[0].reset();
+					if(!data.success) return alert(data.msg);
 					// TODO
+					parent.location.href="/manage/#page/house/project/?name=$!{data.title}"
 				}]);
 			});
 		});
