@@ -51,3 +51,15 @@ exports.addUI = function(req, res, next){
 		}
 	});
 };
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.add = function(req, res, next){
+	var result = { success: false },
+		data = req._data;
+	result.data = data;
+	res.send(result);
+};
