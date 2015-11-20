@@ -1,0 +1,39 @@
+#set($doc=$data.corp)
+<form class='form-horizontal' id='addFrm' role='form' onsubmit='return false;' data-url=''>
+	<input type='hidden' name='id' id='addFrm_id' placeholder='用户名' value='$!doc.id'>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_CUSTOMER_ID'>所属客户</label>
+		<div class='col-sm-4'>
+			<select class='form-control' name='CUSTOMER_ID' id='addFrm_CUSTOMER_ID'>
+			#foreach($!doc in $!data.customers)
+				<option value='$!doc.id'>$!doc.USER_NAME（$!doc.REAL_NAME）</option>#end
+			</select>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME'>企业名称</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='CORP_NAME' id='addFrm_CORP_NAME' placeholder='企业名称' value='$!doc.CORP_NAME'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_INTRO'>简介</label>
+		<div class='col-sm-4'>
+			<textarea class='form-control' rows='3' name='INTRO' id='addFrm_INTRO' placeholder='简介' required='required'>$!doc.INTRO</textarea>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_STATUS'>状态</label>
+		<div class='col-sm-4'>
+			<select class='form-control' name='STATUS' id='addFrm_STATUS'>
+				<option value='1'>启用</option>
+				<option value='2'>禁用</option>
+			</select>
+		</div>
+	</div>
+	<div class='form-group'>
+		<div class='col-sm-offset-2 col-sm-4'>
+			<button id='addFrm_btn_sub' type='button' class='btn btn-primary'>保存</button>
+		</div>
+	</div>
+</form>

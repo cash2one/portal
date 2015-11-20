@@ -34,7 +34,7 @@
 						<div class='panel-heading'>
 							<div class='btn-group btn-group-sm'>
 								<a class='btn btn-primary glyphicon glyphicon-plus-sign' data-toggle='modal' onclick='parent.location.href="/manage/#page/house/corp/add?name=$!{data.title}"'>新增</a>
-								<button id='btn_edit' class='btn btn-default glyphicon glyphicon-edit' data-toggle='modal' data-target='#editModal'>编辑</button>
+								<button id='btn_edit' class='btn btn-default glyphicon glyphicon-edit' data-toggle='modal'>编辑</button>
 								<button id='btn_del' class='btn btn-danger glyphicon glyphicon-remove-sign'>删除</button>
 							</div>
 						</div>
@@ -60,6 +60,13 @@
 			$('#searchFrm_btn_search').click(function(){
 				var formObj = $('#searchFrm').serializeObjectForm();
 				console.log(formObj);
+			});
+
+			$('#btn_edit').click(function(){
+				var vals = $('#table1').olxGrid('getCheckedRowsValue', 1);
+				if(1 != vals.length) return;
+				var id = vals[0];
+				parent.location.href='/manage/#page/house/corp/edit?name=$!{data.title}&id='+ id;
 			});
 		</script>
 	</body>
