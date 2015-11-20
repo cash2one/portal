@@ -62,12 +62,55 @@ exports.addUI = function(req, res, next){
  * @params
  * @return
  */
+exports.editUI = function(req, res, next){
+	biz.project.getById(req.query.id, function (err, doc){
+		if(err) return next(err);
+		// TODO
+		res.render('manage/house/project/Edit', {
+			conf: conf,
+			title: '编辑 | '+ req.query.name +' | '+ conf.corp.name,
+			description: '',
+			keywords: ',dolalive,html5',
+			data: {
+				project: doc,
+				title: req.query.name
+			}
+		});
+	})
+};
+
+/**
+ *
+ * @params
+ * @return
+ */
 exports.add = function(req, res, next){
 	var result = { success: false },
 		data = req._data;
 	// TODO
 	biz.project.saveNew(data, function (err, status){
 		if(err) return next(err);
+		// TODO
+		result.success = true;
+		res.send(result);
+	});
+};
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.edit = function(req, res, next){
+	var result = { success: false },
+		data = req._data;
+	// TODO
+	biz.project.editInfo(data, function (err, status){
+		if(err) return next(err);
+		if('string' === typeof status){
+			result.msg = status;
+			return res.send(result);
+		}
 		// TODO
 		result.success = true;
 		res.send(result);

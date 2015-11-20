@@ -1,0 +1,164 @@
+#set($doc=$data.project)
+<form class='form-horizontal' id='addFrm' role='form' onsubmit='return false;' data-url=''>
+	<input type='hidden' name='id' id='addFrm_id' placeholder='用户名' value='$!doc.id'>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_ID'>企业名称</label>
+		<div class='col-sm-4'>
+			<select class='form-control' name='CORP_ID' id='addFrm_CORP_ID'>
+			#foreach($!doc in $!data.corps)
+				<option value='$!doc.id'>$!doc.CORP_NAME</option>#end
+			</select>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_PROJECT_NAME'>项目名称</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='PROJECT_NAME' id='addFrm_PROJECT_NAME' placeholder='项目名称' value='$!doc.PROJECT_NAME'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_PROJECT_DESC'>项目描述</label>
+		<div class='col-sm-4'>
+			<textarea class='form-control' rows='3' name='PROJECT_DESC' id='addFrm_PROJECT_DESC' placeholder='项目描述' required='required'>$!doc.PROJECT_DESC</textarea>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_PRICE'>价格</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='PRICE' id='addFrm_PRICE' placeholder='价格' value='$!doc.PRICE'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_GRADE'>评分</label>
+		<div class='col-sm-4'>
+			<select class='form-control' name='GRADE' id='addFrm_GRADE'>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option selected>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+			</select>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_ZONE_ID'>区域</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='ZONE_ID' id='addFrm_ZONE_ID' placeholder='区域' value='564d2f63828c6f980a40704f'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_ABODE_TIME'>入住时间</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='ABODE_TIME' id='addFrm_ABODE_TIME' placeholder='入住时间' value='$!doc.ABODE_TIME'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_IMG_1'>图片1</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='IMG_1' id='addFrm_IMG_1' placeholder='图片1' value='$!doc.IMG_1'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_IMG_2'>图片2</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='IMG_2' id='addFrm_IMG_2' placeholder='图片2' value='$!doc.IMG_2'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_IMG_3'>图片3</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='IMG_3' id='addFrm_IMG_3' placeholder='图片3' value='$!doc.IMG_3'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_TEL_1'>联系电话1</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='TEL_1' id='addFrm_TEL_1' placeholder='联系电话1' value='$!doc.TEL_1'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_TEL_2'>联系电话2</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='TEL_2' id='addFrm_TEL_2' placeholder='联系电话2' value='$!doc.TEL_2'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_TEL_3'>联系电话3</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='TEL_3' id='addFrm_TEL_3' placeholder='联系电话3' value='$!doc.TEL_3'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_HOUSE_TYPE_ID'>房屋类型</label>
+		<div class='col-sm-4'>
+			<select class='form-control' name='HOUSE_TYPE_ID' name='addFrm_HOUSE_TYPE_ID'>
+				<option value='1'>普通住宅</option>
+				<option value='2'>写字楼</option>
+				<option value='3'>商铺</option>
+			</select>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_LAT'>经度</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='LAT' id='addFrm_LAT' placeholder='经度' value='$!doc.LAT'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_LNG'>纬度</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='LNG' id='addFrm_LNG' placeholder='纬度' value='$!doc.LNG'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_HOUSE_STYLE'>房间样式</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='HOUSE_STYLE' id='addFrm_HOUSE_STYLE' placeholder='房间样式' value='$!doc.HOUSE_STYLE'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_PLAN_SALE_TIME'>预售日期</label>
+		<div class='col-sm-4'>
+			<div class='input-group date form_date col-md-12' data-date='' data-date-format='yyyy/mm/dd' data-link-field='addFrm_PLAN_SALE_TIME' data-link-format='yyyy/mm/dd'>
+			<input class='form-control' id='addFrm_shadow_PLAN_SALE_TIME' type='text' value='' readonly placeholder='预售日期'>
+			<span class='input-group-addon'><span class='glyphicon glyphicon-remove'></span></span>
+			<span class='input-group-addon'><span class='glyphicon glyphicon-calendar'></span></span>
+		</div>
+		<input type='hidden' data-olx-type='olx.form.input' class='form-control' id='addFrm_PLAN_SALE_TIME' name='PLAN_SALE_TIME' placeholder='预售日期'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_SALE_STATUS_ID'>销售状态</label>
+		<div class='col-sm-4'>
+			<select class='form-control' name='SALE_STATUS_ID' id='addFrm_SALE_STATUS_ID'>
+				<option value='1'>待售</option>
+				<option value='2'>在售</option>
+			</select>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_ADDR'>地址</label>
+		<div class='col-sm-4'>
+			<input type='text' class='form-control' name='ADDR' id='addFrm_ADDR' placeholder='地址' value='$!doc.ADDR'>
+		</div>
+	</div>
+	<div class='form-group'>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_STATUS'>状态</label>
+		<div class='col-sm-4'>
+			<select class='form-control' name='STATUS' id='addFrm_STATUS'>
+				<option value='1'>启用</option>
+				<option value='0'>禁用</option>
+			</select>
+		</div>
+	</div>
+	<div class='form-group'>
+		<div class='col-sm-offset-2 col-sm-4'>
+			<button id='addFrm_btn_sub' type='button' class='btn btn-primary'>保存</button>
+		</div>
+	</div>
+</form>

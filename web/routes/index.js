@@ -118,7 +118,9 @@ function proc_manage(app){
 	app.post('/manage/house/corp/edit', express.valiPostData, manage.user.login_validate, manage.house.corp.edit);
 	app.get('/manage/house/project/', manage.user.login_validate, manage.house.project.indexUI);
 	app.get('/manage/house/project/add', manage.user.login_validate, manage.house.project.addUI);
+	app.get('/manage/house/project/edit', manage.user.login_validate, manage.house.project.editUI);
 	app.post('/manage/house/project/add', express.valiPostData, manage.user.login_validate, manage.house.project.add);
+	app.post('/manage/house/project/edit', express.valiPostData, manage.user.login_validate, manage.house.project.edit);
 	// 客户管理
 	app.get('/manage/customer/', manage.user.login_validate, manage.customer.indexUI);
 	app.get('/manage/customer/add', manage.user.login_validate, manage.customer.addUI);

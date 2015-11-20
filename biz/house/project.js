@@ -79,3 +79,39 @@ exports.saveNew = function(newInfo, cb){
 		cb(null, status);
 	});
 };
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.editInfo = function(newInfo, cb){
+	var sql = 'UPDATE g_house_project set PROJECT_NAME=?, PROJECT_DESC=?, PRICE=?, GRADE=?, ZONE_ID=?, ABODE_TIME=?, IMG_1=?, IMG_2=?, IMG_3=?, TEL_1=?, TEL_2=?, TEL_3=?, HOUSE_TYPE_ID=?, LAT=?, LNG=?, HOUSE_STYLE=?, PLAN_SALE_TIME=?, SALE_STATUS_ID=?, ADDR=?, STATUS=? WHERE id=?';
+	var postData = [
+		newInfo.PROJECT_NAME,
+		newInfo.PROJECT_DESC,
+		newInfo.PRICE,
+		newInfo.GRADE,
+		newInfo.ZONE_ID,
+		newInfo.ABODE_TIME,
+		newInfo.IMG_1,
+		newInfo.IMG_2,
+		newInfo.IMG_3,
+		newInfo.TEL_1,
+		newInfo.TEL_2,
+		newInfo.TEL_3,
+		newInfo.HOUSE_TYPE_ID,
+		newInfo.LAT,
+		newInfo.LNG,
+		newInfo.HOUSE_STYLE,
+		newInfo.PLAN_SALE_TIME,
+		newInfo.SALE_STATUS_ID,
+		newInfo.ADDR,
+		newInfo.STATUS || 1,
+		newInfo.id
+	];
+	mysql.query(sql, postData, function (err, status){
+		if(err) return cb(err);
+		cb(null, status);
+	});
+};
