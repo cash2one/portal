@@ -120,7 +120,9 @@ function proc_manage(app){
 	// 客户管理
 	app.get('/manage/customer/', manage.user.login_validate, manage.customer.indexUI);
 	app.get('/manage/customer/add', manage.user.login_validate, manage.customer.addUI);
+	app.get('/manage/customer/edit', manage.user.login_validate, manage.customer.editUI);
 	app.post('/manage/customer/add', express.valiPostData, manage.user.login_validate, manage.customer.add);
+	app.post('/manage/customer/edit', express.valiPostData, manage.user.login_validate, manage.customer.edit);
 
 	// 欢迎页
 	app.get('/manage/welcome/', manage.user.login_validate, manage.site.welcomeUI);

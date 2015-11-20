@@ -43,6 +43,18 @@ exports.login = function(logInfo, cb){
 };
 
 /**
+ *
+ * @params
+ * @return
+ */
+exports.getById = function(id, cb){
+	mysql_util.find(null, 'g_customer', [['id', '=', id]], null, null, function (err, docs){
+		if(err) return cb(err);
+		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
+	});
+};
+
+/**
  * 查找用户通过用户名
  *
  * @params
@@ -61,6 +73,9 @@ exports.findByName = function(name, cb){
  * @return
  */
 exports.saveNew = function(newInfo, cb){
+	if(!newInfo.USER_NAME || '' === newInfo.USER_NAME.trim())
+		return cb(null, '用户名不能为空');
+	// TODO
 	this.findByName(newInfo.USER_NAME, function (err, doc){
 		if(err) return cb(err);
 		if(doc) return cb(null, '用户已存在');
@@ -81,5 +96,26 @@ exports.saveNew = function(newInfo, cb){
 			if(err) return cb(err);
 			cb(null, status);
 		});
+	});
+};
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.editInfo = function(newInfo, cb){
+	var sql = 'UPDATE g_customer set AVATAR_URL=?, EMAIL=?, MOBILE=?, REAL_NAME=?, STATUS=? WHERE id=?';
+	var postData = [
+		newInfo.AVATAR_URL,
+		newInfo.EMAIL,
+		newInfo.MOBILE,
+		newInfo.REAL_NAME,
+		newInfo.STATUS || 1,
+		newInfo.id
+	];
+	mysql.query(sql, postData, function (err, status){
+		if(err) return cb(err);
+		cb(null, status);
 	});
 };
