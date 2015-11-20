@@ -63,6 +63,10 @@ exports.add = function(req, res, next){
 	// TODO
 	biz.customer.saveNew(data, function (err, status){
 		if(err) return next(err);
+		if('string' === typeof status){
+			result.msg = status;
+			return res.send(result);
+		}
 		// TODO
 		result.success = true;
 		res.send(result);

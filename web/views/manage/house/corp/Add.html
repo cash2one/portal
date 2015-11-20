@@ -68,7 +68,10 @@
 		$(function(){
 			$('#addFrm_btn_sub').click(function(){
 				$('#addFrm').olxForm('submit', [function(){}, null, function (data){
+					$('#addFrm')[0].reset();
+					if(!data.success) return alert(data.msg);
 					// TODO
+					parent.location.href='/manage/#page/house/corp/?name=$!{data.title}';
 				}]);
 			});
 		});

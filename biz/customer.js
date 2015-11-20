@@ -61,20 +61,25 @@ exports.findByName = function(name, cb){
  * @return
  */
 exports.saveNew = function(newInfo, cb){
-	var sql = 'INSERT INTO g_customer (id, USER_NAME, USER_PASS, AVATAR_URL, EMAIL, MOBILE, REAL_NAME, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?, ?)';
-	var postData = [
-		util.genObjectId(),
-		newInfo.USER_NAME,
-		md5.hex('123456'),
-		newInfo.AVATAR_URL,
-		newInfo.EMAIL,
-		newInfo.MOBILE,
-		newInfo.REAL_NAME,
-		new Date(),
-		newInfo.STATUS || 1
-	];
-	mysql.query(sql, postData, function (err, status){
+	this.findByName(newInfo.USER_NAME, function (err, doc){
 		if(err) return cb(err);
-		cb(null, status);
+		if(doc) return cb(null, '用户已存在');
+		// TODO
+		var sql = 'INSERT INTO g_customer (id, USER_NAME, USER_PASS, AVATAR_URL, EMAIL, MOBILE, REAL_NAME, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		var postData = [
+			util.genObjectId(),
+			newInfo.USER_NAME,
+			md5.hex('123456'),
+			newInfo.AVATAR_URL,
+			newInfo.EMAIL,
+			newInfo.MOBILE,
+			newInfo.REAL_NAME,
+			new Date(),
+			newInfo.STATUS || 1
+		];
+		mysql.query(sql, postData, function (err, status){
+			if(err) return cb(err);
+			cb(null, status);
+		});
 	});
 };
