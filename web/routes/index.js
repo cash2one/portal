@@ -69,7 +69,7 @@ function proc_front(app){
 	// 商铺
 	app.get('/shop/:shop/', front.shop.indexUI);
 	// 首页
-	app.get('/:zone/', front.site.checkExistOpenSite, function (req, res, next){ req.flash('page_id', 'dad9657792274e0e95a15c8901573c11'); next(); }, front.site.findAds_zoneUI, front.site.zoneUI);
+	app.get('/:zone/', front.site.checkExistOpenSite, function (req, res, next){ req.flash('page_id', '5652b896e9c249c41d331caa'); next(); }, front.site.findAds_zoneUI, front.site.zoneUI);
 	// 默认
 	app.get('/', function (req, res, next){ res.redirect('/zz/'); });
 }

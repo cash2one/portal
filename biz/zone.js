@@ -18,7 +18,7 @@ var exports = module.exports;
  * @return
  */
 exports.findOpenSiteList = function(cb){
-	mysql_util.find(null, 'w_zone', [['IS_OPEN', '=', '1']], [['SORT', 'ASC']], null, function (err, docs){
+	mysql_util.find(null, 'd_zone', [['IS_OPEN', '=', '1']], [['SORT', 'ASC']], null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
 	});
@@ -31,7 +31,7 @@ exports.findOpenSiteList = function(cb){
  * @return
  */
 exports.findDefOpenSite = function(cb){
-	mysql_util.find(null, 'w_zone', [['IS_DEF_SITE', '=', '1']], null, null, function (err, docs){
+	mysql_util.find(null, 'd_zone', [['IS_DEF_SITE', '=', '1']], null, null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, mysql.checkOnly(docs) ? docs[0] : null);
 	});
