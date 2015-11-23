@@ -17,6 +17,16 @@ var biz = {
 
 var exports = module.exports;
 
+var _sql = 'SELECT a.*, b.CORP_NAME_EN '+
+			'FROM w_ad a, g_customer_corp b '+
+			'WHERE '+
+			'a.CORP_ID=b.id AND '+
+			'a.STATUS=1 AND '+
+			'(NOW() BETWEEN a.START_TIME and a.END_TIME) AND '+
+			'a.ZONE_ID=? AND '+
+			'a.PAGE_POSITION_ID in (SELECT id FROM w_page_position WHERE PAGE_ID=?) '+
+			'ORDER BY a.SORT ASC';
+
 /**
  * 通过页面id获取该页面的全部广告信息
  *
@@ -66,16 +76,7 @@ exports.findAdsByPage = function(page_id, zone_id, cb){
 		cb(err);
 	});
 
-	var sql = 'SELECT a.*, b.CORP_NAME_EN '+
-				'FROM w_ad a, g_customer_corp b '+
-				'WHERE '+
-				'a.CORP_ID=b.id AND '+
-				'a.STATUS=1 AND '+
-				'(NOW() BETWEEN a.START_TIME and a.END_TIME) AND '+
-				'a.ZONE_ID=? AND '+
-				'a.PAGE_POSITION_ID in (SELECT id FROM w_page_position WHERE PAGE_ID=?) '+
-				'ORDER BY a.SORT ASC';
-	mysql.query(sql, [zone_id, page_id], function (err, docs){
+	mysql.query(_sql, [zone_id, page_id], function (err, docs){
 		if(err) return ep.emit('error', err);
 		ep.emit('ads', docs);
 	});
