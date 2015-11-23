@@ -46,11 +46,12 @@ exports.getById = function(id, cb){
  * @return
  */
 exports.saveNew = function(newInfo, cb){
-	var sql = 'INSERT INTO g_customer_corp (id, CUSTOMER_ID, CORP_NAME, INTRO, CORP_TYPE_ID, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?)';
+	var sql = 'INSERT INTO g_customer_corp (id, CUSTOMER_ID, CORP_NAME_CH, CORP_NAME_EN, INTRO, CORP_TYPE_ID, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?)';
 	var postData = [
 		util.genObjectId(),
 		newInfo.CUSTOMER_ID,
-		newInfo.CORP_NAME,
+		newInfo.CORP_NAME_CH,
+		newInfo.CORP_NAME_EN,
 		newInfo.INTRO,
 		'564d33564e7d4a6005b371b0',
 		new Date(),
@@ -68,9 +69,10 @@ exports.saveNew = function(newInfo, cb){
  * @return
  */
 exports.editInfo = function(newInfo, cb){
-	var sql = 'UPDATE g_customer_corp set CORP_NAME=?, INTRO=?, STATUS=? WHERE id=?';
+	var sql = 'UPDATE g_customer_corp set CORP_NAME_EN=?, CORP_NAME_CH=?, INTRO=?, STATUS=? WHERE id=?';
 	var postData = [
-		newInfo.CORP_NAME,
+		newInfo.CORP_NAME_EN,
+		newInfo.CORP_NAME_CH,
 		newInfo.INTRO,
 		newInfo.STATUS || 1,
 		newInfo.id
