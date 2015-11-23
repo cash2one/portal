@@ -25,12 +25,10 @@
 			<td>#toStatus($!doc.STATUS)</td>
 		</tr><tr>
 			<td> </td>
-			<th>联系电话1</th>
-			<td>$!doc.TEL_1</td>
-			<th>联系电话2</th>
-			<td>$!doc.TEL_2</td>
-			<th>联系电话3</th>
-			<td>$!doc.TEL_3</td>
+			<th>地址</th>
+			<td>$!doc.ADDR</td>
+			<th>联系电话</th>
+			<td colspan='3'>$!doc.TEL</td>
 			<th>房屋类型</th>
 			<td>$!doc.HOUSE_TYPE_ID</td>
 		</tr><tr>
@@ -45,10 +43,8 @@
 			<td>$!doc.SALE_STATUS_ID</td>
 		</tr><tr>
 			<td> </td>
-			<th>地址</th>
-			<td>$!doc.ADDR</td>
 			<th>项目描述</th>
-			<td colspan='5'>$!doc.PROJECT_DESC</td>
+			<td colspan='7'>$!doc.PROJECT_DESC</td>
 		</tr>#end
 	</tbody>
 </table>
