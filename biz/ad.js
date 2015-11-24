@@ -18,13 +18,13 @@ var biz = {
 var exports = module.exports;
 
 var _sql = 'SELECT a.*, b.CORP_NAME_EN '+
-			'FROM w_ad a, g_customer_corp b '+
+			'FROM g_ad a, g_customer_corp b '+
 			'WHERE '+
 			'a.CORP_ID=b.id AND '+
 			'a.STATUS=1 AND '+
 			'(NOW() BETWEEN a.START_TIME and a.END_TIME) AND '+
 			'a.ZONE_ID=? AND '+
-			'a.PAGE_POSITION_ID in (SELECT id FROM w_page_position WHERE PAGE_ID=?) '+
+			'a.PAGE_POSITION_ID in (SELECT id FROM g_page_position WHERE PAGE_ID=?) '+
 			'ORDER BY a.SORT ASC';
 
 /**

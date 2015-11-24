@@ -18,7 +18,7 @@ var exports = module.exports;
  * @return
  */
 exports.findPositionsByPage = function(page_id, cb){
-	mysql_util.find(null, 'w_page_position', [['PAGE_ID', '=', page_id]], null, null, function (err, docs){
+	mysql_util.find(null, 'g_page_position', [['PAGE_ID', '=', page_id]], null, null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
 	});
@@ -31,7 +31,7 @@ exports.findPositionsByPage = function(page_id, cb){
  * @return
  */
 exports.findPositionExtsByPage = function(page_id, cb){
-	var sql = 'SELECT * FROM w_page_position_ext WHERE PID in (SELECT id FROM w_page_position WHERE PAGE_ID=?)';
+	var sql = 'SELECT * FROM g_page_position_ext WHERE PID in (SELECT id FROM g_page_position WHERE PAGE_ID=?)';
 	mysql.query(sql, [page_id], function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs);
