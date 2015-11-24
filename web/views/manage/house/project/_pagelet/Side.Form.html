@@ -6,7 +6,7 @@
 		<div class='col-sm-4'>
 			<select class='form-control' name='CORP_ID' id='addFrm_CORP_ID'>
 			#foreach($!doc in $!data.corps)
-				<option value='$!doc.id'>$!doc.CORP_NAME</option>#end
+				<option value='$!doc.id'>$!doc.CORP_NAME_EN（$!doc.CORP_NAME_CH）</option>#end
 			</select>
 		</div>
 	</div>
