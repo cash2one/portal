@@ -12,7 +12,7 @@ var util = require('speedt-utils'),
 
 var exports = module.exports;
 
-var _sql = 'SELECT a.*, b.TYPE_NAME HOUSE_TYPE_NAME, c.ZONE_NAME, d.STATUS_NAME, e.INTRO, e.CORP_NAME '+
+var _sql = 'SELECT a.*, b.TYPE_NAME HOUSE_TYPE_NAME, c.ZONE_NAME, d.STATUS_NAME, e.INTRO, e.CORP_NAME_EN, e.CORP_NAME_CH '+
 			'FROM g_house_project a, g_house_type b, d_zone c, g_house_project_sale_status d, g_customer_corp e '+
 			'WHERE a.CORP_ID=e.id AND a.ZONE_ID=c.id AND a.HOUSE_TYPE_ID=b.id AND a.SALE_STATUS_ID=d.id';
 
