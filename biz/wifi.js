@@ -18,7 +18,7 @@ var exports = module.exports;
  * @return
  */
 exports.findDefOpenSite = function(mac, cb){
-	mysql_util.find(null, 'w_wifi', [['WIFI_MAC', '=', mac]], null, null, function (err, docs){
+	mysql_util.find(null, 'g_wifi', [['WIFI_MAC', '=', mac]], null, null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, mysql.checkOnly(docs) ? docs[0] : null);
 	});

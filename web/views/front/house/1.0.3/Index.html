@@ -39,15 +39,15 @@
   <!-- Indicators -->
   <ol class="carousel-indicators">
     #set($i=0)
-    #set($_16b6862a15cd4a11a07b155c1cfac4fa = $!data.ads['16b6862a15cd4a11a07b155c1cfac4fa'])
-    #foreach($doc in $!_16b6862a15cd4a11a07b155c1cfac4fa.ads)
+    #set($_56540481d0e726501e1dff04 = $!data.ads['56540481d0e726501e1dff04'])
+    #foreach($doc in $!_56540481d0e726501e1dff04.ads)
     <li data-target="#carousel-example-generic" data-slide-to="$i#set($i=$i+1)"#if($!velocityCount == 1) class='active'#end></li>#end
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    #set($_16b6862a15cd4a11a07b155c1cfac4fa = $!data.ads['16b6862a15cd4a11a07b155c1cfac4fa'])
-    #foreach($doc in $!_16b6862a15cd4a11a07b155c1cfac4fa.ads)
+    #set($_56540481d0e726501e1dff04 = $!data.ads['56540481d0e726501e1dff04'])
+    #foreach($doc in $!_56540481d0e726501e1dff04.ads)
     <div class="item#if($!velocityCount == 1) active#end">
       <img class="img-responsive" src="#fileServUrlFill($!doc.AD_PIC)" alt="$!{doc.AD_NAME}" title="$!{doc.AD_NAME}" onclick='location.href="/house/"'>
       

@@ -61,7 +61,7 @@ function proc_front(app){
 	// 房产
 	app.get('/house/:house/', front.house.houseUI);
 	// 房产
-	app.get('/house/', function (req, res, next){ req.flash('page_id', '725ece97e31143248fff4802354f4de6'); req.flash('zone_id', ''); next(); }, front.site.findAds_zoneUI, front.house.indexUI);
+	app.get('/house/', function (req, res, next){ req.flash('page_id', '5652da593c4dd3c41ce011f5'); req.flash('zone_id', ''); next(); }, front.site.findAds_zoneUI, front.house.indexUI);
 	// 商铺的优惠券领取
 	app.get('/shop/coupon/receive/', front.shop.coupon_receiveUI);
 	// 商铺的优惠券

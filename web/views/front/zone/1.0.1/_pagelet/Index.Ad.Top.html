@@ -2,15 +2,15 @@
   <!-- Indicators -->
   <ol class='carousel-indicators'>
     #set($i=0)
-    #set($_9b484e073d9b4201859650551f52f5eb = $!data.ads['9b484e073d9b4201859650551f52f5eb'])
-    #foreach($doc in $!_9b484e073d9b4201859650551f52f5eb.ads)
+    #set($_565405093a6a4c781faecacf = $!data.ads['565405093a6a4c781faecacf'])
+    #foreach($doc in $!_565405093a6a4c781faecacf.ads)
     <li data-target='#carousel-example-generic' data-slide-to='$i#set($i=$i+1)'#if($!velocityCount == 1) class='active'#end></li>#end           
   </ol>
 
   <!-- Wrapper for slides -->
   <div class='carousel-inner' role='listbox'>
-    #set($_9b484e073d9b4201859650551f52f5eb = $!data.ads['9b484e073d9b4201859650551f52f5eb'])
-    #foreach($doc in $!_9b484e073d9b4201859650551f52f5eb.ads)
+    #set($_565405093a6a4c781faecacf = $!data.ads['565405093a6a4c781faecacf'])
+    #foreach($doc in $!_565405093a6a4c781faecacf.ads)
 	<div class='item#if($!velocityCount == 1) active#end'>
       <a href='$!doc.LINK_URL'><img src='#fileServUrlFill($!doc.AD_PIC)' alt='$!doc.AD_NAME' title='$!doc.AD_NAME' onerror='img404(event);' /></a>
     </div>#end
