@@ -17,6 +17,7 @@ var back = {
 	customer: require('../controllers/back/customer')
 };
 var manage = {
+	corp: require('../controllers/manage/corp'),
 	comment: require('../controllers/manage/comment'),
 	house: {
 		corp: require('../controllers/manage/house/corp'),
@@ -127,6 +128,13 @@ function proc_manage(app){
 	app.get('/manage/customer/edit', manage.user.login_validate, manage.customer.editUI);
 	app.post('/manage/customer/add', express.valiPostData, manage.user.login_validate, manage.customer.add);
 	app.post('/manage/customer/edit', express.valiPostData, manage.user.login_validate, manage.customer.edit);
+
+	// 企业信息维护
+	app.get('/manage/corp/', manage.user.login_validate, manage.corp.indexUI);
+	app.get('/manage/corp/add', manage.user.login_validate, manage.corp.addUI);
+	app.get('/manage/corp/edit', manage.user.login_validate, manage.corp.editUI);
+	app.post('/manage/corp/add', express.valiPostData, manage.user.login_validate, manage.corp.add);
+	app.post('/manage/corp/edit', express.valiPostData, manage.user.login_validate, manage.corp.edit);
 
 	// 欢迎页
 	app.get('/manage/welcome/', manage.user.login_validate, manage.site.welcomeUI);

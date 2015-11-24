@@ -12,7 +12,7 @@ var util = require('speedt-utils'),
 
 var exports = module.exports;
 
-var _sql = 'SELECT a.*, b.USER_NAME, c.TYPE_NAME CORP_TYPE_NAME FROM g_customer_corp a, g_customer b, g_customer_corp_type c WHERE a.CUSTOMER_ID=b.id AND a.CORP_TYPE_ID=c.id ORDER BY a.CREATE_TIME DESC';
+var _sql = 'SELECT * FROM g_customer_corp LEFT JOIN g_customer_corp_house ON (g_customer_corp.id=g_customer_corp_house.id) AND CORP_TYPE_ID="564d33564e7d4a6005b371b0" ORDER BY g_customer_corp.CREATE_TIME DESC';
 
 /**
  *

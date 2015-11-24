@@ -102,7 +102,7 @@
 									zTree.addNodes(treeNode, {
 										id: item.id,
 										pId: treeNode.id,
-										isParent: !!item.ISPARENT,
+										isParent: !!item.IS_PARENT,
 										name: item.MENU_NAME
 									});
 								}
@@ -128,7 +128,7 @@
 					id: '$!obj.id',
 					pId: '$!obj.PID',
 					name: '$!obj.MENU_NAME',
-					isParent: !!$!obj.ISPARENT
+					isParent: !!$!obj.IS_PARENT
 				}#end];
 
 				$(document).ready(function(){
