@@ -19,7 +19,7 @@ var exports = module.exports;
  * @return
  */
 exports.getByPId = function(pid, cb){
-	mysql_util.find(null, 'g_menu', [['PID', '=', pid], ['TYPE', '=', 1]], [['SORT', 'ASC']], null, function (err, docs){
+	mysql_util.find(null, 'g_menu', [['PID', '=', pid]], [['SORT', 'ASC']], null, function (err, docs){
 		if(err) return cb(err);
 		cb(null, docs)
 	});
