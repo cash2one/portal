@@ -66,14 +66,6 @@ exports.edit = function(req, res, next){
 	var result = { success: false },
 		data = req._data;
 	// TODO
-	biz.corp.editInfo(data, function (err, status){
-		if(err) return next(err);
-		if('string' === typeof status){
-			result.msg = status;
-			return res.send(result);
-		}
-		// TODO
-		result.success = true;
-		res.send(result);
-	});
+	result.success = true;
+	res.send(result);
 };

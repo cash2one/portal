@@ -4,20 +4,21 @@
 	<div class='form-group'>
 		<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_ID'>企业名称</label>
 		<div class='col-sm-4'>
-			<select class='form-control' name='CORP_ID' id='addFrm_CORP_ID'>
+			#if(null == $!doc.id)<select class='form-control' name='CORP_ID' id='addFrm_CORP_ID'>
 			#foreach($!doc in $!data.corps)
 				<option value='$!doc.id'>$!doc.CORP_NAME_EN（$!doc.CORP_NAME_CH）</option>#end
-			</select>
+			</select>#else
+			<input type='text' class='form-control' placeholder='企业名称' value='$!doc.CORP_NAME_EN（$!doc.CORP_NAME_CH）' readonly>#end
 		</div>
 	</div>
 	<div class='form-group'>
-		<label class='col-sm-2 hidden-xs control-label' for='addFrm_PROJECT_NAME'>项目名称</label>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_PROJECT_NAME'><span class='olx-form-required'>*</span>项目名称</label>
 		<div class='col-sm-4'>
 			<input type='text' class='form-control' name='PROJECT_NAME' id='addFrm_PROJECT_NAME' placeholder='项目名称' value='$!doc.PROJECT_NAME'>
 		</div>
 	</div>
 	<div class='form-group'>
-		<label class='col-sm-2 hidden-xs control-label' for='addFrm_PROJECT_DESC'>项目描述</label>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_PROJECT_DESC'><span class='olx-form-required'>*</span>项目描述</label>
 		<div class='col-sm-4'>
 			<textarea class='form-control' rows='3' name='PROJECT_DESC' id='addFrm_PROJECT_DESC' placeholder='项目描述' required='required'>$!doc.PROJECT_DESC</textarea>
 		</div>
@@ -98,7 +99,7 @@
 		</div>
 	</div>
 	<div class='form-group'>
-		<label class='col-sm-2 hidden-xs control-label' for='addFrm_PLAN_SALE_TIME'>预售日期</label>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_PLAN_SALE_TIME'><span class='olx-form-required'>*</span>预售日期</label>
 		<div class='col-sm-4'>
 			<div class='input-group date form_date col-md-12' data-date='' data-date-format='yyyy/mm/dd' data-link-field='addFrm_PLAN_SALE_TIME' data-link-format='yyyy/mm/dd'>
 			<input class='form-control' id='addFrm_shadow_PLAN_SALE_TIME' type='text' value='' readonly placeholder='预售日期'>

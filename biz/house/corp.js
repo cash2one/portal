@@ -33,7 +33,8 @@ exports.findAll = function(cb){
  * @return
  */
 exports.getById = function(id, cb){
-	mysql_util.find(null, 'g_customer_corp', [['id', '=', id]], null, null, function (err, docs){
+	var sql = 'SELECT * FROM (SELECT * FROM g_customer_corp WHERE CORP_TYPE_ID="564d33564e7d4a6005b371b0" AND id=?) g_customer_corp LEFT JOIN g_customer_corp_house ON (g_customer_corp.id=g_customer_corp_house.PID)';
+	mysql.query(sql, [id], function (err, docs){
 		if(err) return cb(err);
 		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
 	});

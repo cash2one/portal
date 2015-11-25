@@ -4,16 +4,13 @@
 	<div class='form-group'>
 		<label class='col-sm-2 hidden-xs control-label' for='addFrm_CUSTOMER_ID'>所属客户</label>
 		<div class='col-sm-4'>
-			<select class='form-control' name='CUSTOMER_ID' id='addFrm_CUSTOMER_ID'>
-			#foreach($!doc in $!data.customers)
-				<option value='$!doc.id'>$!doc.USER_NAME（$!doc.REAL_NAME）</option>#end
-			</select>
+			<input type='text' class='form-control' placeholder='所属客户' value='$!doc.CORP_NAME_EN（$!doc.CORP_NAME_CH）' readonly>
 		</div>
 	</div>
 	<div class='form-group'>
-		<label class='col-sm-2 hidden-xs control-label' for='addFrm_CORP_NAME_CH'>TEST</label>
+		<label class='col-sm-2 hidden-xs control-label' for='addFrm_TEST'>TEST</label>
 		<div class='col-sm-4'>
-			<input type='text' class='form-control' name='CORP_NAME_CH' id='addFrm_CORP_NAME_CH' placeholder='企业名称' value='$!doc.CORP_NAME_CH'>
+			<input type='text' class='form-control' name='TEST' id='addFrm_TEST' placeholder='TEST' value='$!doc.TEST'>
 		</div>
 	</div>
 	<div class='form-group'>

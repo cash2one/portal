@@ -10,7 +10,7 @@ var util = require('speedt-utils');
 var conf = require('../../../settings');
 
 var biz = {
-	corp: require('../../../../biz/corp'),
+	corp: require('../../../../biz/house/corp'),
 	project: require('../../../../biz/house/project')
 };
 
@@ -41,7 +41,7 @@ exports.indexUI = function(req, res, next){
  * @return
  */
 exports.addUI = function(req, res, next){
-	biz.corp.findAll('564d33564e7d4a6005b371b0', function (err, docs){
+	biz.corp.findAll(function (err, docs){
 		if(err) return next(err);
 		// TODO
 		res.render('manage/house/project/Add', {
