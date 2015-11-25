@@ -51,7 +51,7 @@ exports.saveNew = function(newInfo, cb){
 		util.genObjectId(),
 		newInfo.CUSTOMER_ID,
 		newInfo.CORP_NAME_CH,
-		newInfo.CORP_NAME_EN,
+		newInfo.CORP_NAME_EN.toLowerCase(),
 		newInfo.INTRO,
 		'564d33564e7d4a6005b371b0',
 		new Date(),

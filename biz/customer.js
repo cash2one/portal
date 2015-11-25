@@ -97,7 +97,7 @@ exports.saveNew = function(newInfo, cb){
 		var sql = 'INSERT INTO g_customer (id, USER_NAME, USER_PASS, AVATAR_URL, EMAIL, MOBILE, REAL_NAME, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		var postData = [
 			util.genObjectId(),
-			newInfo.USER_NAME,
+			newInfo.USER_NAME.toLowerCase(),
 			md5.hex('123456'),
 			newInfo.AVATAR_URL,
 			newInfo.EMAIL,
