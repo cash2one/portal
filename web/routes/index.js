@@ -113,9 +113,7 @@ function proc_manage(app){
 	app.get('/manage/comment/', manage.user.login_validate, manage.comment.indexUI);
 	// 房产频道
 	app.get('/manage/house/corp/', manage.user.login_validate, manage.house.corp.indexUI);
-	app.get('/manage/house/corp/add', manage.user.login_validate, manage.house.corp.addUI);
 	app.get('/manage/house/corp/edit', manage.user.login_validate, manage.house.corp.editUI);
-	app.post('/manage/house/corp/add', express.valiPostData, manage.user.login_validate, manage.house.corp.add);
 	app.post('/manage/house/corp/edit', express.valiPostData, manage.user.login_validate, manage.house.corp.edit);
 	app.get('/manage/house/project/', manage.user.login_validate, manage.house.project.indexUI);
 	app.get('/manage/house/project/add', manage.user.login_validate, manage.house.project.addUI);
