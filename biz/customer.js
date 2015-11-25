@@ -13,6 +13,20 @@ var util = require('speedt-utils'),
 var exports = module.exports;
 
 /**
+ * 获取未拥有公司的帐号
+ *
+ * @params
+ * @return
+ */
+exports.findByNotHaveCorp = function(cb){
+	var sql = 'SELECT a.* FROM g_customer a WHERE a.id NOT IN (SELECT CUSTOMER_ID FROM g_customer_corp)';
+	mysql.query(sql, null, function (err, docs){
+		if(err) return cb(err);
+		cb(null, docs);
+	});
+};
+
+/**
  *
  * @params
  * @return

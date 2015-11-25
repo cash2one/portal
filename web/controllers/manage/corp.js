@@ -62,7 +62,7 @@ exports.addUI = function(req, res, next){
 		next(err);
 	});
 
-	biz.customer.findAll(null, function (err, docs){
+	biz.customer.findByNotHaveCorp(function (err, docs){
 		if(err) return ep.emit('error', err);
 		ep.emit('customers', docs);
 	});
