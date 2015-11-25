@@ -33,7 +33,8 @@ exports.findAll = function(cb){
  * @return
  */
 exports.getById = function(id, cb){
-	mysql_util.find(null, 'g_customer_corp', [['id', '=', id]], null, null, function (err, docs){
+	var sql = 'SELECT a.*, b.USER_NAME, b.REAL_NAME FROM g_customer_corp a, g_customer b WHERE a.CUSTOMER_ID=b.id AND a.id=?';
+	mysql.query(sql, [id], function (err, docs){
 		if(err) return cb(err);
 		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
 	});
