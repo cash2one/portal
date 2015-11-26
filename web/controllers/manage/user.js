@@ -70,9 +70,9 @@ exports.login = function(req, res, next){
 	var result = { success: false },
 		data = req._data;
 	// TODO
-	biz.user.login(data, function (err, status, msg, doc){
+	biz.user.login(data, function (err, msg, doc){
 		if(err) return next(err);
-		if(!!status){
+		if(!!msg){
 			result.msg = msg;
 			return res.send(result);
 		}

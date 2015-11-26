@@ -34,10 +34,10 @@ exports.getById = function(id, cb){
 exports.login = function(logInfo, cb){
 	this.findByName(logInfo.UserName, function (err, doc){
 		if(err) return cb(err);
-		if(!doc) return cb(null, 3, ['用户名或密码输入错误', 'UserName']);
+		if(!doc) return cb(null, ['用户名或密码输入错误', 'UserName']);
 		if(md5.hex(logInfo.UserPass) !== doc.USER_PASS)
-			return cb(null, 6, ['用户名或密码输入错误', 'UserPass'], doc);
-		cb(null, null, null, doc);
+			return cb(null, ['用户名或密码输入错误', 'UserPass'], doc);
+		cb(null, null, doc);
 	});
 };
 

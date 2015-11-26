@@ -45,21 +45,43 @@ exports.getById = function(id, cb){
  * @params
  * @return
  */
-exports.saveNew = function(newInfo, cb){
-	var sql = 'INSERT INTO g_customer_corp (id, CUSTOMER_ID, CORP_NAME_CH, CORP_NAME_EN, INTRO, CORP_TYPE_ID, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?)';
-	var postData = [
-		util.genObjectId(),
-		newInfo.CUSTOMER_ID,
-		newInfo.CORP_NAME_CH,
-		newInfo.CORP_NAME_EN.toLowerCase(),
-		newInfo.INTRO,
-		'564d33564e7d4a6005b371b0',
-		new Date(),
-		newInfo.STATUS || 1
-	];
-	mysql.query(sql, postData, function (err, status){
+exports.getByName = function(name, cb){
+	mysql_util.find(null, 'g_customer_corp', [['CORP_NAME_EN', '=', name]], null, null, function (err, docs){
 		if(err) return cb(err);
-		cb(null, status);
+		cb(null, mysql.checkOnly(docs) ? docs[0] : null);
+	});
+};
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.saveNew = function(newInfo, cb){
+	// format
+	newInfo.CORP_NAME_EN = newInfo.CORP_NAME_EN || '';
+	newInfo.CORP_NAME_EN = newInfo.CORP_NAME_EN.trim();
+	if('' === newInfo.CORP_NAME_EN) return cb(null, ['企业英文名称不能为空', 'CORP_NAME_EN']);
+	// TODO
+	this.getByName(newInfo.CORP_NAME_EN, function (err, doc){
+		if(err) return cb(err);
+		if(!!doc) return cb(null, ['企业英文名称已经存在', 'CORP_NAME_EN']);
+		// CREATE
+		var sql = 'INSERT INTO g_customer_corp (id, CUSTOMER_ID, CORP_NAME_CH, CORP_NAME_EN, INTRO, CORP_TYPE_ID, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?)';
+		var postData = [
+			util.genObjectId(),
+			newInfo.CUSTOMER_ID,
+			newInfo.CORP_NAME_CH,
+			newInfo.CORP_NAME_EN.toLowerCase(),
+			newInfo.INTRO,
+			newInfo.CORP_TYPE_ID,
+			new Date(),
+			newInfo.STATUS || 1
+		];
+		mysql.query(sql, postData, function (err, status){
+			if(err) return cb(err);
+			cb(null, null, status);
+		});
 	});
 };
 

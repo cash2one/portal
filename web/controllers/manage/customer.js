@@ -83,10 +83,11 @@ exports.add = function(req, res, next){
 	var result = { success: false },
 		data = req._data;
 	// TODO
-	biz.customer.saveNew(data, function (err, status){
+	biz.customer.saveNew(data, function (err, msg, status){
 		if(err) return next(err);
-		if('string' === typeof status){
-			result.msg = status;
+		// TODO
+		if(!!msg){
+			result.msg = msg;
 			return res.send(result);
 		}
 		// TODO

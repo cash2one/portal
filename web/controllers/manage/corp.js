@@ -118,9 +118,13 @@ exports.add = function(req, res, next){
 	var result = { success: false },
 		data = req._data;
 	// TODO
-	biz.corp.saveNew(data, function (err, status){
+	biz.corp.saveNew(data, function (err, msg, status){
 		if(err) return next(err);
 		// TODO
+		if(!!msg){
+			result.msg = msg;
+			return res.send(result);
+		}
 		result.success = true;
 		res.send(result);
 	});

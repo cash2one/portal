@@ -87,12 +87,14 @@ exports.findByName = function(name, cb){
  * @return
  */
 exports.saveNew = function(newInfo, cb){
-	if(!newInfo.USER_NAME || '' === newInfo.USER_NAME.trim())
-		return cb(null, '用户名不能为空');
+	// format
+	newInfo.USER_NAME = newInfo.USER_NAME || '';
+	newInfo.USER_NAME = newInfo.USER_NAME.trim();
+	if('' === newInfo.USER_NAME) return cb(null, ['用户名不能为空', 'USER_NAME']);
 	// TODO
 	this.findByName(newInfo.USER_NAME, function (err, doc){
 		if(err) return cb(err);
-		if(doc) return cb(null, '用户已存在');
+		if(doc) return cb(null, ['用户名已经存在', 'USER_NAME']);
 		// TODO
 		var sql = 'INSERT INTO g_customer (id, USER_NAME, USER_PASS, AVATAR_URL, EMAIL, MOBILE, REAL_NAME, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		var postData = [
@@ -108,7 +110,7 @@ exports.saveNew = function(newInfo, cb){
 		];
 		mysql.query(sql, postData, function (err, status){
 			if(err) return cb(err);
-			cb(null, status);
+			cb(null, null, status);
 		});
 	});
 };
