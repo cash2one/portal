@@ -88,9 +88,13 @@ exports.add = function(req, res, next){
 	var result = { success: false },
 		data = req._data;
 	// TODO
-	biz.project.saveNew(data, function (err, status){
+	biz.project.saveNew(data, function (err, msg, status){
 		if(err) return next(err);
 		// TODO
+		if(!!msg){
+			result.msg = msg;
+			return res.send(result);
+		}
 		result.success = true;
 		res.send(result);
 	});
@@ -105,10 +109,11 @@ exports.edit = function(req, res, next){
 	var result = { success: false },
 		data = req._data;
 	// TODO
-	biz.project.editInfo(data, function (err, status){
+	biz.project.editInfo(data, function (err, msg, status){
 		if(err) return next(err);
-		if('string' === typeof status){
-			result.msg = status;
+		// TODO
+		if(!!msg){
+			result.msg = msg;
 			return res.send(result);
 		}
 		// TODO

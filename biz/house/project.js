@@ -47,32 +47,54 @@ exports.getById = function(id, cb){
  * @params
  * @return
  */
-exports.saveNew = function(newInfo, cb){
-	var sql = 'INSERT INTO g_house_project (id, CORP_ID, PROJECT_NAME, PROJECT_DESC, PRICE, GRADE, ZONE_ID, ABODE_TIME, IMG, TEL, HOUSE_TYPE_ID, LAT, LNG, HOUSE_STYLE, PLAN_SALE_TIME, SALE_STATUS_ID, ADDR, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-	var postData = [
-		util.genObjectId(),
-		newInfo.CORP_ID,
-		newInfo.PROJECT_NAME,
-		newInfo.PROJECT_DESC,
-		newInfo.PRICE,
-		newInfo.GRADE,
-		newInfo.ZONE_ID,
-		newInfo.ABODE_TIME,
-		newInfo.IMG,
-		newInfo.TEL,
-		newInfo.HOUSE_TYPE_ID,
-		newInfo.LAT,
-		newInfo.LNG,
-		newInfo.HOUSE_STYLE,
-		newInfo.PLAN_SALE_TIME,
-		newInfo.SALE_STATUS_ID,
-		newInfo.ADDR,
-		new Date(),
-		newInfo.STATUS || 1
-	];
-	mysql.query(sql, postData, function (err, status){
+exports.getByName = function(name, cb){
+	mysql_util.find(null, 'g_house_project', [['PROJECT_NAME', '=', name]], null, null, function (err, docs){
 		if(err) return cb(err);
-		cb(null, status);
+		cb(null, mysql.checkOnly(docs) ? docs[0]: null);
+	});
+};
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.saveNew = function(newInfo, cb){
+	// format
+	newInfo.PROJECT_NAME = newInfo.PROJECT_NAME || '';
+	newInfo.PROJECT_NAME = newInfo.PROJECT_NAME.trim();
+	if('' === newInfo.PROJECT_NAME) return cb(null, ['项目名称不能为空', 'PROJECT_NAME']);
+	// TODO
+	this.getByName(newInfo.PROJECT_NAME, function (err, doc){
+		if(err) return cb(err);
+		if(!!doc) return cb(null, ['项目名称已经存在', 'PROJECT_NAME']);
+		// CREATE
+		var sql = 'INSERT INTO g_house_project (id, CORP_ID, PROJECT_NAME, PROJECT_DESC, PRICE, GRADE, ZONE_ID, ABODE_TIME, IMG, TEL, HOUSE_TYPE_ID, LAT, LNG, HOUSE_STYLE, PLAN_SALE_TIME, SALE_STATUS_ID, ADDR, CREATE_TIME, STATUS) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		var postData = [
+			util.genObjectId(),
+			newInfo.CORP_ID,
+			newInfo.PROJECT_NAME,
+			newInfo.PROJECT_DESC,
+			newInfo.PRICE,
+			newInfo.GRADE,
+			newInfo.ZONE_ID,
+			newInfo.ABODE_TIME,
+			newInfo.IMG,
+			newInfo.TEL,
+			newInfo.HOUSE_TYPE_ID,
+			newInfo.LAT,
+			newInfo.LNG,
+			newInfo.HOUSE_STYLE,
+			newInfo.PLAN_SALE_TIME || new Date(),
+			newInfo.SALE_STATUS_ID,
+			newInfo.ADDR,
+			new Date(),
+			newInfo.STATUS || 1
+		];
+		mysql.query(sql, postData, function (err, status){
+			if(err) return cb(err);
+			cb(null, null, status);
+		});
 	});
 };
 
@@ -82,9 +104,8 @@ exports.saveNew = function(newInfo, cb){
  * @return
  */
 exports.editInfo = function(newInfo, cb){
-	var sql = 'UPDATE g_house_project set PROJECT_NAME=?, PROJECT_DESC=?, PRICE=?, GRADE=?, ZONE_ID=?, ABODE_TIME=?, IMG=?, TEL=?, HOUSE_TYPE_ID=?, LAT=?, LNG=?, HOUSE_STYLE=?, PLAN_SALE_TIME=?, SALE_STATUS_ID=?, ADDR=?, STATUS=? WHERE id=?';
+	var sql = 'UPDATE g_house_project set PROJECT_DESC=?, PRICE=?, GRADE=?, ZONE_ID=?, ABODE_TIME=?, IMG=?, TEL=?, HOUSE_TYPE_ID=?, LAT=?, LNG=?, HOUSE_STYLE=?, PLAN_SALE_TIME=?, SALE_STATUS_ID=?, ADDR=?, STATUS=? WHERE id=?';
 	var postData = [
-		newInfo.PROJECT_NAME,
 		newInfo.PROJECT_DESC,
 		newInfo.PRICE,
 		newInfo.GRADE,
@@ -96,7 +117,7 @@ exports.editInfo = function(newInfo, cb){
 		newInfo.LAT,
 		newInfo.LNG,
 		newInfo.HOUSE_STYLE,
-		newInfo.PLAN_SALE_TIME,
+		newInfo.PLAN_SALE_TIME || new Date(),
 		newInfo.SALE_STATUS_ID,
 		newInfo.ADDR,
 		newInfo.STATUS || 1,
@@ -104,6 +125,6 @@ exports.editInfo = function(newInfo, cb){
 	];
 	mysql.query(sql, postData, function (err, status){
 		if(err) return cb(err);
-		cb(null, status);
+		cb(null, null, status);
 	});
 };

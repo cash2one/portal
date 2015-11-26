@@ -45,9 +45,11 @@
 
 			$('#addFrm_btn_sub').click(function(){
 				$('#addFrm').olxForm('submit', [function(){}, null, function (data){
-					$('#addFrm')[0].reset();
-					if(!data.success) return alert(data.msg);
-					parent.location.href='/manage/#page/house/project/?name=$!{data.title}';
+					if(data.success) return parent.location.href='/manage/#page/house/project/?name=$!{data.title}';
+					if(data.status){
+						if(408 === data.status) return parent.location.href='/manage/';
+					}
+					if(data.msg) alert(data.msg[0]);
 				}]);
 			});
 		});
