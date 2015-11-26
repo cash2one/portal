@@ -47,12 +47,12 @@ exports.findAll = function(name, cb){
  * @return
  */
 exports.login = function(logInfo, cb){
-	this.findByName(logInfo.Email, function (err, doc){
+	this.findByName(logInfo.USER_NAME, function (err, doc){
 		if(err) return cb(err);
-		if(!doc) return cb(null, 3, ['用户名或密码输入错误', 'Email']);
-		if(md5.hex(logInfo.UserPass) !== doc.USER_PASS)
-			return cb(null, 6, ['用户名或密码输入错误', 'UserPass'], doc);
-		cb(null, null, null, doc);
+		if(!doc) return cb(null, ['用户名或密码输入错误', 'USER_NAME']);
+		if(md5.hex(logInfo.USER_PASS) !== doc.USER_PASS)
+			return cb(null, ['用户名或密码输入错误', 'USER_PASS'], doc);
+		cb(null, null, doc);
 	});
 };
 
@@ -132,6 +132,6 @@ exports.editInfo = function(newInfo, cb){
 	];
 	mysql.query(sql, postData, function (err, status){
 		if(err) return cb(err);
-		cb(null, status);
+		cb(null, null, status);
 	});
 };
