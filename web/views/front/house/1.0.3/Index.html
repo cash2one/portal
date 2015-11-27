@@ -479,19 +479,19 @@
 
 
 
-	#foreach($!doc in $!data.house_project)
+	#foreach($!doc in $!data.house_projects)
 	<div class="type_list">
 		#if ($!{doc.RECOMMEND_TYPE} > 0)<p class="type_tit">#recommendType($!{doc.RECOMMEND_TYPE})<span>$!{doc.RECOMMEND_HOUSE_SIZE}</span><span>$!{doc.RECOMMEND_HOUSE_AREA}</span><span>$!{doc.RECOMMEND_HOUSE_PRICE}</span><a href="project/$!{doc.id}/apply/">预约看房</a></p>#end
 		<dl class="con_list">
 		<dt>
-		<a href='project/$!{doc.id}/'><img src="#fileServUrlFill($!doc.IMG_1)"></img></a></dt>
+		<a href='project/$!{doc.id}/'><img src="#fileServUrlFill($!doc.IMG)"></img></a></dt>
 		<dd>
 		<p><span style='cursor: pointer;' onclick='location.href="project/$!{doc.id}/"'>$!{doc.PROJECT_NAME}</span><a href="tel:$!{doc.TEL}" title='拨打电话'><img src="/public/assets/house/1.0.1/images/phone.jpg"></img></a></p>
 		<p>
 		<img src="/public/assets/images/grade/$!{doc.GRADE}.png"></img>
 		<span>$!{doc.HOUSE_TYPE_NAME}</span><span>$!{doc.PRICE}元/平</span>
 		</p>
-		<p>$!{doc.ZONE_NAME}-$!{doc.STYLE_1}</p>
+		<p>$!{doc.ZONE_NAME}-$!{doc.HOUSE_STYLE}</p>
 		<p><span>额外优惠</span><span>代金券3000元</span><span>贷款优惠</span></p>
 		<p><img src="/public/assets/house/1.0.1/images/new.png"></img></p>
 		</dd>

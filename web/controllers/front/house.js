@@ -109,10 +109,10 @@ exports.caculateUI = function(req, res, next){
  * @param
  * @return
  */
-exports.signUI = function(req, res, next){
+exports.applyUI = function(req, res, next){
 	var id = req.params.id;
 	// TODO
-	res.render('front/house/Sign', {
+	res.render('front/house/Apply', {
 		conf: conf,
 		title: '获取优惠 | '+ conf.corp.name,
 		description: '',
@@ -131,7 +131,7 @@ exports.signUI = function(req, res, next){
 exports.projectUI = function(req, res, next){
 	var id = req.params.id;
 	// TODO
-	var ep = EventProxy.create('house_projects', 'comments', function (house_projects, comments){
+	var ep = EventProxy.create('house_project', 'comments', function (house_project, comments){
 		// TODO
 		res.render('front/house/project/1.0.2/Index', {
 			conf: conf,
@@ -140,7 +140,7 @@ exports.projectUI = function(req, res, next){
 			keywords: ',dolalive,html5',
 			data: {
 				comments: comments,
-				house_projects: house_projects
+				house_project: house_project
 			}
 		});
 	});
@@ -151,7 +151,7 @@ exports.projectUI = function(req, res, next){
 
 	biz.house.project.getById(id, function (err, doc){
 		if(err) return ep.emit('error', err);
-		ep.emit('house_projects', doc);
+		ep.emit('house_project', doc);
 	});
 
 	biz.comment.findBySource(id, function (err, docs){
