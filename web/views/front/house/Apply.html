@@ -23,16 +23,16 @@
 		<p>限时团购5千抵2万</p>
 		<p>剩余时间：<span>15天7小时44分</span></p>
 	</div>
-	<form action="" class="myform">
+	<form class='myform' id='addFrm' role='form' onsubmit='return false;' data-url=''>
 	  <fieldset>
 		
 		<div class="form-group">
 		  <p><label>姓 <span style="color:#fff">&nbsp;</span> 名:</label>
-		  <input type="text"  minlength="3" placeholder="请填写姓名"  required id="realname" name='Realname'/></p>
+		  <input type="text"  minlength="3" placeholder="请填写姓名"  required name='REAL_NAME'/></p>
 		  <!-- <p><label>报名人数:</label>
 		  <input type="text"  minlength="3" placeholder="请填写报名人数"  required/></p> -->
 		   <p><label>手 机 号:</label>
-		  <input type="text"  minlength="3" placeholder="请输入手机号"  required id='mobile' name='Mobile' /></p>
+		  <input type="text"  minlength="3" placeholder="请输入手机号"  required name='MOBILE' /></p>
 		  <p> <label>验 证 码:</label>
 		  <input type="text"  minlength="3" placeholder="请输入验证码"  required id='verifyCode' name='VerifyCode' />  <span id='getCode'>获取验证码</span></p>
 		<button type="button" class="btn btn-danger" id='sign_btn'>立即报名</button>
@@ -116,8 +116,18 @@
     	});
 
     	$('#sign_btn').click(function(){
-    		var verify = verifyForm();
-    		if(!verify) return;
+    		var verifyCode = $('#verifyCode').val().trim();
+    		if('' === verifyCode){
+    			alert('请输入验证码');
+    			return;
+    		}
+			$('#addFrm').olxForm('submit', [function(){/* empty */}, null, function (data){				
+				if(data.success){
+					$('#addFrm')[0].reset();
+					return alert('报名成功');
+				}
+				if(data.msg) alert(data.msg[0]);
+			}]);
     	});
 
     	// $data.id

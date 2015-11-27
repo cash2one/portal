@@ -57,6 +57,7 @@ function proc_front(app){
 	app.get('/house/project/:id/', front.house.projectUI);
 	// 活动报名
 	app.get('/house/project/:id/apply/', front.house.applyUI);
+	app.post('/house/project/:id/apply/', express.valiPostData, front.house.apply);
 	// 房贷计算
 	app.get('/house/caculate/', front.house.caculateUI);
 	// 房产

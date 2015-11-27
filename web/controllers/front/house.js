@@ -21,6 +21,7 @@ var fs = require('fs'),
 var biz = {
 	comment: require('../../../biz/comment'),
 	house: {
+		project_apply: require('../../../biz/house/project_apply'),
 		project: require('../../../biz/house/project')
 	},
 	zone: require('../../../biz/zone'),
@@ -120,6 +121,30 @@ exports.applyUI = function(req, res, next){
 		data: {
 			id: id
 		}
+	});
+};
+
+/**
+ *
+ * @params
+ * @return
+ */
+exports.apply = function(req, res, next){
+	var result = { success: false },
+		data = req._data;
+	// TODO
+	data.PROJECT_ID = req.params.id;
+	// TODO
+	biz.house.project_apply.saveNew(data, function (err, msg, status){
+		if(err) return next(err);
+		// TODO
+		if(!!msg){
+			result.msg = msg;
+			return res.send(result);
+		}
+		// TODO
+		result.success = true;
+		res.send(result);
 	});
 };
 
