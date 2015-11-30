@@ -28,6 +28,7 @@ module.exports = {
 			case 1: return util.format(t, 'YY-MM-dd hh:mm:ss.S');
 			case 2: return util.format(t, 'YY-MM-dd hh:mm:ss');
 			case 3: return util.format(t, 'YY-MM');
+			case 4: return util.format(t, 'YY-MM-dd');
 			default: return util.format(t, 'YY-MM-dd hh:mm:ss');
 		}
 	}, num2Money: function(n){

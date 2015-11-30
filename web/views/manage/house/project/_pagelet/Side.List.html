@@ -2,7 +2,7 @@
 	<thead>
 		<tr>
 			<th class='ta'><input type='checkbox' title='全选/取消'></th>
-			<th>项目名称</th>
+			<th nowrap>项目名称</th>
 			<th>企业名称</th>
 			<th>价格</th>
 			<th>评分</th>
@@ -15,31 +15,31 @@
 	<tbody>
 		#foreach($!doc in $!data.projects)<tr>
 			<td class='ta'><input type='checkbox' value='$!doc.id'></td>
-			<td>$!doc.PROJECT_NAME</td>
-			<td>$!doc.CORP_NAME_CH</td>
-			<td>$!doc.PRICE</td>
-			<td>$!doc.GRADE</td>
-			<td>$!doc.ZONE_NAME</td>
-			<td>$!doc.ABODE_TIME</td>
-			<td>#formatDate($!doc.CREATE_TIME)</td>
-			<td>#toStatus($!doc.STATUS)</td>
+			<td nowrap style='color:green'>$!doc.PROJECT_NAME</td>
+			<td style='color:green'>$!doc.CORP_NAME_CH</td>
+			<td style='color:green'>$!doc.PRICE</td>
+			<td style='color:green'>$!doc.GRADE</td>
+			<td style='color:green'>$!doc.ZONE_NAME</td>
+			<td style='color:green'>$!doc.ABODE_TIME</td>
+			<td style='color:green'>#formatDate($!doc.CREATE_TIME)</td>
+			<td style='color:green'>#toStatus($!doc.STATUS)</td>
 		</tr><tr>
 			<td> </td>
-			<th>地址</th>
+			<th nowrap>地址</th>
 			<td>$!doc.ADDR</td>
-			<th>联系电话</th>
+			<th nowrap>联系电话</th>
 			<td colspan='3'>$!doc.TEL</td>
-			<th>房屋类型</th>
+			<th nowrap>房屋类型</th>
 			<td>$!doc.HOUSE_TYPE_ID</td>
 		</tr><tr>
 			<td> </td>
-			<th>经纬度</th>
+			<th nowrap>经纬度</th>
 			<td>$!doc.LAT, $!doc.LNG</td>
-			<th>房间样式</th>
+			<th nowrap>房间样式</th>
 			<td>$!doc.HOUSE_STYLE</td>
-			<th>预售日期</th>
-			<td>#formatDate($!doc.PLAN_SALE_TIME)</td>
-			<th>销售状态</th>
+			<th nowrap>预售日期</th>
+			<td>#formatDate($!doc.PLAN_SALE_TIME,4)</td>
+			<th nowrap>销售状态</th>
 			<td>$!doc.SALE_STATUS_ID</td>
 		</tr><tr>
 			<td> </td>
